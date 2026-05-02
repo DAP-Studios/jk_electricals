@@ -1,0 +1,522 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* JK Electricals Design System
+   - Industrial Minimalism with Motion
+   - Navy (#000080) + Teal (#00a896) + White/Off-white
+   - Segoe UI typography with bold hierarchy
+   - Smooth, purposeful animations
+*/
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* JK Electricals Brand Colors */
+  --primary-navy: #000080;
+  --primary-teal: #00a896;
+  --bg-white: #ffffff;
+  --bg-off-white: #f8fafc;
+  --text-dark: #1e293b;
+  --text-muted: #475569;
+  --border-light: #cbd5e1;
+  --border-lighter: #e2e8f0;
+
+  /* Tailwind Theme Overrides */
+  --primary: var(--primary-navy);
+  --primary-foreground: var(--bg-white);
+  --sidebar-primary: var(--primary-navy);
+  --sidebar-primary-foreground: var(--bg-white);
+  --chart-1: var(--primary-teal);
+  --chart-2: var(--primary-navy);
+  --chart-3: #0066cc;
+  --chart-4: #004499;
+  --chart-5: #003366;
+  --radius: 0.5rem;
+  
+  /* Light theme (default) */
+  --background: var(--bg-white);
+  --foreground: var(--text-dark);
+  --card: var(--bg-off-white);
+  --card-foreground: var(--text-dark);
+  --popover: var(--bg-white);
+  --popover-foreground: var(--text-dark);
+  --secondary: var(--bg-off-white);
+  --secondary-foreground: var(--text-muted);
+  --muted: var(--border-lighter);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--primary-teal);
+  --accent-foreground: var(--bg-white);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--bg-white);
+  --border: var(--border-light);
+  --input: var(--border-lighter);
+  --ring: var(--primary-teal);
+  --sidebar: var(--bg-white);
+  --sidebar-foreground: var(--text-dark);
+  --sidebar-accent: var(--primary-teal);
+  --sidebar-accent-foreground: var(--bg-white);
+  --sidebar-border: var(--border-light);
+  --sidebar-ring: var(--primary-teal);
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --secondary: #334155;
+  --secondary-foreground: #cbd5e1;
+  --muted: #475569;
+  --muted-foreground: #94a3b8;
+  --accent: var(--primary-teal);
+  --accent-foreground: #0f172a;
+  --destructive: #f87171;
+  --destructive-foreground: #0f172a;
+  --border: #334155;
+  --input: #475569;
+  --ring: var(--primary-teal);
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-accent: var(--primary-teal);
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #334155;
+  --sidebar-ring: var(--primary-teal);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Helvetica Neue, sans-serif;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  /* Typography Hierarchy */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight;
+    color: var(--primary-navy);
+    letter-spacing: -2px;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold uppercase tracking-tight;
+    color: var(--primary-navy);
+    letter-spacing: -1px;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+    color: var(--primary-navy);
+  }
+
+  h4 {
+    @apply text-xl font-semibold;
+    color: var(--text-dark);
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* Animation Keyframes */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes floatUp {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(0, 168, 150, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(0, 168, 150, 0.6);
+    }
+  }
+
+  @keyframes lineFlow {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@layer components {
+  /* Container utility */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Custom Animation Classes */
+  .animate-slide-up {
+    animation: slideInUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: floatUp 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Stagger animations */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+    background-color: var(--primary-navy);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 text-white font-semibold rounded-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+    background-color: var(--primary-teal);
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border-2 text-white font-semibold rounded-md transition-all duration-300 hover:text-white active:scale-95;
+    border-color: var(--primary-navy);
+    color: var(--primary-navy);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--primary-navy);
+    color: white;
+  }
+
+  /* Card Styles */
+  .card-hover {
+    @apply bg-white rounded-lg border p-6 transition-all duration-300 hover:shadow-xl hover:scale-105;
+    border-color: var(--border-light);
+  }
+
+  .card-hover:hover {
+    border-color: var(--primary-teal);
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Divider with animation */
+  .divider-animated {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
+    position: relative;
+  }
+}
+
+/* Utility animations for scroll effects */
+@supports (animation-timeline: view()) {
+  .fade-in-on-scroll {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  .slide-up-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideInUp 0.8s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   HERO SECTION — Premium Styles
+   ═══════════════════════════════════════════════ */
+
+/* Gradient text with shimmer */
+.hero-gradient-text {
+  background: linear-gradient(
+    135deg,
+    #00a896 0%,
+    #00d4aa 40%,
+    #00a896 60%,
+    #00c9b0 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: heroGradientShift 4s ease-in-out infinite;
+}
+
+@keyframes heroGradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Energy pulse lines */
+.hero-energy-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 168, 150, 0) 20%,
+    rgba(0, 168, 150, 0.4) 50%,
+    rgba(0, 168, 150, 0) 80%,
+    transparent 100%
+  );
+  animation: heroEnergyPulse 4s ease-in-out infinite;
+}
+
+.hero-energy-line-1 {
+  top: 25%;
+  left: -10%;
+  width: 120%;
+  animation-delay: 0s;
+}
+
+.hero-energy-line-2 {
+  top: 55%;
+  left: -10%;
+  width: 120%;
+  animation-delay: 1.3s;
+  opacity: 0.6;
+}
+
+.hero-energy-line-3 {
+  top: 80%;
+  left: -10%;
+  width: 120%;
+  animation-delay: 2.6s;
+  opacity: 0.4;
+}
+
+@keyframes heroEnergyPulse {
+  0% {
+    transform: translateX(-100%) scaleX(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.3);
+    opacity: 0;
+  }
+}
+
+/* Brand marquee */
+.hero-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: heroMarquee 30s linear infinite;
+}
+
+.hero-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes heroMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hero entrance animations */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-animate-delay-1 { animation-delay: 0.15s; }
+.hero-animate-delay-2 { animation-delay: 0.3s; }
+.hero-animate-delay-3 { animation-delay: 0.45s; }
+.hero-animate-delay-4 { animation-delay: 0.6s; }
+.hero-animate-delay-5 { animation-delay: 0.75s; }
+.hero-animate-delay-6 { animation-delay: 0.9s; }
+
+@keyframes heroEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
