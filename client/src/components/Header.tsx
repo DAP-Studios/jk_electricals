@@ -1,94 +1,94 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-/* Header Component
-   - Sticky navigation bar with brand logo
-   - Minimalist design with navy background
-   - Teal accent for active/hover states
-   - Smooth animations on scroll
-*/
+import { Link, useLocation } from "wouter";
+import namelogo from "../assets/namelogo.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Products", href: "#products" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[#cbd5e1] shadow-sm transition-all duration-300 hover:shadow-md">
-      <div className="container">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-black text-[#000080]">JK</span>
-              <span className="text-sm font-bold text-[#00a896] tracking-wider">ELECTRICALS</span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-[#1e293b] font-medium text-sm transition-all duration-300 hover:text-[#00a896] hover:underline underline-offset-4"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a
-              href="#contact"
-              className="px-6 py-2.5 bg-[#00a896] text-white font-semibold rounded-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+    <nav className={`bg-white dark:bg-slate-950 font-inter tracking-tight uppercase font-semibold text-sm docked full-width top-0 sticky z-50 transition-all duration-300 ${
+      isScrolled ? "border-b border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none" : ""
+    }`}>
+      <div className="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+        <Link href="/" className="inline-flex items-center cursor-pointer">
+          <img src={namelogo} alt="JK ELECTRICALS" className="h-8 w-auto mr-2" />
+          <span className="sr-only">JK ELECTRICALS</span>
+        </Link>
+        
+        <div className="hidden md:flex items-center space-x-gutter">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`${
+                location === item.href 
+                  ? "text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" 
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
+              } active:opacity-80 active:scale-95 transition-all duration-200 px-2`}
             >
-              Get Quote
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        
+        <div className="flex items-center space-x-4">
+          <button className="hidden md:block bg-secondary text-on-secondary font-button text-button px-6 py-3 rounded hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
+            Get a Quote
+          </button>
+          <button 
+            className="md:hidden text-on-background p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-[#000080] hover:bg-[#f8fafc] rounded-md transition-colors"
-            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden pb-4 border-t border-[#cbd5e1] animate-slide-up">
-            {navItems.map((item, index) => (
-              <a
+      </div>
+      
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+          <div className="px-8 py-4 flex flex-col space-y-4">
+            {navItems.map((item) => (
+              <Link
                 key={item.label}
                 href={item.href}
-                className="block px-4 py-3 text-[#1e293b] font-medium hover:bg-[#f8fafc] hover:text-[#00a896] transition-colors stagger-1"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`block ${
+                  location === item.href 
+                    ? "text-blue-700 dark:text-blue-400 font-bold" 
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <div className="px-4 py-3">
-              <a
-                href="#contact"
-                className="block px-4 py-2.5 bg-[#00a896] text-white font-semibold rounded-md text-center transition-all duration-300 hover:shadow-lg"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Get Quote
-              </a>
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
+            <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+              <button className="bg-secondary text-on-secondary font-button text-button px-6 py-3 rounded hover:bg-on-secondary-fixed-variant transition-colors shadow-sm w-full mt-4">
+                Get a Quote
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

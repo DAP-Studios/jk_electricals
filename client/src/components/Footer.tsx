@@ -1,5 +1,6 @@
 import { COMPANY_INFO, PARTNER_BRANDS } from "@/const";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,24 +26,24 @@ export default function Footer() {
             <h4 className="font-bold mb-4 text-[#00a896]">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#home" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
+                <Link href="/" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#products" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
+                <Link href="/products" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
                   Products
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
+                <Link href="/about" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
+                <Link href="/contact" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

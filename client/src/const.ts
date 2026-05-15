@@ -40,6 +40,38 @@ export const PARTNER_BRANDS = [
   "KEI",
 ];
 
+// Added proper 'categories' export for Home carousel
+export const categories = [
+  {
+    id: 1,
+    title: "Industrial Cables",
+    description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple",
+    icon: "Zap",
+    image: "https://images.unsplash.com/photo-1558444479-c8f010524776?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: 2,
+    title: "Switchgear Protection",
+    description: "MCB, RCCB, MCCB, MPCB, Power Contactors, Thermal Overload Relays",
+    icon: "Shield",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070"
+  },
+  {
+    id: 3,
+    title: "Automation Systems",
+    description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
+    icon: "Activity",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000"
+  },
+  {
+    id: 4,
+    title: "Industrial Lighting",
+    description: "Highbay Lights, Flood & Street Lights, Poles & High Mast",
+    icon: "Home",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070"
+  }
+];
+
 export const PRODUCT_CATEGORIES = [
   {
     id: 1,
@@ -138,3 +170,9 @@ export const MESSAGING_PILLARS = [
   },
 ];
 
+export const stats = [
+  { label: "Products", value: "1200+" },
+  { label: "Clients", value: "500+" },
+  { label: "Brands", value: "25+" },
+  { label: "Support", value: "24/7" }
+];
