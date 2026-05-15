@@ -1,10 +1,52 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductGrid from "@/components/ProductGrid";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { PRODUCT_CATEGORIES } from "@/const";
 import { motion } from "framer-motion";
 
 export default function ProductsPage() {
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+
+  const uniqueBrands = useMemo(() => {
+    const s = new Set<string>();
+    PRODUCT_CATEGORIES.forEach((c) => c.brands.forEach((b: string) => s.add(b)));
+    return Array.from(s).sort((a, b) => a.localeCompare(b));
+  }, []);
+
+  function BrandsFilter({ selectedBrand, setSelectedBrand }: { selectedBrand: string | null; setSelectedBrand: (b: string | null) => void }) {
+    return (
+      <div className="w-full">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-sm font-black uppercase tracking-wider">Filter by Brand</h3>
+          <button
+            onClick={() => setSelectedBrand(null)}
+            className="text-xs text-slate-500 hover:text-slate-900"
+          >
+            Clear
+          </button>
+        </div>
+
+        <div className="flex gap-3 overflow-x-auto no-scrollbar py-2">
+          <button
+            onClick={() => setSelectedBrand(null)}
+            className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedBrand === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+          >
+            All
+          </button>
+          {uniqueBrands.map((brand) => (
+            <button
+              key={brand}
+              onClick={() => setSelectedBrand(brand)}
+              className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedBrand === brand ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+            >
+              {brand}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Industrial Electrical Products | JK Electricals Vapi";
@@ -35,8 +77,14 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* Normal Grid Layout for dedicated products page */}
-        <ProductGrid />
+        {/* Brands Filter + Grid Layout for dedicated products page */}
+        <section className="py-12">
+          <div className="container">
+            <BrandsFilter selectedBrand={selectedBrand} setSelectedBrand={setSelectedBrand} />
+          </div>
+        </section>
+
+        <ProductGrid selectedBrand={selectedBrand} />
 
         {/* Bulk Inquiry Section */}
         <section className="py-24 bg-slate-50">

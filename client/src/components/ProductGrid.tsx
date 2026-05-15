@@ -2,15 +2,22 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { PRODUCT_CATEGORIES, getInquiryLinks } from "@/const";
 
-export default function ProductGrid() {
+export default function ProductGrid({ selectedBrand }: { selectedBrand?: string | null }) {
+  const filtered = selectedBrand
+    ? PRODUCT_CATEGORIES.filter((c) => c.brands.map((b: string) => b.toLowerCase()).includes(selectedBrand.toLowerCase()))
+    : PRODUCT_CATEGORIES;
+
   return (
     <section className="py-24 bg-white relative">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PRODUCT_CATEGORIES.map((category, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filtered.map((category, index) => (
             <ProductCard key={category.id} category={category} index={index} />
           ))}
         </div>
+        {filtered.length === 0 && (
+          <div className="text-center text-slate-500 py-16">No products found for <strong>{selectedBrand}</strong></div>
+        )}
       </div>
     </section>
   );
