@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="JK Electricals Vapi preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#000613"/>
+      <stop offset="100%" stop-color="#021c2f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00a896"/>
+      <stop offset="100%" stop-color="#00d4aa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1030" cy="120" r="180" fill="#00a896" opacity="0.08"/>
+  <circle cx="220" cy="520" r="240" fill="#00a896" opacity="0.08"/>
+  <text x="90" y="160" fill="#00a896" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="8">JK ELECTRICALS VAPI</text>
+  <text x="90" y="300" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="900" letter-spacing="-2">INDUSTRIAL</text>
+  <text x="90" y="390" fill="url(#accent)" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="900" letter-spacing="-2">ELECTRICALS</text>
+  <text x="90" y="470" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">Authorized distributor for switchgear, cables, automation, and industrial supply</text>
+  <text x="90" y="525" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400">jkelectricalsvapi.in</text>
+</svg>

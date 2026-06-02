@@ -2,7 +2,7 @@ import { COMPANY_INFO } from "@/const";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
-export default function Contact() {
+export default function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,27 +24,29 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-[#f8fafc]">
+    <section id="contact" className="py-0 bg-[#f8fafc]">
       <div className="container">
-        <div className="max-w-2xl mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-[#000080] mb-4">
-            Get in <span className="text-[#00a896]">Touch</span>
-          </h2>
-          <p className="text-lg text-[#475569]">
-            Have questions? Our team is ready to assist you. Reach out through any channel that works best for you.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="max-w-3xl mb-16 animate-slide-up">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-slate-900">
+              Get in <span className="text-[#00a896]">Touch</span>
+            </h2>
+            <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl">
+              Have questions? Our team is ready to assist you. Fill the quick form and we'll respond fast — or start a WhatsApp chat for instant help.
+            </p>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8 animate-slide-left">
             <div>
-              <h3 className="text-2xl font-bold text-[#000080] mb-6">Contact Information</h3>
+              <h3 className="text-sm font-black uppercase tracking-[0.4em] text-slate-900 mb-6">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold text-[#000080]">Phone</p>
+                    <p className="font-semibold text-slate-900">Phone</p>
                     <a href={`tel:${COMPANY_INFO.contact.primary}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
                       {COMPANY_INFO.contact.primary}
                     </a>
@@ -58,7 +60,7 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold text-[#000080]">Email</p>
+                    <p className="font-semibold text-slate-900">Email</p>
                     <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
                       {COMPANY_INFO.contact.email}
                     </a>
@@ -68,7 +70,7 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold text-[#000080]">Address</p>
+                    <p className="font-semibold text-slate-900">Address</p>
                     <p className="text-[#475569]">
                       {COMPANY_INFO.address.street}
                       <br />
@@ -84,7 +86,7 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <MessageCircle className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold text-[#000080]">WhatsApp</p>
+                    <p className="font-semibold text-slate-900">WhatsApp</p>
                     <a
                       href={`https://wa.me/917383095063`}
                       target="_blank"
@@ -101,21 +103,15 @@ export default function Contact() {
             {/* GSTIN */}
             <div className="p-6 bg-white rounded-lg border border-[#cbd5e1]">
               <p className="text-sm text-[#475569] mb-2">GST Registration Number</p>
-              <p className="text-xl font-bold text-[#000080]">{COMPANY_INFO.gstin}</p>
+              <p className="text-xl font-bold text-slate-900">{COMPANY_INFO.gstin}</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="animate-slide-right">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white p-8 rounded-lg border border-[#cbd5e1] shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#000080] mb-2">
-                    Full Name
-                  </label>
+            <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-2xl border border-[#e6eef0] shadow-xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
                   <input
                     type="text"
                     id="name"
@@ -123,15 +119,13 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2.5 border border-[#cbd5e1] rounded-md focus:outline-none focus:border-[#00a896] focus:ring-2 focus:ring-[#00a896] focus:ring-opacity-20 transition-all"
-                    placeholder="Your name"
+                    className="peer w-full px-4 py-3 rounded-lg border border-transparent bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#00a896] transition-all"
+                    placeholder=" "
                   />
+                  <label htmlFor="name" className="absolute left-4 top-2 text-sm text-slate-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm transition-all">Full name</label>
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#000080] mb-2">
-                    Email Address
-                  </label>
+                <div className="relative">
                   <input
                     type="email"
                     id="email"
@@ -139,15 +133,13 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2.5 border border-[#cbd5e1] rounded-md focus:outline-none focus:border-[#00a896] focus:ring-2 focus:ring-[#00a896] focus:ring-opacity-20 transition-all"
-                    placeholder="your@email.com"
+                    className="peer w-full px-4 py-3 rounded-lg border border-transparent bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#00a896] transition-all"
+                    placeholder=" "
                   />
+                  <label htmlFor="email" className="absolute left-4 top-2 text-sm text-slate-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm transition-all">Email address</label>
                 </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-[#000080] mb-2">
-                    Phone Number
-                  </label>
+                <div className="relative md:col-span-2">
                   <input
                     type="tel"
                     id="phone"
@@ -155,33 +147,34 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2.5 border border-[#cbd5e1] rounded-md focus:outline-none focus:border-[#00a896] focus:ring-2 focus:ring-[#00a896] focus:ring-opacity-20 transition-all"
-                    placeholder="+91 XXXXX XXXXX"
+                    className="peer w-full px-4 py-3 rounded-lg border border-transparent bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#00a896] transition-all"
+                    placeholder=" "
                   />
+                  <label htmlFor="phone" className="absolute left-4 top-2 text-sm text-slate-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm transition-all">Phone number</label>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#000080] mb-2">
-                    Message
-                  </label>
+                <div className="relative md:col-span-2">
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={4}
-                    className="w-full px-4 py-2.5 border border-[#cbd5e1] rounded-md focus:outline-none focus:border-[#00a896] focus:ring-2 focus:ring-[#00a896] focus:ring-opacity-20 transition-all resize-none"
-                    placeholder="Tell us about your requirements..."
+                    rows={5}
+                    className="peer w-full px-4 py-3 rounded-lg border border-transparent bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#00a896] transition-all resize-none"
+                    placeholder=" "
                   />
+                  <label htmlFor="message" className="absolute left-4 top-2 text-sm text-slate-500 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm transition-all">Tell us about your requirement</label>
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-[#000080] text-white font-semibold rounded-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
-                >
+              <div className="mt-6 flex items-center gap-4">
+                <button type="submit" className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#00a896] to-[#00d4aa] text-white font-extrabold rounded-lg shadow-lg hover:scale-[1.02] transition-transform">
                   Send Inquiry
                 </button>
+                <a href={`https://wa.me/917383095063`} target="_blank" rel="noreferrer" className="ml-2 inline-flex items-center gap-2 px-4 py-3 border border-slate-200 rounded-lg text-slate-700 font-semibold hover:bg-slate-50">
+                  Chat on WhatsApp
+                </a>
               </div>
             </form>
           </div>

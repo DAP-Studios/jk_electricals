@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           {/* Brand Partners */}
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4 text-[#00a896]">Our Partners</h4>
             <div className="flex flex-wrap gap-2">
               {PARTNER_BRANDS.slice(0, 6).map((brand) => (
@@ -83,7 +83,7 @@ export default function Footer() {
                 </span>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Divider */}

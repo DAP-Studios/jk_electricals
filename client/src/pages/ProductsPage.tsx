@@ -1,24 +1,53 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductGrid from "@/components/ProductGrid";
+import Hero from "@/components/Hero";
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/const";
-import { motion } from "framer-motion";
+import Seo from "@/components/Seo";
+import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 
 export default function ProductsPage() {
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [mobileFilterOpen, setMobileFilterOpen] = useState<"brands" | "category" | null>(null);
 
-  const uniqueBrands = useMemo(() => {
+  const allBrands = useMemo(() => {
     const s = new Set<string>();
     PRODUCT_CATEGORIES.forEach((c) => c.brands.forEach((b: string) => s.add(b)));
     return Array.from(s).sort((a, b) => a.localeCompare(b));
   }, []);
 
-  function BrandsFilter({ selectedBrand, setSelectedBrand }: { selectedBrand: string | null; setSelectedBrand: (b: string | null) => void }) {
+  const categories = useMemo(
+    () => PRODUCT_CATEGORIES.map((c) => ({ name: c.name, slug: c.slug })),
+    []
+  );
+
+  const availableBrands = useMemo(() => {
+    if (!selectedCategory) return allBrands;
+    const category = PRODUCT_CATEGORIES.find((entry) => entry.slug === selectedCategory);
+    if (!category) return allBrands;
+    return Array.from(new Set(category.brands)).sort((a, b) => a.localeCompare(b));
+  }, [allBrands, selectedCategory]);
+
+  const availableCategories = useMemo(() => {
+    if (!selectedBrand) return categories;
+    return PRODUCT_CATEGORIES
+      .filter((category) => category.brands.some((brand) => brand.toLowerCase() === selectedBrand.toLowerCase()))
+      .map((category) => ({ name: category.name, slug: category.slug }));
+  }, [categories, selectedBrand]);
+
+  function BrandFilterSidebar({
+    selectedBrand,
+    setSelectedBrand,
+  }: {
+    selectedBrand: string | null;
+    setSelectedBrand: (b: string | null) => void;
+  }) {
     return (
-      <div className="w-full">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-black uppercase tracking-wider">Filter by Brand</h3>
+      <aside className="rounded-[2rem] border border-slate-100 bg-slate-50 p-6 lg:sticky lg:top-24">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-sm font-black uppercase tracking-wider">Brands</h3>
           <button
             onClick={() => setSelectedBrand(null)}
             className="text-xs text-slate-500 hover:text-slate-900"
@@ -26,23 +55,145 @@ export default function ProductsPage() {
             Clear
           </button>
         </div>
-
-        <div className="flex gap-3 overflow-x-auto no-scrollbar py-2">
+        <div className="flex flex-col gap-3 max-h-[60vh] overflow-y-auto pr-1 no-scrollbar">
           <button
             onClick={() => setSelectedBrand(null)}
-            className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedBrand === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+            className={`w-full px-4 py-3 rounded-2xl border text-sm font-semibold text-left ${selectedBrand === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
           >
-            All
+            All Brands
           </button>
-          {uniqueBrands.map((brand) => (
+          {availableBrands.map((brand) => (
             <button
               key={brand}
               onClick={() => setSelectedBrand(brand)}
-              className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedBrand === brand ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+              className={`w-full px-4 py-3 rounded-2xl border text-sm font-semibold text-left ${selectedBrand === brand ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
             >
               {brand}
             </button>
           ))}
+        </div>
+      </aside>
+    );
+  }
+
+  function CategoryFilterStrip({
+    selectedCategory,
+    setSelectedCategory,
+  }: {
+    selectedCategory: string | null;
+    setSelectedCategory: (c: string | null) => void;
+  }) {
+    return (
+      <div className="w-full">
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Category</p>
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className="text-xs text-slate-500 hover:text-slate-900"
+          >
+            Clear Category
+          </button>
+        </div>
+        <div className="flex gap-3 overflow-x-auto no-scrollbar py-2">
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedCategory === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+          >
+            All
+          </button>
+          {availableCategories.map((category) => (
+            <button
+              key={category.slug}
+              onClick={() => setSelectedCategory(category.slug)}
+              className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedCategory === category.slug ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  function MobileFilterTray({
+    mode,
+    selectedBrand,
+    setSelectedBrand,
+    selectedCategory,
+    setSelectedCategory,
+  }: {
+    mode: "brands" | "category" | null;
+    selectedBrand: string | null;
+    setSelectedBrand: (b: string | null) => void;
+    selectedCategory: string | null;
+    setSelectedCategory: (c: string | null) => void;
+  }) {
+    if (!mode) return null;
+
+    const isBrands = mode === "brands";
+    const title = isBrands ? "Brands" : "Category";
+    const items = isBrands ? availableBrands : availableCategories.map((category) => category.name);
+
+    return (
+      <div className="md:hidden fixed inset-x-0 bottom-[72px] z-50 px-3">
+        <div className="rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-black/10 p-4">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-black uppercase tracking-wider">{title}</h3>
+            <button
+              onClick={() => {
+                if (isBrands) {
+                  setSelectedBrand(null);
+                } else {
+                  setSelectedCategory(null);
+                }
+                setMobileFilterOpen(null);
+              }}
+              className="text-xs text-slate-500 hover:text-slate-900"
+            >
+              Clear
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-2 max-h-64 overflow-y-auto pr-1">
+            <button
+              onClick={() => {
+                if (isBrands) {
+                  setSelectedBrand(null);
+                } else {
+                  setSelectedCategory(null);
+                }
+                setMobileFilterOpen(null);
+              }}
+              className={`px-4 py-2 rounded-full border text-sm font-semibold ${isBrands
+                ? selectedBrand === null
+                  ? 'bg-[#00a896] text-white border-[#00a896]'
+                  : 'bg-white text-slate-700 border-slate-200'
+                : selectedCategory === null
+                  ? 'bg-[#00a896] text-white border-[#00a896]'
+                  : 'bg-white text-slate-700 border-slate-200'}`}
+            >
+              All
+            </button>
+            {items.map((item) => {
+              const active = isBrands ? selectedBrand === item : selectedCategory === availableCategories.find((category) => category.name === item)?.slug;
+              return (
+                <button
+                  key={item}
+                  onClick={() => {
+                    if (isBrands) {
+                      setSelectedBrand(item);
+                    } else {
+                      const category = availableCategories.find((entry) => entry.name === item);
+                      setSelectedCategory(category?.slug ?? null);
+                    }
+                    setMobileFilterOpen(null);
+                  }}
+                  className={`px-4 py-2 rounded-full border text-sm font-semibold ${active ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+                >
+                  {item}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -52,39 +203,89 @@ export default function ProductsPage() {
     document.title = "Industrial Electrical Products | JK Electricals Vapi";
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get("category");
+
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="Industrial Electrical Products in Vapi | JK Electricals"
+        description="Browse authorized industrial electrical products, switchgear, cables, automation systems, and distribution boards from JK Electricals Vapi."
+        path="/products"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Industrial Electrical Products",
+          url: `${SITE_URL}/products`,
+          description: SITE_DESCRIPTION,
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: PRODUCT_CATEGORIES.length,
+            itemListElement: PRODUCT_CATEGORIES.map((category, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: category.name,
+              url: `${SITE_URL}/products#${category.slug}`,
+            })),
+          },
+        }}
+      />
       <Header />
       
-      <main className="pt-24">
-        {/* Simplified Premium Header */}
-        <div className="bg-[#000613] py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,168,150,0.1),transparent_70%)]" />
-          <div className="container relative z-10 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-[#00a896] text-xs font-black uppercase tracking-[0.4em] mb-6 inline-block">Authorized Distribution</span>
-              <h1 className="text-5xl md:text-8xl font-black text-white uppercase mb-8 tracking-tighter leading-none">
-                Industrial <br/> <span className="text-[#00a896]">Ecosystem.</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                A comprehensive catalog of high-quality components, authorized switchgear, and automation solutions for modern industries.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+      <main id="main-content" className="pt-20">
+        <Hero
+          title={<>Industrial <br/> <span className="text-[#00a896]">Ecosystem.</span></>}
+          subtitle="A comprehensive catalog of high-quality components, authorized switchgear, and automation solutions for modern industries."
+          bgClass="bg-[#000613]"
+          bgImage={null}
+          align="left"
+          hideButtons={true}
+        />
 
-        {/* Brands Filter + Grid Layout for dedicated products page */}
-        <section className="py-12">
-          <div className="container">
-            <BrandsFilter selectedBrand={selectedBrand} setSelectedBrand={setSelectedBrand} />
+        {/* Filters + Grid Layout for dedicated products page */}
+        <section className="py-12 pb-32 md:pb-12">
+          <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
+            <p className="text-sm text-slate-500 mb-5">
+              Showing all products by default. Use filters below to narrow by category or brand.
+            </p>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-1 lg:grid-cols-[330px_minmax(0,1fr)] gap-10 items-start">
+                <BrandFilterSidebar
+                  selectedBrand={selectedBrand}
+                  setSelectedBrand={setSelectedBrand}
+                />
+
+                <div>
+                  <div className="sticky top-28 z-20">
+                    <CategoryFilterStrip
+                      selectedCategory={selectedCategory}
+                      setSelectedCategory={setSelectedCategory}
+                    />
+                  </div>
+
+                  <div className="mt-8">
+                    <ProductGrid selectedBrand={selectedBrand} selectedCategory={selectedCategory} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="md:hidden rounded-[1.75rem] border border-slate-100 bg-slate-50 p-4">
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Tap the buttons at the bottom to filter by brand or category on your phone.
+              </p>
+            </div>
           </div>
         </section>
 
-        <ProductGrid selectedBrand={selectedBrand} />
+        <div className="md:hidden">
+          <ProductGrid selectedBrand={selectedBrand} selectedCategory={selectedCategory} />
+        </div>
 
         {/* Bulk Inquiry Section */}
         <section className="py-24 bg-slate-50">
@@ -95,15 +296,12 @@ export default function ProductsPage() {
                 Our technical team in Vapi is ready to assist you with bulk requirements, project BOQs, and specialized industrial configurations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/contact" 
-                  className="bg-[#00a896] text-white font-black uppercase tracking-widest px-12 py-5 rounded-full hover:scale-105 transition-all shadow-xl shadow-[#00a896]/20"
-                >
+                <a href="/contact" className="bg-[#00a896] text-white font-black uppercase tracking-widest px-12 py-5 rounded-full">
                   Request Project Pricing
                 </a>
                 <a 
                   href="https://wa.me/917383095063" 
-                  className="bg-white border border-slate-200 text-slate-900 font-black uppercase tracking-widest px-12 py-5 rounded-full hover:bg-slate-900 hover:text-white transition-all"
+                  className="bg-white border border-slate-200 text-slate-900 font-black uppercase tracking-widest px-12 py-5 rounded-full"
                 >
                   Direct WhatsApp
                 </a>
@@ -113,7 +311,36 @@ export default function ProductsPage() {
         </section>
       </main>
 
+      <MobileFilterTray
+        mode={mobileFilterOpen}
+        selectedBrand={selectedBrand}
+        setSelectedBrand={setSelectedBrand}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
+
+      <div className="md:hidden fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-3">
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => setMobileFilterOpen(mobileFilterOpen === "brands" ? null : "brands")}
+            className={`rounded-full py-4 text-sm font-black uppercase tracking-widest border ${mobileFilterOpen === "brands" ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-800 border-slate-200'}`}
+          >
+            Brands
+          </button>
+          <button
+            onClick={() => setMobileFilterOpen(mobileFilterOpen === "category" ? null : "category")}
+            className={`rounded-full py-4 text-sm font-black uppercase tracking-widest border ${mobileFilterOpen === "category" ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-800 border-slate-200'}`}
+          >
+            Category
+          </button>
+        </div>
+        <a href="/contact" className="mt-3 block text-center text-sm font-semibold text-[#00a896]">
+           Contact Us for Bulk Orders
+         </a>
+        </div>
+
       <Footer />
     </div>
+
   );
 }

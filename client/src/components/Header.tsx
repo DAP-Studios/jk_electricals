@@ -10,12 +10,18 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const heroScrollThreshold = 3;
+      setIsScrolled(location === "/" ? window.scrollY >= heroScrollThreshold : window.scrollY > heroScrollThreshold);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [location]);
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -25,9 +31,13 @@ export default function Header() {
   ];
 
   return (
-    <nav className={`bg-white dark:bg-slate-950 font-inter tracking-tight uppercase font-semibold text-sm docked full-width top-0 sticky z-50 transition-all duration-300 ${
-      isScrolled ? "border-b border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none" : ""
-    }`}>
+    <>
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <nav className={`font-inter tracking-tight uppercase font-semibold text-sm fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        (location === '/' && !isScrolled)
+          ? 'bg-transparent border-transparent shadow-none'
+          : 'bg-white/75 backdrop-blur-md dark:bg-slate-950/90'
+      } ${isScrolled ? "border-b border-slate-200/70 dark:border-slate-800 shadow-sm shadow-black/5 dark:shadow-none" : ""}`}>
       <div className="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
         <Link href="/" className="inline-flex items-center cursor-pointer">
           <img src={namelogo} alt="JK ELECTRICALS" className="h-8 w-auto mr-2" />
@@ -90,5 +100,6 @@ export default function Header() {
         </div>
       )}
     </nav>
+    </>
   );
 }

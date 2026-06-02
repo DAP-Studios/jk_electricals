@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import Seo from "@/components/Seo";
+import { COMPANY_INFO } from "@/const";
+import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import { useEffect } from "react";
 
 export default function ContactPage() {
@@ -11,22 +14,38 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Contact JK Electricals Vapi | Get Industrial Supply Support"
+        description="Contact JK Electricals Vapi for industrial electrical products, quotations, bulk inquiries, and quick support across Gujarat."
+        path="/contact"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact JK Electricals Vapi",
+          url: `${SITE_URL}/contact`,
+          description: SITE_DESCRIPTION,
+          mainEntity: {
+            "@type": "LocalBusiness",
+            name: COMPANY_INFO.name,
+            url: SITE_URL,
+            telephone: COMPANY_INFO.contact.primary,
+            email: COMPANY_INFO.contact.email,
+          },
+        }}
+      />
       <Header />
       <main className="pt-20">
-        <div className="bg-[#000080] py-20 text-white">
-          <div className="container text-center">
-            <h1 className="text-4xl md:text-6xl font-black uppercase mb-6 tracking-tighter">
+        <div className="bg-[#000080] py-12 text-white">
+          <div className="container text-left">
+            <h1 className="text-4xl md:text-6xl font-black uppercase mb-2 tracking-tighter">
               Get In <span className="text-[#00a896]">Touch</span>
             </h1>
-            <p className="text-xl max-w-2xl mx-auto opacity-90">
-              Visit our warehouse in Vapi GIDC or contact us for immediate industrial electrical support.
-            </p>
           </div>
         </div>
 
-        <Contact />
+        <Contact hideHeader={true} />
 
-        <section className="section-padding bg-white">
+        <section className="py-0 bg-white">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               <div className="lg:col-span-1">
