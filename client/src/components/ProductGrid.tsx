@@ -1,4 +1,4 @@
-import { PRODUCT_CATEGORIES, getInquiryLinks } from "@/const";
+import { PRODUCT_CATEGORIES, getInquiryLinks, getProductImage } from "@/const";
 
 type ProductGridProps = {
   selectedBrand?: string | null;
@@ -30,7 +30,7 @@ export default function ProductGrid({ selectedBrand, selectedCategory }: Product
       categoryName: category.name,
       componentName,
       description: category.description,
-      image: category.image,
+      image: getProductImage(category.slug, componentName, category.image),
       brands: category.brands,
     }))
   );
