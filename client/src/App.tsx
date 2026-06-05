@@ -1,13 +1,15 @@
+import * as React from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import AboutPage from "./pages/AboutPage";
-import ProductsPage from "./pages/ProductsPage";
-import ContactPage from "./pages/ContactPage";
+
+const Home = React.lazy(() => import("./pages/Home"));
+const AboutPage = React.lazy(() => import("./pages/AboutPage"));
+const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
+const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 
 function Router() {
   return (
@@ -37,7 +39,15 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <React.Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center bg-white text-sm font-medium text-slate-500">
+                Loading site...
+              </div>
+            }
+          >
+            <Router />
+          </React.Suspense>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
