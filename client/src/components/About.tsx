@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { COMPANY_INFO, stats } from "@/const";
 import { ArrowRight, Building2, Mail, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
+import infosImage from "../assets/infos.png";
 
 type AboutVariant = "home" | "page";
 
@@ -86,7 +87,7 @@ function HomeAbout() {
         >
           <div className="aspect-[4/5] rounded-[3rem] overflow-hidden bg-slate-100 relative group shadow-2xl shadow-slate-900/5">
             <img
-              src="src/assets/infos.png"
+              src={infosImage}
               alt="JK Electricals industrial supply overview"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
             />

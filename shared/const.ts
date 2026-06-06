@@ -11,7 +11,7 @@ export const COMPANY_INFO = {
     primary: "+91 73830 95063",
     secondary: "+91 73590 69763",
     email: "jkelectricals93@gmail.com",
-    website: "jkelectricalsvapi.in",
+    website: "https://jkelectricalsvapi.in",
   },
   address: {
     street: "B-5, City Centre, Opp. Hanuman Temple",

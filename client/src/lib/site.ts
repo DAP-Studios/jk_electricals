@@ -3,6 +3,7 @@ export const SITE_DOMAIN = "jkelectricalsvapi.in";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
 export const SITE_DESCRIPTION =
   "Authorized industrial electrical distributor in Vapi, Gujarat. Premium switchgear, cables, automation, lighting, and MEP solutions for industrial buyers.";
+export const SITE_TITLE = "JK Electricals Vapi | Authorized Industrial Electrical Distributor Gujarat";
 export const SITE_KEYWORDS = [
   "JK Electricals Vapi",
   "industrial electrical distributor Vapi",
@@ -14,3 +15,4 @@ export const SITE_KEYWORDS = [
   "Vapi GIDC electrical supplier",
 ];
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.svg`;
+export const SITE_FAVICON = "/src/assets/logo.png";
