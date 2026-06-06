@@ -9,6 +9,7 @@ import Seo from "@/components/Seo";
 import { COMPANY_INFO } from "@/const";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import { motion } from "framer-motion";
+import brandImage from "../assets/brands.png";
 
 export default function Home() {
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function Home() {
         </section>
         
         {/* Section 2: About (Dynamic Layout) */}
-        <section className="relative w-full py-12 md:py-20 bg-white">
+        <section className="relative z-30 bg-white pt-0">
           <About variant="home" />
         </section>
 
@@ -70,7 +71,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="w-full md:w-[65%] aspect-[16/7] md:aspect-[3/2] overflow-hidden rounded-[3rem] shadow-xl relative group"
                 >
-                   <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Construction" />
+                   <img src={brandImage} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Construction" />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#000613]/80 via-transparent to-transparent opacity-60" />
                    <div className="absolute bottom-10 left-10 text-white">
                       <p className="text-[#00a896] text-xs font-black uppercase tracking-widest mb-2">Quality Standards</p>

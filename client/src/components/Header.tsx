@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import namelogo from "../assets/namelogo.png";
+import namelogob from "../assets/namelogob.png";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,12 +37,13 @@ export default function Header() {
       <nav className={`font-inter tracking-tight uppercase font-semibold text-sm fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         (location === '/' && !isScrolled)
           ? 'bg-transparent border-transparent shadow-none'
-          : 'bg-white/75 backdrop-blur-md dark:bg-slate-950/90'
+          : 'bg-white/95 backdrop-blur-md dark:bg-slate-950/90'
       } ${isScrolled ? "border-b border-slate-200/70 dark:border-slate-800 shadow-sm shadow-black/5 dark:shadow-none" : ""}`}>
       <div className="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+        
         <Link href="/" className="inline-flex items-center cursor-pointer">
-          <img src={namelogo} alt="JK ELECTRICALS" className="h-8 w-auto mr-2" />
-          <span className="sr-only">JK ELECTRICALS</span>
+          <img 
+          src={isScrolled ? namelogo : namelogob } alt="JK ELECTRICALS" className="h-8 w-auto mr-2" />
         </Link>
         
         <div className="hidden md:flex items-center space-x-gutter">

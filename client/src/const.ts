@@ -15,7 +15,6 @@ import switchgearImage from "./assets/catagory/switchgear.png";
 import wiresImage from "./assets/catagory/wires.png";
 
 // product-specific images (from assets/products)
-import cablesProductImage from "./assets/products/industrial-cables/multicore.png";
 import distributionBoardProductImage from "./assets/products/distribution-boards/mcbbox.png";
 import switchgearProductImage from "./assets/products/switchgear/mcb.png";
 import panelAccessoriesProductImage from "./assets/products/panel-accessories/controlpanel.png";
@@ -36,6 +35,7 @@ import armourCablesImage from "./assets/products/industrial-cables/armour cables
 import htCablesImage from "./assets/products/industrial-cables/htcables.png";
 import multiCoreImage from "./assets/products/industrial-cables/multicore.png";
 import solarCablesImage from "./assets/products/industrial-cables/solar.png";
+import fiberOpticCablesImage from "./assets/products/industrial-cables/fiber.png";
 
 import doubleDoorImage from "./assets/products/distribution-boards/doubledoor.png";
 
@@ -89,6 +89,7 @@ const normalizeKey = (s: string) =>
     .replace(/^-+|-+$/g, "");
 
 export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
+
   "automation-systems": {
     [normalizeKey("VFD Drives")]: vfdImage,
     [normalizeKey("HMI Interfaces")]: hmiImage,
@@ -99,6 +100,7 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
     [normalizeKey("HT Cables")]: htCablesImage,
     [normalizeKey("Multi-Core Flex")]: multiCoreImage,
     [normalizeKey("Solar & Thermocouple")]: solarCablesImage,
+    [normalizeKey("Fiber Optic Cables")]: fiberOpticCablesImage,
   },
   "distribution-boards": {
     [normalizeKey("MCB Boxes")]: distributionBoardProductImage,
@@ -214,49 +216,49 @@ export const PARTNER_BRANDS = [
 ];
 
 // Added proper 'categories' export for Home carousel
-export const categories = [
-  {
-    id: 1,
-    slug: "industrial-cables",
-    title: "Industrial Cables",
-    description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple",
-    icon: "Zap",
-    image: wiresImage
-  },
-  {
-    id: 2,
-    slug: "switchgear-protection",
-    title: "Switchgear Protection",
-    description: "MCB, RCCB, MCCB, MPCB, Power Contactors, Thermal Overload Relays",
-    icon: "Shield",
-    image: switchgearImage
-  },
-  {
-    id: 3,
-    slug: "automation-systems",
-    title: "Automation Systems",
-    description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
-    icon: "Activity",
-    image: automationImage
-  },
-  {
-    id: 4,
-    slug: "industrial-lighting",
-    title: "Industrial Lighting",
-    description: "Highbay Lights, Flood & Street Lights, Poles & High Mast",
-    icon: "Home",
-    image: lightsImage
-  }
-];
+// export const categories = [
+//   {
+//     id: 1,
+//     slug: "industrial-cables",
+//     title: "Industrial Cables",
+//     description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple",
+//     icon: "Zap",
+//     image: wiresImage
+//   },
+//   {
+//     id: 2,
+//     slug: "switchgear-protection",
+//     title: "Switchgear Protection",
+//     description: "MCB, RCCB, MCCB, MPCB, Power Contactors, Thermal Overload Relays",
+//     icon: "Shield",
+//     image: switchgearImage
+//   },
+//   {
+//     id: 3,
+//     slug: "automation-systems",
+//     title: "Automation Systems",
+//     description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
+//     icon: "Activity",
+//     image: automationImage
+//   },
+//   {
+//     id: 4,
+//     slug: "industrial-lighting",
+//     title: "Industrial Lighting",
+//     description: "Highbay Lights, Flood & Street Lights, Poles & High Mast",
+//     icon: "Home",
+//     image: lightsImage
+//   }
+// ];
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   {
     id: 1,
     name: "Industrial Cables",
     slug: "industrial-cables",
-    description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple",
+    description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple, Fiber Optic Cables",
     brands: ["Polycab", "RR", "KEI"],
-    image: cablesProductImage,
+    image: wiresImage,
   },
   {
     id: 2,
@@ -264,7 +266,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "distribution-boards",
     description: "MCB Boxes, Double Door MCCB Boxes, Weather Proof Enclosures",
     brands: ["Schneider", "Siemens", "L&T", "Legrand"],
-    image: distributionBoardProductImage,
+    image: boxImage,
   },
   {
     id: 3,
@@ -272,7 +274,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "switchgear",
     description: "MCB, RCCB, MCCB, MPCB, Thermal Overload Relays",
     brands: ["Siemens", "Schneider", "L&T", "Chint", "ABB"],
-    image: switchgearProductImage,
+    image: switchgearImage,
   },
   {
     id: 4,
@@ -280,7 +282,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "panel-accessories",
     description: "Control Panels, Relays & Bases, Switches & Push Buttons, SMPS & Fuses & Capacitors",
     brands: ["Premium Industrial Grade"],
-    image: panelAccessoriesProductImage,
+    image: panelImage,
   },
   {
     id: 5,
@@ -288,7 +290,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "automation-systems",
     description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
     brands: ["Siemens", "Delta", "INVT", "Mitsubishi"],
-    image: automationProductImage,
+    image: automationImage,
   },
   {
     id: 6,
@@ -296,7 +298,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "process-controllers",
     description: "PID/Temp Controllers, Humidity/Cooling Control, Indicators & Timers",
     brands: ["Selec", "Multispan", "Autonics", "Omron"],
-    image: processControllerProductImage,
+    image: controllerImage,
   },
   {
     id: 7,
@@ -304,7 +306,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "industrial-sensors",
     description: "Proximity & Capacitive, Photoelectric, Thermocouple & Water Level",
     brands: ["Omron", "Autonics", "Pepperl+Fuchs"],
-    image: sensorsProductImage,
+    image: sensorImage,
   },
   {
     id: 8,
@@ -312,7 +314,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "heavy-duty-motors",
     description: "Induction Motors, Servo Motors, Gear Motors",
     brands: ["Crompton", "Hindustan", "Siemens"],
-    image: motorsProductImage,
+    image: motorImage,
   },
   {
     id: 9,
@@ -320,7 +322,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "electrical-measurement",
     description: "Multi-Function Meters, Energy Meters, Current Transformers",
     brands: ["Selec", "Multispan", "Secure", "Elmex"],
-    image: measurementProductImage,
+    image: meterImage,
   },
   {
     id: 10,
@@ -328,7 +330,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "industrial-lighting",
     description: "Highbay Lights, Flood & Street Lights, Poles & High Mast",
     brands: ["Philips", "Wipro", "Bajaj", "Havells"],
-    image: lightingProductImage,
+    image: lightsImage,
   },
   {
     id: 11,
@@ -336,7 +338,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "industrial-fans",
     description: "Heavy Duty Pedestal, Centrifugal Blowers, Axial & Panel Fans",
     brands: ["Almonard", "Crompton", "RR", "Rexnol"],
-    image: fansProductImage,
+    image: fanImage,
   },
   {
     id: 12,
@@ -344,7 +346,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     slug: "industrial-heaters",
     description: "Infrared Heaters, Tubular Heaters, Oil & Water Heaters",
     brands: ["Custom Heavy Duty"],
-    image: heatersProductImage,
+    image: heaterImage,
   },
 ];
 
