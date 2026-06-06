@@ -95,11 +95,11 @@ export default function Footer() {
             &copy; {currentYear} JK Electricals. All rights reserved. | Authorized Distributor of Industrial Electrical Goods
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
-              Privacy Policy
+            <a href="https://thedap.live/" className="opacity-80 hover:opacity-100 hover:text-[#ffffff] transition-all">
+              Design and Developed by 
             </a>
-            <a href="#" className="opacity-80 hover:opacity-100 hover:text-[#00a896] transition-all">
-              Terms of Service
+            <a href="https://thedap.live/" className="opacity-80 hover:opacity-100 hover:text-[#a80000] transition-all">
+              DAP Tech Solutions
             </a>
           </div>
         </div>
