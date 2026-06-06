@@ -207,7 +207,7 @@ export const PARTNER_BRANDS = [
   "SCHNEIDER",
   "PHILIPS",
   "INVT",
-  "L&T",
+  "Lauritz Knudsen (L&T)",
   "SIEMENS",
   "OMRON",
   "ABB",
@@ -265,7 +265,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Distribution Boards",
     slug: "distribution-boards",
     description: "MCB Boxes, Double Door MCCB Boxes, Weather Proof Enclosures",
-    brands: ["Schneider", "Siemens", "L&T", "Legrand"],
+    brands: ["Schneider", "Siemens", "Lauritz Knudsen (L&T)", "Legrand"],
     image: boxImage,
   },
   {
@@ -273,7 +273,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Switchgear",
     slug: "switchgear",
     description: "MCB, RCCB, MCCB, MPCB, Thermal Overload Relays",
-    brands: ["Siemens", "Schneider", "L&T", "Chint", "ABB"],
+    brands: ["Siemens", "Schneider", "Lauritz Knudsen (L&T)", "Chint", "ABB"],
     image: switchgearImage,
   },
   {
@@ -337,7 +337,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Industrial Fans",
     slug: "industrial-fans",
     description: "Heavy Duty Pedestal, Centrifugal Blowers, Axial & Panel Fans",
-    brands: ["Almonard", "Crompton", "RR", "Rexnol"],
+    brands: ["Almonard", "Crompton", "RR", "Rexnord"],
     image: fanImage,
   },
   {
