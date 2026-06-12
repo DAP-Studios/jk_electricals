@@ -6,10 +6,10 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
+import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { COMPANY_INFO } from "@/const";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import { motion } from "framer-motion";
-import brandImage from "../assets/brands.png";
 
 export default function Home() {
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Home() {
         </section>
 
         {/* Section 3: Product Carousel (Odd/Even Dynamic) */}
-        <section className="relative w-full py-12 md:py-20 bg-white">
+        <section className="relative w-full py-0 bg-[#050816]">
           
           <Products />
         </section>
@@ -69,14 +69,22 @@ export default function Home() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="w-full md:w-[65%] aspect-[16/7] md:aspect-[3/2] overflow-hidden rounded-[3rem] shadow-xl relative group"
+                  className="w-full md:w-[65%] min-h-[360px] md:min-h-[520px] overflow-hidden rounded-[3rem] shadow-xl relative bg-white border border-slate-100"
                 >
-                   <img src={brandImage} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Construction" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#000613]/80 via-transparent to-transparent opacity-60" />
-                   <div className="absolute bottom-10 left-10 text-white">
-                      <p className="text-[#00a896] text-xs font-black uppercase tracking-widest mb-2">Quality Standards</p>
-                      <h3 className="text-3xl font-black uppercase tracking-tighter">Brands we serve</h3>
-                   </div>
+                  <div className="absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-white via-white/95 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-white via-white/95 to-transparent" />
+                  <div className="absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-white to-transparent" />
+                  <div className="absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-white to-transparent" />
+
+                  <div className="relative z-30 p-8 md:p-10">
+                    <p className="text-[#00a896] text-xs font-black uppercase tracking-widest mb-2">Quality Standards</p>
+                    <h3 className="text-3xl md:text-5xl font-black text-[#000613] uppercase tracking-tighter leading-none">Brands we serve</h3>
+                  </div>
+
+                  <BrandLogoCarousel
+                    className="absolute inset-x-0 top-32 md:top-40"
+                    cardClassName="bg-white/90"
+                  />
                 </motion.div>
 
                 <motion.div 
@@ -97,7 +105,7 @@ export default function Home() {
         </section>
 
         {/* Section 5: Contact (Dynamic Reveal) */}
-        <section className="relative w-full py-12 md:py-20 bg-white">
+        <section className="relative w-full py-0 bg-white">
           
           <Contact />
         </section>

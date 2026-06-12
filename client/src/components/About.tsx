@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { COMPANY_INFO, stats } from "@/const";
 import { ArrowRight, Building2, Mail, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
 import infosImage from "../assets/infos.png";
+import jayeshImage from "../assets/jayeshbhai.png";
 
 type AboutVariant = "home" | "page";
 
@@ -233,7 +234,7 @@ function PageAbout() {
           >
             <div className="aspect-[4/5] relative">
               <img
-                src={`https://i.pravatar.cc/800?u=${encodeURIComponent(COMPANY_INFO.contactPerson)}`}
+                src={jayeshImage}
                 alt={COMPANY_INFO.contactPerson}
                 className="w-full h-full object-cover"
               />

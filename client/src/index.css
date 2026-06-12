@@ -95,6 +95,17 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
 }
 
 :root {
@@ -117,6 +128,17 @@
   --border: #74777f;
   --input: #c4c6cf;
   --ring: #005eb2;
+  --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, "Helvetica Neue", sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Fira Code", Consolas, "Courier New", monospace;
+  --shadow-2xs: 0px 2px 3px 0px hsl(214 100% 4% / 0.08);
+  --shadow-xs: 0px 2px 3px 0px hsl(214 100% 4% / 0.08);
+  --shadow-sm: 0px 2px 3px 0px hsl(214 100% 4% / 0.14), 0px 1px 2px -1px hsl(214 100% 4% / 0.14);
+  --shadow: 0px 2px 3px 0px hsl(214 100% 4% / 0.14), 0px 1px 2px -1px hsl(214 100% 4% / 0.14);
+  --shadow-md: 0px 2px 3px 0px hsl(214 100% 4% / 0.14), 0px 2px 4px -1px hsl(214 100% 4% / 0.14);
+  --shadow-lg: 0px 2px 3px 0px hsl(214 100% 4% / 0.14), 0px 4px 6px -1px hsl(214 100% 4% / 0.14);
+  --shadow-xl: 0px 2px 3px 0px hsl(214 100% 4% / 0.14), 0px 8px 10px -1px hsl(214 100% 4% / 0.14);
+  --shadow-2xl: 0px 2px 3px 0px hsl(214 100% 4% / 0.35);
 }
 
 .dark {
@@ -139,6 +161,17 @@
   --border: #334155;
   --input: #475569;
   --ring: #0074D9;
+  --font-sans: "Segoe UI", Tahoma, Geneva, Verdana, "Helvetica Neue", sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Fira Code", Consolas, "Courier New", monospace;
+  --shadow-2xs: 0px 2px 3px 0px hsl(222 47% 3% / 0.09);
+  --shadow-xs: 0px 2px 3px 0px hsl(222 47% 3% / 0.09);
+  --shadow-sm: 0px 2px 3px 0px hsl(222 47% 3% / 0.18), 0px 1px 2px -1px hsl(222 47% 3% / 0.18);
+  --shadow: 0px 2px 3px 0px hsl(222 47% 3% / 0.18), 0px 1px 2px -1px hsl(222 47% 3% / 0.18);
+  --shadow-md: 0px 2px 3px 0px hsl(222 47% 3% / 0.18), 0px 2px 4px -1px hsl(222 47% 3% / 0.18);
+  --shadow-lg: 0px 2px 3px 0px hsl(222 47% 3% / 0.18), 0px 4px 6px -1px hsl(222 47% 3% / 0.18);
+  --shadow-xl: 0px 2px 3px 0px hsl(222 47% 3% / 0.18), 0px 8px 10px -1px hsl(222 47% 3% / 0.18);
+  --shadow-2xl: 0px 2px 3px 0px hsl(222 47% 3% / 0.45);
 }
 
 @layer base {
@@ -539,6 +572,11 @@
 @keyframes heroMarquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes brand-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
 }
 
 /* Hero entrance animations */

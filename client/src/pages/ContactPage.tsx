@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import Hero from "@/components/Hero";
 import Seo from "@/components/Seo";
 import { COMPANY_INFO } from "@/const";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
@@ -34,14 +35,21 @@ export default function ContactPage() {
         }}
       />
       <Header />
-      <main className="pt-20">
-        <div className="bg-[#000080] py-12 text-white">
-          <div className="container text-left">
-            <h1 className="text-4xl md:text-6xl font-black uppercase mb-2 tracking-tighter">
-              Get In <span className="text-[#00a896]">Touch</span>
-            </h1>
-          </div>
-        </div>
+      <main className="pt-0">
+        <Hero
+          title={
+            <>
+              <span>Get In</span> <br />
+              <span className="hero-gradient-text">Touch</span>
+            </>
+          }
+          subtitle="Reach out to JK Electricals for industrial electrical products, bulk quotations, and fast support across Vapi and Gujarat."
+          bgClass="bg-gradient-to-br from-[#000080] via-[#003080] to-[#006994]"
+          bgImage={null}
+          align="left"
+          hideButtons={true}
+          height="half"
+        />
 
         <Contact hideHeader={true} />
 

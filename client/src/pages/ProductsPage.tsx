@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductGrid from "@/components/ProductGrid";
 import Hero from "@/components/Hero";
+import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/const";
 import Seo from "@/components/Seo";
@@ -45,8 +46,8 @@ export default function ProductsPage() {
     setSelectedBrand: (b: string | null) => void;
   }) {
     return (
-      <aside className="rounded-[2rem] border border-slate-100 bg-slate-50 p-6 lg:sticky lg:top-24">
-        <div className="flex items-center justify-between mb-6">
+      <aside className="rounded-2xl border border-slate-100 bg-slate-50/80 p-4 lg:sticky lg:top-20">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-black uppercase tracking-wider">Brands</h3>
           <button
             onClick={() => setSelectedBrand(null)}
@@ -55,10 +56,10 @@ export default function ProductsPage() {
             Clear
           </button>
         </div>
-        <div className="flex flex-col gap-3 max-h-[60vh] overflow-y-auto pr-1 no-scrollbar">
+        <div className="flex flex-col gap-2 max-h-[64vh] overflow-y-auto pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <button
             onClick={() => setSelectedBrand(null)}
-            className={`w-full px-4 py-3 rounded-2xl border text-sm font-semibold text-left ${selectedBrand === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+            className={`w-full px-4 py-2.5 rounded-xl border text-sm font-semibold text-left transition-colors ${selectedBrand === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}`}
           >
             All Brands
           </button>
@@ -66,7 +67,7 @@ export default function ProductsPage() {
             <button
               key={brand}
               onClick={() => setSelectedBrand(brand)}
-              className={`w-full px-4 py-3 rounded-2xl border text-sm font-semibold text-left ${selectedBrand === brand ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm font-semibold text-left transition-colors ${selectedBrand === brand ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}`}
             >
               {brand}
             </button>
@@ -84,8 +85,8 @@ export default function ProductsPage() {
     setSelectedCategory: (c: string | null) => void;
   }) {
     return (
-      <div className="w-full">
-        <div className="flex items-center justify-between gap-4 mb-4">
+      <div className="w-full rounded-2xl border border-slate-100 bg-white/95 p-3 shadow-sm shadow-slate-900/5 backdrop-blur">
+        <div className="flex items-center justify-between gap-4 mb-2 px-1">
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Category</p>
           <button
             onClick={() => setSelectedCategory(null)}
@@ -94,10 +95,10 @@ export default function ProductsPage() {
             Clear Category
           </button>
         </div>
-        <div className="flex gap-3 overflow-x-auto no-scrollbar py-2">
+        <div className="flex gap-2 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedCategory === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+            className={`shrink-0 px-4 py-2 rounded-xl border text-sm font-semibold transition-colors ${selectedCategory === null ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}`}
           >
             All
           </button>
@@ -105,7 +106,7 @@ export default function ProductsPage() {
             <button
               key={category.slug}
               onClick={() => setSelectedCategory(category.slug)}
-              className={`shrink-0 px-4 py-2 rounded-full border text-sm font-semibold ${selectedCategory === category.slug ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200'}`}
+              className={`shrink-0 px-4 py-2 rounded-xl border text-sm font-semibold transition-colors ${selectedCategory === category.slug ? 'bg-[#00a896] text-white border-[#00a896]' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}`}
             >
               {category.name}
             </button>
@@ -238,7 +239,7 @@ export default function ProductsPage() {
       />
       <Header />
       
-      <main id="main-content" className="pt-20">
+      <main id="main-content" className="pt-0">
         <Hero
           title={<>Industrial <br/> <span className="text-[#00a896]">Ecosystem.</span></>}
           subtitle="A comprehensive catalog of high-quality components, authorized switchgear, and automation solutions for modern industries."
@@ -246,30 +247,54 @@ export default function ProductsPage() {
           bgImage={null}
           align="left"
           hideButtons={true}
+          height="half"
         />
 
-        {/* Filters + Grid Layout for dedicated products page */}
-        <section className="py-12 pb-32 md:pb-12">
+        <section className="bg-white py-8 md:py-10 overflow-hidden">
           <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
-            <p className="text-sm text-slate-500 mb-5">
+            <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">
+                  Authorized Brands
+                </p>
+                <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-slate-900">
+                  Brands We Serve
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm md:text-base text-slate-500">
+                Source genuine industrial electrical products from leading manufacturers through JK Electricals.
+              </p>
+            </div>
+            <div className="relative -mx-4 md:mx-0">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
+              <BrandLogoCarousel rows={1} />
+            </div>
+          </div>
+        </section>
+
+        {/* Filters + Grid Layout for dedicated products page */}
+        <section className="py-8 pb-32 md:pb-10">
+          <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
+            <p className="text-sm text-slate-500 mb-4">
               Showing all products by default. Use filters below to narrow by category or brand.
             </p>
             <div className="hidden md:block">
-              <div className="grid grid-cols-1 lg:grid-cols-[330px_minmax(0,1fr)] gap-10 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-[285px_minmax(0,1fr)] gap-6 items-start">
                 <BrandFilterSidebar
                   selectedBrand={selectedBrand}
                   setSelectedBrand={setSelectedBrand}
                 />
 
                 <div>
-                  <div className="sticky top-28 z-20">
+                  <div className="sticky top-20 z-20">
                     <CategoryFilterStrip
                       selectedCategory={selectedCategory}
                       setSelectedCategory={setSelectedCategory}
                     />
                   </div>
 
-                  <div className="mt-8">
+                  <div className="mt-5">
                     <ProductGrid selectedBrand={selectedBrand} selectedCategory={selectedCategory} />
                   </div>
                 </div>

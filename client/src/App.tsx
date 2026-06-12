@@ -4,12 +4,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import WhatsappBubble from "./components/WhatsappBubble";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
+const HeroButtonExpendableDemo = React.lazy(
+  () => import("./components/ui/hero-button-expendable-demo"),
+);
 
 function Router() {
   return (
@@ -18,6 +22,10 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/products" component={ProductsPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route
+        path="/demo/hero-button-expendable"
+        component={HeroButtonExpendableDemo}
+      />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -47,6 +55,7 @@ function App() {
             }
           >
             <Router />
+            <WhatsappBubble />
           </React.Suspense>
         </TooltipProvider>
       </ThemeProvider>

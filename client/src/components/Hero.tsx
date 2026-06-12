@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import heroImage from "../assets/hero.png";
 
 type CTA = {
@@ -20,7 +20,7 @@ export default function Hero({
   subtitle = "A decade of engineering excellence. Supplying world-class industrial electrical components to the manufacturing heart of Gujarat.",
   ctaPrimary = { label: "Explore Products", href: "/products" } as CTA,
   ctaSecondary = {
-    label: "Get a Quote",
+    label: "Contact Us",
     href: "/contact",
     variant: "secondary",
   } as CTA,
@@ -29,6 +29,7 @@ export default function Hero({
   bgFit = "stretch",
   align = "center",
   hideButtons = false,
+  height = "full",
 }: {
   eyebrow?: string;
   title?: React.ReactNode;
@@ -40,8 +41,10 @@ export default function Hero({
   bgFit?: "cover" | "contain" | "stretch";
   align?: "left" | "center";
   hideButtons?: boolean;
+  height?: "full" | "half";
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [, navigate] = useLocation();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -49,16 +52,53 @@ export default function Hero({
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
+  const isHalf = height === "half";
+
+  const handleCtaClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      event.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+      return;
+    }
+    event.preventDefault();
+    navigate(href);
+  };
+
+  const renderCta = (cta: CTA, className: string) => {
+    const isExternal =
+      cta.href.startsWith("http") ||
+      cta.href.startsWith("mailto:") ||
+      cta.href.startsWith("tel:");
+
+    return (
+      <a
+        href={cta.href}
+        onClick={(e) => handleCtaClick(e, cta.href)}
+        className={className}
+        {...(isExternal
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
+        {cta.label}
+      </a>
+    );
+  };
 
   return (
     <section
       ref={containerRef}
-      className={`relative w-full min-h-[80vh] md:h-screen flex items-center overflow-hidden ${bgClass}`}
+      className={`relative w-full flex items-center overflow-hidden ${isHalf ? "min-h-[52vh] md:min-h-[56vh]" : "min-h-[80vh] md:h-screen"} ${bgClass}`}
     >
-      {/* Background */}
+      {/* Background — z-0 */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/40 to-black/20 z-10" />
-
         {bgImage ? (
           <img
             src={bgImage}
@@ -72,64 +112,14 @@ export default function Hero({
         )}
       </motion.div>
 
-      {/* Content */}
-      <div className="container relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-12">
-        <div
-          className={`max-w-4xl ${
-            align === "left"
-              ? "text-left"
-              : "text-center md:text-left"
-          }`}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeOut",
-            }}
-          >
-            {eyebrow && (
-              <span className="inline-block text-[#00a896] text-xs sm:text-sm font-black tracking-[0.28em] uppercase mb-4">
-                {eyebrow}
-              </span>
-            )}
-
-            <h1 className="text-[clamp(3rem,8vw,9rem)] font-extrabold text-white uppercase tracking-tight leading-[0.95] mb-6">
-              {title}
-            </h1>
-
-            <p className="text-[clamp(1rem,2vw,1.25rem)] text-slate-300 max-w-3xl font-light leading-relaxed mb-8 border-l-4 border-[#00a896] pl-6">
-              {subtitle}
-            </p>
-
-            {!hideButtons && (
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href={ctaPrimary.href}>
-                  <span className="inline-flex items-center justify-center px-10 py-4 bg-[#00a896] text-white font-black uppercase tracking-wider rounded-full hover:bg-white hover:text-[#000613] transition-all duration-300 cursor-pointer">
-                    {ctaPrimary.label}
-                  </span>
-                </Link>
-
-                <Link href={ctaSecondary.href}>
-                  <span className="inline-flex items-center justify-center px-10 py-4 border-2 border-white/20 text-white font-black uppercase tracking-wider rounded-full hover:border-white transition-all duration-300 cursor-pointer">
-                    {ctaSecondary.label}
-                  </span>
-                </Link>
-              </div>
-            )}
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Orange Diffusion Glow */}
+      {/* Orange Diffusion Glow — z-10, pointer-events-none */}
       <div className="absolute bottom-[-140px] left-1/2 -translate-x-1/2 w-[1600px] h-[400px] bg-orange-400/40 blur-[180px] rounded-full z-10 pointer-events-none" />
 
-      {/* Additional Warm Glow */}
+      {/* Additional Warm Glow — z-10, pointer-events-none */}
       <div className="absolute bottom-0 left-0 w-full h-[250px] bg-gradient-to-b from-transparent via-orange-500/10 to-orange-200/30 z-10 pointer-events-none" />
 
-      {/* Wave Transition */}
-      <div className="absolute 0 bottom-0 left-0 w-full overflow-hidden leading-none  x-50 z-20">
+      {/* Wave Transition — z-10, pointer-events-none */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
         <svg
           viewBox="0 0 1440 220"
           preserveAspectRatio="none"
@@ -142,8 +132,50 @@ export default function Hero({
         </svg>
       </div>
 
+      {/* Content — z-20, above all decorative layers */}
+      <div className={`container relative z-20 flex items-center px-6 sm:px-8 lg:px-12 ${isHalf ? "min-h-[52vh] md:min-h-[56vh] pt-20 pb-16" : "min-h-screen"}`}>
+        <div
+          className={`max-w-4xl ${
+            align === "left" ? "text-left" : "text-center md:text-left"
+          }`}
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {eyebrow && (
+              <span className="inline-block text-[#00a896] text-xs sm:text-sm font-black tracking-[0.28em] uppercase mb-4">
+                {eyebrow}
+              </span>
+            )}
+
+            <h1 className={`${isHalf ? "text-[clamp(2.5rem,6vw,6rem)]" : "text-[clamp(3rem,8vw,9rem)]"} font-extrabold text-white uppercase tracking-tight leading-[0.95] mb-6`}>
+              {title}
+            </h1>
+
+            <p className="text-[clamp(1rem,2vw,1.25rem)] text-slate-300 max-w-3xl font-light leading-relaxed mb-8 border-l-4 border-[#00a896] pl-6">
+              {subtitle}
+            </p>
+
+            {!hideButtons && (
+              <div className="flex flex-col sm:flex-row gap-4">
+                {renderCta(
+                  ctaPrimary,
+                  "inline-flex items-center justify-center px-10 py-4 bg-[#00a896] text-white font-black uppercase tracking-wider rounded-full hover:bg-white hover:text-[#000613] transition-all duration-300 cursor-pointer"
+                )}
+                {renderCta(
+                  ctaSecondary,
+                  "inline-flex items-center justify-center px-10 py-4 border-2 border-white/20 text-white font-black uppercase tracking-wider rounded-full hover:border-white transition-all duration-300 cursor-pointer"
+                )}
+              </div>
+            )}
+          </motion.div>
+        </div>
+      </div>
+
       {/* Right Accent Line */}
-      <div className="hidden md:flex absolute right-10 z-30 flex-col items-center gap-4 opacity-30">
+      <div className="hidden md:flex absolute right-10 z-10 flex-col items-center gap-4 opacity-30 pointer-events-none">
         <div className="w-px h-24 bg-gradient-to-b from-[#00a896] to-transparent" />
       </div>
     </section>

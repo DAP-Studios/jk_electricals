@@ -33,7 +33,7 @@ export default function AboutPage() {
         }}
       />
       <Header />
-      <main className="pt-5">
+      <main className="pt-0">
         <Hero
           title={<><span>Legacy of</span> <br /> <span className="text-[#00a896]">Reliability</span></>}
           subtitle="Explore the journey of JK Electricals, the company story, and the owner who leads the business in Vapi, Gujarat."
@@ -41,6 +41,7 @@ export default function AboutPage() {
           bgImage={null}
           align="left"
           hideButtons={true}
+          height="half"
         />
 
         <About variant="page" />

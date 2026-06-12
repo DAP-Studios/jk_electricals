@@ -24,8 +24,21 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
   };
 
   return (
-    <section id="contact" className="py-0 bg-[#f8fafc]">
-      <div className="container">
+    <section id="contact" className="relative bg-[#f8fafc] pt-24 pb-16 overflow-hidden">
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <svg
+          viewBox="0 0 1440 160"
+          preserveAspectRatio="none"
+          className="block h-16 w-full md:h-28"
+        >
+          <path
+            fill="#ffffff"
+            d="M0,0H1440V58.7C1320,98,1200,128,1080,128C920,128,800,80,640,74.7C480,69,320,107,160,117.3C80,122.7,40,117.3,0,112V0Z"
+          />
+        </svg>
+      </div>
+
+      <div className="container relative z-10">
         {!hideHeader && (
           <div className="max-w-3xl mb-16 animate-slide-up">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-slate-900">

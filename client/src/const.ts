@@ -297,7 +297,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Process Controllers",
     slug: "process-controllers",
     description: "PID/Temp Controllers, Humidity/Cooling Control, Indicators & Timers",
-    brands: ["Selec", "Multispan", "Autonics", "Omron"],
+    brands: ["Selec", "Multispan", "Autonics", "Omron" ,"Radix"],
     image: controllerImage,
   },
   {
