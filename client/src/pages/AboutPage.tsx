@@ -3,11 +3,12 @@ import Footer from "@/components/Footer";
 import About from "@/components/About";
 import Seo from "@/components/Seo";
 import Hero from "@/components/Hero";
-import { COMPANY_INFO } from "@/const";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { useEffect } from "react";
 
 export default function AboutPage() {
+  const route = routeByPath("/about");
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "About Us | JK Electricals - Industrial Distributor in Vapi";
@@ -16,21 +17,18 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="About JK Electricals Vapi | Industrial Distribution Experts"
-        description="Learn about JK Electricals, an authorized industrial electrical distributor in Vapi serving GIDC and nearby industrial hubs with genuine components and fast support."
+        title={route.title}
+        description={route.description}
         path="/about"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          name: "About JK Electricals Vapi",
-          url: `${SITE_URL}/about`,
-          description: SITE_DESCRIPTION,
-          about: {
-            "@type": "LocalBusiness",
-            name: COMPANY_INFO.name,
-            url: SITE_URL,
-          },
-        }}
+        schema={[
+          localBusinessSchema(),
+          websiteSchema(),
+          webPageSchema("/about", route.title, route.description, "AboutPage"),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
       />
       <Header />
       <main className="pt-0">

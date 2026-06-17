@@ -6,9 +6,17 @@ import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/const";
 import Seo from "@/components/Seo";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import {
+  breadcrumbSchema,
+  localBusinessSchema,
+  productCatalogSchema,
+  routeByPath,
+  webPageSchema,
+  websiteSchema,
+} from "@/lib/seo";
 
 export default function ProductsPage() {
+  const route = routeByPath("/products");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mobileFilterOpen, setMobileFilterOpen] = useState<"brands" | "category" | null>(null);
@@ -37,6 +45,21 @@ export default function ProductsPage() {
       .filter((category) => category.brands.some((brand) => brand.toLowerCase() === selectedBrand.toLowerCase()))
       .map((category) => ({ name: category.name, slug: category.slug }));
   }, [categories, selectedBrand]);
+
+  const brandCategoryMap = useMemo(
+    () =>
+      allBrands.map((brand) => {
+        const matchingCategories = PRODUCT_CATEGORIES.filter((category) =>
+          category.brands.some((categoryBrand) => categoryBrand.toLowerCase() === brand.toLowerCase())
+        ).map((category) => category.name);
+
+        return {
+          brand,
+          categories: matchingCategories.length ? matchingCategories : ["Industrial electrical products"],
+        };
+      }),
+    [allBrands]
+  );
 
   function BrandFilterSidebar({
     selectedBrand,
@@ -207,35 +230,52 @@ export default function ProductsPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get("category");
+    const brandParam = params.get("brand");
 
     if (categoryParam) {
       setSelectedCategory(categoryParam);
     }
+
+    if (brandParam) {
+      setSelectedBrand(brandParam);
+    }
   }, []);
+
+  const selectedCategoryEntry = selectedCategory
+    ? PRODUCT_CATEGORIES.find((category) => category.slug === selectedCategory)
+    : null;
+  const seoTitle = selectedBrand
+    ? `${selectedBrand} Authorized Dealer & Supplier in Vapi | JK Electricals`
+    : selectedCategoryEntry
+      ? `${selectedCategoryEntry.name} Supplier in Vapi | JK Electricals`
+      : route.title;
+  const seoDescription = selectedBrand
+    ? `Find ${selectedBrand} authorized dealer, supplier, seller, and industrial electrical product support from JK Electricals Vapi for genuine procurement in Gujarat.`
+    : selectedCategoryEntry
+      ? `Find ${selectedCategoryEntry.name.toLowerCase()} dealers, suppliers, and sellers in Vapi. JK Electricals supplies ${selectedCategoryEntry.description.toLowerCase()} from trusted brands.`
+      : route.description;
+  const seoPath = selectedBrand
+    ? `/products?brand=${encodeURIComponent(selectedBrand)}`
+    : selectedCategoryEntry
+      ? `/products?category=${selectedCategoryEntry.slug}`
+      : "/products";
 
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="Industrial Electrical Products in Vapi | JK Electricals"
-        description="Browse authorized industrial electrical products, switchgear, cables, automation systems, and distribution boards from JK Electricals Vapi."
-        path="/products"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "Industrial Electrical Products",
-          url: `${SITE_URL}/products`,
-          description: SITE_DESCRIPTION,
-          mainEntity: {
-            "@type": "ItemList",
-            numberOfItems: PRODUCT_CATEGORIES.length,
-            itemListElement: PRODUCT_CATEGORIES.map((category, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              name: category.name,
-              url: `${SITE_URL}/products#${category.slug}`,
-            })),
-          },
-        }}
+        title={seoTitle}
+        description={seoDescription}
+        path={seoPath}
+        schema={[
+          localBusinessSchema(),
+          websiteSchema(),
+          webPageSchema(seoPath, seoTitle, seoDescription, "CollectionPage"),
+          productCatalogSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Products", path: "/products" },
+          ]),
+        ]}
       />
       <Header />
       
@@ -269,6 +309,68 @@ export default function ProductsPage() {
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
               <BrandLogoCarousel rows={1} />
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-slate-50 py-12 md:py-16">
+          <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
+            <div className="mb-8 max-w-4xl">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">
+                Authorized dealer search
+              </p>
+              <h2 className="mt-2 text-2xl md:text-4xl font-black uppercase tracking-tighter text-slate-900">
+                Authorized Brand Dealers, Suppliers & Sellers in Vapi
+              </h2>
+              <p className="mt-4 text-sm md:text-base leading-relaxed text-slate-600">
+                JK Electricals Vapi helps industrial buyers source genuine electrical products from listed brands. For searches such as authorized dealer, authorized supplier, seller, distributor, stockist, or industrial product supplier in Vapi, Gujarat, use the brand and category list below to find the right products quickly.
+              </p>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6">
+                <h3 className="text-lg font-black uppercase tracking-tight text-slate-900">
+                  Brand Dealer & Supplier Keywords
+                </h3>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {brandCategoryMap.map((entry) => (
+                    <a
+                      key={entry.brand}
+                      href={`/products?brand=${encodeURIComponent(entry.brand)}`}
+                      className="rounded-xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:border-[#00a896]"
+                    >
+                      <span className="block text-sm font-black text-slate-900">
+                        {entry.brand} authorized dealer in Vapi
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-slate-500">
+                        Supplier and seller for {entry.categories.join(", ").toLowerCase()}.
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6">
+                <h3 className="text-lg font-black uppercase tracking-tight text-slate-900">
+                  Product Category Suppliers
+                </h3>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {PRODUCT_CATEGORIES.map((category) => (
+                    <a
+                      key={category.slug}
+                      href={`/products?category=${category.slug}`}
+                      className="rounded-xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:border-[#00a896]"
+                    >
+                      <span className="block text-sm font-black text-slate-900">
+                        {category.name} supplier in Vapi
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-slate-500">
+                        Authorized dealer and seller for {category.description.toLowerCase()} from {category.brands.join(", ")}.
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>

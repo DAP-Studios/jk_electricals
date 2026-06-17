@@ -69,6 +69,8 @@ function ProductCard({ item, index, selectedBrand }: { item: ProductComponentIte
   const visibleBrands = selectedBrand
     ? item.brands.filter((brand) => brand.toLowerCase() === selectedBrand.toLowerCase())
     : item.brands;
+  const brandPhrase = visibleBrands.join(", ");
+  const imageAlt = `${item.componentName} ${item.categoryName} supplied by JK Electricals Vapi`;
 
   return (
         <div id={`${item.categorySlug}-${item.id}`} className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden transform-gpu transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -77,7 +79,10 @@ function ProductCard({ item, index, selectedBrand }: { item: ProductComponentIte
         <div className="relative overflow-hidden rounded-xl mb-4 bg-slate-100">
           <img
             src={item.image}
-            alt={item.componentName}
+            alt={imageAlt}
+            title={`${item.componentName} authorized supplier in Vapi`}
+            loading={index < 3 ? "eager" : "lazy"}
+            decoding="async"
             className="h-48 w-full object-cover object-center brightness-110 contrast-105 saturate-125"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent" />
@@ -85,6 +90,9 @@ function ProductCard({ item, index, selectedBrand }: { item: ProductComponentIte
         
         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00a896] mb-2">{item.categoryName}</p>
         <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-3">{item.componentName}</h3>
+        <p className="mb-4 text-sm leading-relaxed text-slate-600">
+          JK Electricals Vapi supplies {item.componentName.toLowerCase()} for industrial buyers looking for authorized dealers, suppliers, and sellers of {brandPhrase}.
+        </p>
         
         <div className="flex flex-wrap gap-2 mb-5">
           {visibleBrands.map((brand: string) => (

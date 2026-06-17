@@ -40,6 +40,14 @@ function setLinkTag(rel: string, href: string) {
   element.setAttribute("href", href);
 }
 
+function toAbsoluteUrl(value: string) {
+  try {
+    return new URL(value, SITE_URL).toString();
+  } catch {
+    return value;
+  }
+}
+
 export default function Seo({
   title,
   description = SITE_DESCRIPTION,
@@ -49,38 +57,41 @@ export default function Seo({
   schema,
 }: SeoProps) {
   useEffect(() => {
-    const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+    const fullTitle = title.includes(SITE_NAME) || title.includes("JK Electricals") ? title : `${title} | ${SITE_NAME}`;
     const canonicalUrl = new URL(path, SITE_URL).toString();
+    const imageUrl = toAbsoluteUrl(image);
 
     document.title = fullTitle;
     setLinkTag("canonical", canonicalUrl);
     setMetaTag("description", description);
     setMetaTag("keywords", SITE_KEYWORDS.join(", "));
     setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+    setMetaTag("googlebot", noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
     setMetaTag("theme-color", "#000080");
 
     setMetaTag("og:type", "website", true);
+    setMetaTag("og:locale", "en_IN", true);
     setMetaTag("og:site_name", SITE_NAME, true);
     setMetaTag("og:title", fullTitle, true);
     setMetaTag("og:description", description, true);
     setMetaTag("og:url", canonicalUrl, true);
-    setMetaTag("og:image", image, true);
+    setMetaTag("og:image", imageUrl, true);
+    setMetaTag("og:image:alt", `${SITE_NAME} industrial electrical products`, true);
 
     setMetaTag("twitter:card", "summary_large_image");
     setMetaTag("twitter:title", fullTitle);
     setMetaTag("twitter:description", description);
-    setMetaTag("twitter:image", image);
+    setMetaTag("twitter:image", imageUrl);
 
-    let schemaElement = document.getElementById("page-schema") as HTMLScriptElement | null;
-    if (schemaElement) {
-      schemaElement.remove();
-    }
+    document.head.querySelectorAll("script[data-seo-schema]").forEach((element) => element.remove());
 
     if (schema) {
-      schemaElement = document.createElement("script");
+      const schemaBlocks = Array.isArray(schema) ? schema : [schema];
+      const schemaElement = document.createElement("script");
       schemaElement.type = "application/ld+json";
       schemaElement.id = "page-schema";
-      schemaElement.text = JSON.stringify(schema);
+      schemaElement.setAttribute("data-seo-schema", "true");
+      schemaElement.text = JSON.stringify(schemaBlocks.length === 1 ? schemaBlocks[0] : schemaBlocks);
       document.head.appendChild(schemaElement);
     }
   }, [description, image, noindex, path, schema, title]);

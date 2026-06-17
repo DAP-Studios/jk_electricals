@@ -38,7 +38,10 @@ function ProductCard({
           <div className="relative h-[56%] overflow-hidden bg-slate-100">
             <img
               src={category.image}
-              alt={category.name}
+              alt={`${category.name} supplier and authorized dealer in Vapi`}
+              title={`${category.name} supplier in Vapi`}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               draggable={false}
             />
@@ -50,6 +53,7 @@ function ProductCard({
               <img
                 src={logo}
                 alt="JK Electricals"
+                decoding="async"
                 className="h-full w-full object-contain"
                 draggable={false}
               />

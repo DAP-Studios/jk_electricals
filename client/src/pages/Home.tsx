@@ -7,11 +7,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BrandLogoCarousel from "@/components/BrandLogoCarousel";
-import { COMPANY_INFO } from "@/const";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const route = routeByPath("/");
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "JK Electricals | Premium Industrial Solutions";
@@ -20,27 +21,15 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-white selection:bg-[#00a896] selection:text-white overflow-x-hidden antialiased font-inter">
       <Seo
-        title="JK Electricals Vapi | Industrial Electrical Distributor"
-        description={SITE_DESCRIPTION}
+        title={route.title}
+        description={route.description}
         path="/"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: COMPANY_INFO.name,
-          url: SITE_URL,
-          description: SITE_DESCRIPTION,
-          telephone: COMPANY_INFO.contact.primary,
-          email: COMPANY_INFO.contact.email,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: COMPANY_INFO.address.street,
-            addressLocality: COMPANY_INFO.address.city,
-            addressRegion: COMPANY_INFO.address.state,
-            postalCode: COMPANY_INFO.address.zip,
-            addressCountry: COMPANY_INFO.address.country,
-          },
-          areaServed: "Vapi, Gujarat, India",
-        }}
+        schema={[
+          localBusinessSchema(),
+          websiteSchema(),
+          webPageSchema("/", route.title, route.description),
+          breadcrumbSchema([{ name: "Home", path: "/" }]),
+        ]}
       />
       <Header />
       

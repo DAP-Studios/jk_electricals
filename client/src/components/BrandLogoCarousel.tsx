@@ -76,8 +76,9 @@ export default function BrandLogoCarousel({
                     >
                       <img
                         src={brand.src}
-                        alt={`${brand.name} logo`}
+                        alt={`${brand.name} authorized dealer supplier logo in Vapi`}
                         loading="lazy"
+                        decoding="async"
                         className="max-h-full max-w-full object-contain"
                       />
                     </div>

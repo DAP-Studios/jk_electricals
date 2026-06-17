@@ -3,11 +3,12 @@ import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Seo from "@/components/Seo";
-import { COMPANY_INFO } from "@/const";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
+import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { useEffect } from "react";
 
 export default function ContactPage() {
+  const route = routeByPath("/contact");
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Contact Us | JK Electricals Vapi - Authorized Industrial Distributor";
@@ -16,23 +17,18 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="Contact JK Electricals Vapi | Get Industrial Supply Support"
-        description="Contact JK Electricals Vapi for industrial electrical products, quotations, bulk inquiries, and quick support across Gujarat."
+        title={route.title}
+        description={route.description}
         path="/contact"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Contact JK Electricals Vapi",
-          url: `${SITE_URL}/contact`,
-          description: SITE_DESCRIPTION,
-          mainEntity: {
-            "@type": "LocalBusiness",
-            name: COMPANY_INFO.name,
-            url: SITE_URL,
-            telephone: COMPANY_INFO.contact.primary,
-            email: COMPANY_INFO.contact.email,
-          },
-        }}
+        schema={[
+          localBusinessSchema(),
+          websiteSchema(),
+          webPageSchema("/contact", route.title, route.description, "ContactPage"),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
       />
       <Header />
       <main className="pt-0">
@@ -74,9 +70,9 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#000080] mb-2 uppercase tracking-wide text-sm">SEO Meta Information</h3>
+                    <h3 className="font-bold text-[#000080] mb-2 uppercase tracking-wide text-sm">Service Areas</h3>
                     <p className="text-xs text-[#94a3b8]">
-                      JK Electricals Vapi - Serving GIDC Vapi, Sarigam, Umbergaon, and Silvassa industrial hubs.
+                      Serving GIDC Vapi, Sarigam, Umbergaon, Silvassa, Daman, Valsad, and nearby Gujarat industrial hubs.
                     </p>
                   </div>
                 </div>
