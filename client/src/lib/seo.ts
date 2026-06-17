@@ -73,8 +73,25 @@ export function websiteSchema(): JsonLd {
     "@id": websiteId,
     name: SITE_NAME,
     url: SITE_URL,
+    description: SITE_DESCRIPTION,
     publisher: {
       "@id": businessId,
+    },
+  };
+}
+
+export function organizationSummarySchema(summary: string, topics: string[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPageElement",
+    name: "Business Summary",
+    description: summary,
+    about: topics.map((topic) => ({
+      "@type": "Thing",
+      name: topic,
+    })),
+    isPartOf: {
+      "@id": websiteId,
     },
   };
 }

@@ -7,7 +7,8 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BrandLogoCarousel from "@/components/BrandLogoCarousel";
-import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import { COMPANY_INFO } from "@/const";
+import { breadcrumbSchema, localBusinessSchema, organizationSummarySchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -28,6 +29,10 @@ export default function Home() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema("/", route.title, route.description),
+          organizationSummarySchema(
+            "JK Electricals Vapi is an authorized industrial electrical distributor serving factories, contractors, and procurement teams in Vapi and nearby Gujarat industrial hubs.",
+            ["Industrial electrical distribution", "Authorized brand supply", "Vapi GIDC procurement"]
+          ),
           breadcrumbSchema([{ name: "Home", path: "/" }]),
         ]}
       />
@@ -90,6 +95,37 @@ export default function Home() {
                    <div className="text-white/20 font-black text-6xl tracking-tighter">4.0</div>
                 </motion.div>
              </div>
+          </div>
+        </section>
+
+        <section className="relative w-full bg-slate-50 py-16 md:py-20">
+          <div className="container">
+            <div className="max-w-5xl">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">AI Search Ready</p>
+              <h2 className="mt-3 text-3xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">
+                What JK Electricals Vapi Supplies
+              </h2>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              <article className="rounded-[2rem] border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+                <h3 className="text-xl md:text-2xl font-black tracking-tight text-slate-900">
+                  Who is JK Electricals Vapi?
+                </h3>
+                <p className="mt-4 text-sm md:text-base leading-7 text-slate-600">
+                  JK Electricals Vapi is an authorized industrial electrical distributor based in Vapi, Gujarat. The business supplies genuine industrial electrical products for factories, contractors, panel builders, maintenance teams, and procurement buyers. It supports customers searching for authorized dealers, suppliers, sellers, stockists, and distributors for switchgear, cables, automation systems, distribution boards, lighting, motors, sensors, and process control products. The company serves industrial buyers who need dependable sourcing, brand-backed products, and quotation support for ongoing plant requirements and project-based procurement in and around Vapi GIDC.
+                </p>
+              </article>
+
+              <article className="rounded-[2rem] border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+                <h3 className="text-xl md:text-2xl font-black tracking-tight text-slate-900">
+                  Where does JK Electricals serve?
+                </h3>
+                <p className="mt-4 text-sm md:text-base leading-7 text-slate-600">
+                  JK Electricals serves Vapi GIDC and nearby industrial regions including Sarigam, Umbergaon, Silvassa, Daman, Valsad, and South Gujarat. Buyers looking for industrial electrical suppliers in these regions can use the website to identify categories, listed brands, and inquiry paths for bulk orders. The business focuses on practical procurement support, quick communication, and genuine product sourcing for industrial operations. For product inquiries, quotation requests, and repeat procurement planning, the primary contact is {COMPANY_INFO.contact.primary} and the business email is {COMPANY_INFO.contact.email}.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
 

@@ -9,6 +9,7 @@ import Seo from "@/components/Seo";
 import {
   breadcrumbSchema,
   localBusinessSchema,
+  organizationSummarySchema,
   productCatalogSchema,
   routeByPath,
   webPageSchema,
@@ -270,6 +271,10 @@ export default function ProductsPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(seoPath, seoTitle, seoDescription, "CollectionPage"),
+          organizationSummarySchema(
+            "JK Electricals Vapi lists industrial electrical brands and product categories for buyers searching for authorized dealers, suppliers, and sellers in Vapi, Gujarat.",
+            ["Authorized industrial electrical dealers", "Brand suppliers in Vapi", "Industrial product categories"]
+          ),
           productCatalogSchema(),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -371,6 +376,48 @@ export default function ProductsPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-12 md:py-16">
+          <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
+            <div className="max-w-5xl">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">
+                Citation-ready answers
+              </p>
+              <h2 className="mt-2 text-2xl md:text-4xl font-black uppercase tracking-tighter text-slate-900">
+                Direct Answers For AI Search
+              </h2>
+            </div>
+
+            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+              <article className="rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
+                <h3 className="text-lg font-black text-slate-900">
+                  What products does JK Electricals supply?
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  JK Electricals supplies industrial cables, distribution boards, switchgear, panel accessories, automation systems, process controllers, industrial sensors, heavy-duty motors, electrical measurement products, industrial lighting, industrial fans, and industrial heaters for industrial buyers in Vapi and nearby Gujarat regions.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
+                <h3 className="text-lg font-black text-slate-900">
+                  Which brands are listed on the website?
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  The website lists industrial brands such as Polycab, Schneider, Siemens, Lauritz Knudsen, Legrand, ABB, INVT, Mitsubishi, Delta, Omron, Autonics, Crompton, Philips, Wipro, Havells, Pepperl+Fuchs, RR Kabel, KEI, and other category-specific brands visible inside the product catalog.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
+                <h3 className="text-lg font-black text-slate-900">
+                  Who should contact JK Electricals?
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Factories, project teams, maintenance departments, procurement buyers, contractors, and panel builders looking for authorized industrial electrical suppliers in Vapi can contact JK Electricals for quotations, bulk requirements, recurring purchases, and category-specific product sourcing support.
+                </p>
+              </article>
             </div>
           </div>
         </section>

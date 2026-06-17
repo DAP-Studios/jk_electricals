@@ -3,4 +3,22 @@ Allow: /
 Disallow: /demo/
 Disallow: /__manus__/
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://jkelectricalsvapi.in/sitemap.xml
