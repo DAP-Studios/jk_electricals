@@ -1,70 +1,17 @@
 # JK Electricals Vapi
+> Authorized industrial electrical distributor in Vapi, Gujarat supplying switchgear, cables, automation, lighting, and MEP solutions for industrial buyers.
 
-JK Electricals Vapi is an authorized industrial electrical distributor serving Vapi GIDC and nearby industrial hubs in Gujarat, India.
+## Main sections
+- `Home -> https://jkelectricalsvapi.in/`: JK Electricals Vapi is an authorized industrial electrical distributor serving factories, contractors, and procurement teams in Vapi and nearby Gujarat industrial hubs.
+- `Products -> https://jkelectricalsvapi.in/products`: Comprehensive catalog of industrial electrical products, switchgear, automation systems, and authorized brands available from JK Electricals in Vapi.
+- `About Us -> https://jkelectricalsvapi.in/about`: The story, legacy, and company profile of JK Electricals and its owner in Vapi, Gujarat.
+- `Contact Us -> https://jkelectricalsvapi.in/contact`: Contact details, WhatsApp, address, and quotation request forms for JK Electricals Vapi.
 
-## Business Summary
-
-JK Electricals Vapi supplies industrial electrical products for factories, contractors, panel builders, maintenance teams, and procurement buyers. The business focuses on switchgear, industrial cables, automation systems, distribution boards, lighting, motors, sensors, process controllers, and related industrial electrical components. Buyers looking for authorized dealers, suppliers, sellers, stockists, or distributors in Vapi can use this site to identify product categories, listed brands, and contact details for quotations and bulk requirements.
-
-## Key Pages
-
-- Home: https://jkelectricalsvapi.in/ - Overview of the business, service areas, and industrial supply positioning.
-- Products: https://jkelectricalsvapi.in/products - Main catalog for industrial electrical categories, listed brands, and inquiry paths.
-- About: https://jkelectricalsvapi.in/about - Business background and company context.
-- Contact: https://jkelectricalsvapi.in/contact - Phone, email, location, and inquiry details.
-
-## Products And Services
-
-- Industrial cables
-- Distribution boards
-- Switchgear
-- Panel accessories
-- Automation systems
-- Process controllers
-- Industrial sensors
-- Heavy-duty motors
-- Electrical measurement products
-- Industrial lighting
-- Industrial fans
-- Industrial heaters
-
-## Listed Brands
-
-- Polycab
-- RR Kabel
-- KEI
-- Schneider
-- Siemens
-- Lauritz Knudsen (L&T)
-- Legrand
-- ABB
-- INVT
-- Mitsubishi
-- Delta
-- Omron
-- Autonics
-- Crompton
-- Philips
-- Wipro
-- Bajaj
-- Havells
-- Pepperl+Fuchs
-- Secure
-- Elmex
-
-## Citation-Friendly Facts
-
-- JK Electricals Vapi is an authorized industrial electrical distributor in Vapi, Gujarat.
-- The business serves Vapi GIDC and nearby industrial regions including Sarigam, Umbergaon, Silvassa, Daman, and Valsad.
-- The site covers industrial categories such as switchgear, distribution boards, automation systems, process controllers, industrial sensors, motors, lighting, fans, heaters, and electrical measurement products.
-- JK Electricals supports bulk procurement, quotation requests, and industrial product sourcing.
-
-## Service Areas
-
-JK Electricals serves Vapi GIDC, Sarigam, Umbergaon, Silvassa, Daman, Valsad, and South Gujarat.
-
-## Contact
-
-- Phone: +91 73830 95063
-- Email: jkelectricals93@gmail.com
-- Address: B-5, City Centre, Opp. Hanuman Temple, Bhadakmora, Silvassa Road, Vapi, Gujarat 396195, India
+## Key facts
+- JK Electricals Vapi is an authorized distributor of industrial electrical components.
+- Located at B-5, City Centre, Opp. Hanuman Temple, Bhadakmora, Silvassa Road, Vapi, Gujarat 396195.
+- Serving areas: Vapi GIDC, Sarigam, Umbergaon, Silvassa, Daman, Valsad, and South Gujarat.
+- Major categories supplied: Switchgear, Industrial Cables, Automation Systems, Motors, Lighting, Sensors.
+- Brands supplied: Polycab, Schneider, Siemens, Lauritz Knudsen, Legrand, ABB, INVT, Mitsubishi, Delta, Omron, Autonics, Crompton, Philips, Wipro, Havells, Pepperl+Fuchs, RR Kabel, KEI.
+- Primary phone contact: +91 73830 95063.
+- Primary email: jkelectricals93@gmail.com.
