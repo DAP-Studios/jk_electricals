@@ -6,6 +6,7 @@ import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/const";
 import Seo from "@/components/Seo";
+import { useLocation } from "wouter";
 import {
   breadcrumbSchema,
   localBusinessSchema,
@@ -21,6 +22,27 @@ export default function ProductsPage() {
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mobileFilterOpen, setMobileFilterOpen] = useState<"brands" | "category" | null>(null);
+  const [, setLocation] = useLocation();
+
+  const handleSelectBrand = (brand: string | null) => {
+    setSelectedBrand(brand);
+    setSelectedCategory(null);
+    if (brand) {
+      setLocation(`/products/brand/${encodeURIComponent(brand.toUpperCase())}`);
+    } else {
+      setLocation("/products");
+    }
+  };
+
+  const handleSelectCategory = (category: string | null) => {
+    setSelectedCategory(category);
+    setSelectedBrand(null);
+    if (category) {
+      setLocation(`/products/category/${category}`);
+    } else {
+      setLocation("/products");
+    }
+  };
 
   const allBrands = useMemo(() => {
     const s = new Set<string>();
@@ -208,12 +230,26 @@ export default function ProductsPage() {
   }, []);
 
   useEffect(() => {
+    // 1. Check query parameters first
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get("category");
     const brandParam = params.get("brand");
 
-    if (categoryParam) setSelectedCategory(categoryParam);
-    if (brandParam) setSelectedBrand(brandParam);
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    } else if (brandParam) {
+      setSelectedBrand(brandParam);
+    } else {
+      // 2. Check path parameters
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      if (pathParts[0] === "products") {
+        if (pathParts[1] === "category" && pathParts[2]) {
+          setSelectedCategory(pathParts[2]);
+        } else if (pathParts[1] === "brand" && pathParts[2]) {
+          setSelectedBrand(decodeURIComponent(pathParts[2]));
+        }
+      }
+    }
   }, []);
 
   const selectedCategoryEntry = selectedCategory
@@ -233,9 +269,9 @@ export default function ProductsPage() {
       : route.description;
       
   const seoPath = selectedBrand
-    ? `/products?brand=${encodeURIComponent(selectedBrand)}`
+    ? `/products/brand/${encodeURIComponent(selectedBrand.toUpperCase())}`
     : selectedCategoryEntry
-      ? `/products?category=${selectedCategoryEntry.slug}`
+      ? `/products/category/${selectedCategoryEntry.slug}`
       : "/products";
 
   return (
@@ -299,14 +335,14 @@ export default function ProductsPage() {
               <div className="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start">
                 <BrandFilterSidebar
                   selectedBrand={selectedBrand}
-                  setSelectedBrand={setSelectedBrand}
+                  setSelectedBrand={handleSelectBrand}
                 />
 
                 <div>
                   <div className="sticky top-20 z-20 mb-8">
                     <CategoryFilterStrip
                       selectedCategory={selectedCategory}
-                      setSelectedCategory={setSelectedCategory}
+                      setSelectedCategory={handleSelectCategory}
                     />
                   </div>
 
@@ -348,9 +384,9 @@ export default function ProductsPage() {
       <MobileFilterTray
         mode={mobileFilterOpen}
         selectedBrand={selectedBrand}
-        setSelectedBrand={setSelectedBrand}
+        setSelectedBrand={handleSelectBrand}
         selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
+        setSelectedCategory={handleSelectCategory}
       />
 
       {/* Mobile Sticky Footer Filter Toggle */}

@@ -11,7 +11,6 @@ export default function AboutPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Us | JK Electricals - Industrial Distributor in Vapi";
   }, []);
 
   return (

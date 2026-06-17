@@ -21,6 +21,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={AboutPage} />
       <Route path="/products" component={ProductsPage} />
+      <Route path="/products/category/:category" component={ProductsPage} />
+      <Route path="/products/brand/:brand" component={ProductsPage} />
       <Route path="/contact" component={ContactPage} />
       <Route
         path="/demo/hero-button-expendable"

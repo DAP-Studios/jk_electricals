@@ -11,7 +11,6 @@ export default function ContactPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Contact Us | JK Electricals Vapi - Authorized Industrial Distributor";
   }, []);
 
   return (
