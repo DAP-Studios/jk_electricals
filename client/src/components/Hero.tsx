@@ -1,7 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLocation } from "wouter";
 import heroImage from "../assets/hero.png";
+import bgVideo from "../assets/hero-bg.mp4";
 
 type CTA = {
   label: string;
@@ -43,16 +43,10 @@ export default function Hero({
   hideButtons?: boolean;
   height?: "full" | "half";
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [, navigate] = useLocation();
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
+  const prefersReducedMotion = useReducedMotion();
   const isHalf = height === "half";
+  const posterImage = bgImage ?? heroImage;
 
   const handleCtaClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -93,24 +87,41 @@ export default function Hero({
 
   return (
     <section
-      ref={containerRef}
       className={`relative w-full flex items-center overflow-hidden ${isHalf ? "min-h-[52vh] md:min-h-[56vh]" : "min-h-[80vh] md:h-screen"} ${bgClass}`}
     >
       {/* Background — z-0 */}
-      <motion.div style={{ y }} className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/40 to-black/20 z-10" />
-        {bgImage ? (
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#000613]">
+        {posterImage ? (
           <img
-            src={bgImage}
-            alt="Hero Background"
+            src={posterImage}
+            alt=""
+            aria-hidden="true"
             className={`absolute inset-0 h-full w-full ${
               bgFit === "contain" ? "object-contain" : "object-cover"
             } object-center`}
           />
-        ) : (
-          <div className="absolute inset-0" />
-        )}
-      </motion.div>
+        ) : null}
+
+        {bgVideo && !prefersReducedMotion ? (
+          <video
+            src={bgVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster={posterImage}
+            disablePictureInPicture
+            aria-hidden="true"
+            className={`absolute inset-0 h-full w-full transform-gpu ${
+              bgFit === "contain" ? "object-contain" : "object-cover"
+            } object-center will-change-transform [backface-visibility:hidden] [contain:paint]`}
+          />
+        ) : null}
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/40 to-black/20" />
+      </div>
 
       {/* Orange Diffusion Glow — z-10, pointer-events-none */}
       <div className="absolute bottom-[-140px] left-1/2 -translate-x-1/2 w-[1600px] h-[400px] bg-orange-400/40 blur-[180px] rounded-full z-10 pointer-events-none" />
@@ -150,7 +161,7 @@ export default function Hero({
               </span>
             )}
 
-            <h1 className={`${isHalf ? "text-[clamp(2.5rem,6vw,6rem)]" : "text-[clamp(3rem,8vw,9rem)]"} font-extrabold text-white uppercase tracking-tight leading-[0.95] mb-6`}>
+            <h1 className={`${isHalf ? "text-[clamp(2.25rem,5vw,4.75rem)]" : "text-[clamp(2.5rem,5.4vw,5.75rem)]"} font-extrabold text-white uppercase tracking-tight leading-[1.02] mb-6`}>
               {title}
             </h1>
 
@@ -162,11 +173,11 @@ export default function Hero({
               <div className="flex flex-col sm:flex-row gap-4">
                 {renderCta(
                   ctaPrimary,
-                  "inline-flex items-center justify-center px-10 py-4 bg-[#00a896] text-white font-black uppercase tracking-wider rounded-full hover:bg-white hover:text-[#000613] transition-all duration-300 cursor-pointer"
+                  "inline-flex min-h-[clamp(2.75rem,5vw,3.5rem)] items-center justify-center rounded-full bg-[#00a896] px-[clamp(1.35rem,4vw,2.5rem)] py-[clamp(0.75rem,1.5vw,1rem)] text-[clamp(0.72rem,1.1vw,0.9rem)] font-black uppercase tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-[#000613]"
                 )}
                 {renderCta(
                   ctaSecondary,
-                  "inline-flex items-center justify-center px-10 py-4 border-2 border-white/20 text-white font-black uppercase tracking-wider rounded-full hover:border-white transition-all duration-300 cursor-pointer"
+                  "inline-flex min-h-[clamp(2.75rem,5vw,3.5rem)] items-center justify-center rounded-full border-2 border-white/20 px-[clamp(1.35rem,4vw,2.5rem)] py-[clamp(0.75rem,1.5vw,1rem)] text-[clamp(0.72rem,1.1vw,0.9rem)] font-black uppercase tracking-wider text-white transition-all duration-300 hover:border-white"
                 )}
               </div>
             )}

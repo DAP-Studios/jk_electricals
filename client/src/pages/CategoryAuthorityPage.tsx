@@ -13,6 +13,29 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 
+const brandLinks: Record<string, string> = {
+  siemens: "siemens",
+  schneider: "schneider-electric",
+  "schneider electric": "schneider-electric",
+  abb: "abb",
+  delta: "delta",
+  mitsubishi: "mitsubishi",
+  omron: "omron",
+  polycab: "polycab",
+  rr: "rr-kabel",
+  "rr kabel": "rr-kabel",
+  kei: "kei",
+  legrand: "legrand",
+  autonics: "autonics",
+  philips: "philips",
+};
+
+function brandHref(brand: string) {
+  const normalized = brand.toLowerCase().replace(/\([^)]*\)/g, "").replace(/&/g, "and").trim();
+  const slug = brandLinks[normalized] ?? normalized.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return `/brands/${slug}`;
+}
+
 export default function CategoryAuthorityPage() {
   const [path] = useLocation();
   const slug = path.replace("/products/", "");
@@ -77,7 +100,7 @@ export default function CategoryAuthorityPage() {
               <h2 className="text-xl font-black uppercase tracking-tight text-white">Brands Supplied</h2>
               <div className="mt-5 flex flex-wrap gap-2">
                 {category.brands.map((brand) => (
-                  <Link key={brand} href={`/brands/${brand.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`} className="rounded bg-white px-3 py-2 text-xs font-black uppercase tracking-widest text-slate-900">
+                  <Link key={brand} href={brandHref(brand)} className="rounded bg-white px-3 py-2 text-xs font-black uppercase tracking-widest text-slate-900">
                     {brand}
                   </Link>
                 ))}

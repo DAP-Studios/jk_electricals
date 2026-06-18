@@ -67,6 +67,14 @@ const AUTHORITY_BRANDS = [
   "philips",
 ];
 
+const RESOURCE_GUIDES = [
+  "plc-selection-guide",
+  "vfd-buying-guide",
+  "mccb-selection-guide",
+  "industrial-sensor-guide",
+  "temperature-controller-guide",
+];
+
 function titleCaseSlug(slug: string) {
   return slug
     .split("-")
@@ -205,7 +213,18 @@ async function run() {
     )
   );
 
-  // 8. Update SEO for root home page
+  // 8. Pre-render hidden SEO resource guides
+  for (const guide of RESOURCE_GUIDES) {
+    const guideName = titleCaseSlug(guide);
+    const urlPath = `/resources/${guide}`;
+    console.log(`Pre-rendering resource route: ${urlPath}`);
+    const title = `${guideName} | JK Electricals Vapi`;
+    const description = `${guideName} for industrial electrical and automation buyers in Vapi. Learn selection factors, applications, and quotation support from JK Electricals.`;
+    const html = preRenderPage(template, urlPath, title, description);
+    writePage(urlPath, html);
+  }
+
+  // 9. Update SEO for root home page
   console.log("Updating SEO for root home page...");
   const homeRoute = ROUTES.find((r) => r.path === "/");
   if (homeRoute) {
@@ -213,11 +232,11 @@ async function run() {
     fs.writeFileSync(TEMPLATE_PATH, html, "utf8");
   }
 
-  // 9. Create a 404.html fallback
+  // 10. Create a 404.html fallback
   console.log("Creating 404.html...");
   fs.copyFileSync(TEMPLATE_PATH, path.join(DIST_PUBLIC, "404.html"));
 
-  // 10. Update sitemap.xml dynamically to use clean paths
+  // 11. Update sitemap.xml dynamically to use clean paths
   const sitemapPath = path.join(DIST_PUBLIC, "sitemap.xml");
   console.log("Writing expanded sitemap.xml...");
   const today = new Date().toISOString().slice(0, 10);
@@ -226,6 +245,7 @@ async function run() {
     ...SERVICE_LOCATIONS.map((location) => ({ path: `/electrical-supplier-${location}`, priority: "0.85" })),
     ...PRODUCT_CATEGORIES.map((category) => ({ path: `/products/${category.slug}`, priority: "0.82" })),
     ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}`, priority: "0.78" })),
+    ...RESOURCE_GUIDES.map((guide) => ({ path: `/resources/${guide}`, priority: "0.68" })),
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes
     .map((route) => `  <url>\n    <loc>${SITE_URL}${route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${route.priority}</priority>\n  </url>`)

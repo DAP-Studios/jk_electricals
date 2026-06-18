@@ -198,6 +198,9 @@ export const COMPANY_INFO = {
   },
   gstin: "24GAFPS3208P1Z9",
   contactPerson: "JAYESH SUTHAR",
+  profiles: {
+    indiamart: "https://www.indiamart.com/jkelectricals-gujrat/profile.html",
+  },
 };
 
 export const PARTNER_BRANDS = [

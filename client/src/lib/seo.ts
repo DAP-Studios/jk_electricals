@@ -12,6 +12,7 @@ function absoluteAssetUrl(path: string) {
 }
 
 const businessId = `${SITE_URL}/#business`;
+const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 
 const postalAddress = {
@@ -34,6 +35,7 @@ export function localBusinessSchema(): JsonLd {
     image: SITE_OG_IMAGE,
     logo: SITE_OG_IMAGE,
     description: SITE_DESCRIPTION,
+    sameAs: Object.values(COMPANY_INFO.profiles),
     telephone: COMPANY_INFO.contact.primary,
     email: COMPANY_INFO.contact.email,
     priceRange: "$$",
@@ -63,6 +65,37 @@ export function localBusinessSchema(): JsonLd {
         availableLanguage: ["en", "hi", "gu"],
       },
     ],
+  };
+}
+
+export function organizationSchema(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationId,
+    name: COMPANY_INFO.name,
+    alternateName: SITE_NAME,
+    url: SITE_URL,
+    logo: SITE_OG_IMAGE,
+    image: SITE_OG_IMAGE,
+    description: SITE_DESCRIPTION,
+    sameAs: Object.values(COMPANY_INFO.profiles),
+    email: COMPANY_INFO.contact.email,
+    telephone: COMPANY_INFO.contact.primary,
+    address: postalAddress,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: COMPANY_INFO.contact.primary,
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["en", "hi", "gu"],
+      },
+    ],
+    brand: PARTNER_BRANDS.map((name) => ({
+      "@type": "Brand",
+      name,
+    })),
   };
 }
 

@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { COMPANY_INFO } from "@/const";
-import { breadcrumbSchema, localBusinessSchema, organizationSummarySchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import { breadcrumbSchema, localBusinessSchema, organizationSchema, organizationSummarySchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -26,6 +26,7 @@ export default function Home() {
         path="/"
         schema={[
           localBusinessSchema(),
+          organizationSchema(),
           websiteSchema(),
           webPageSchema("/", route.title, route.description),
           organizationSummarySchema(
@@ -45,8 +46,8 @@ export default function Home() {
             eyebrow="Industrial Electrical & Automation Solutions"
             title={
               <>
-                Industrial Electrical & Automation Supplier in{" "}
-                <span className="hero-gradient-text">Vapi, Gujarat</span>
+                Industrial Electrical Automation{" "}
+                <span className="hero-gradient-text">Supplier Vapi</span>
               </>
             }
             subtitle="Source switchgear, PLC, VFD, industrial sensors, process controllers, cables, motors, lighting, distribution boards, and panel accessories from JK Electricals in Vapi."

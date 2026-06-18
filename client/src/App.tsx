@@ -15,6 +15,7 @@ const LocationPage = React.lazy(() => import("./pages/LocationPage"));
 const CategoryAuthorityPage = React.lazy(() => import("./pages/CategoryAuthorityPage"));
 const BrandAuthorityPage = React.lazy(() => import("./pages/BrandAuthorityPage"));
 const BlogPage = React.lazy(() => import("./pages/BlogPage"));
+const ResourceGuidePage = React.lazy(() => import("./pages/ResourceGuidePage"));
 const HeroButtonExpendableDemo = React.lazy(
   () => import("./components/ui/hero-button-expendable-demo"),
 );
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/products/:category" component={CategoryAuthorityPage} />
       <Route path="/brands/:brand" component={BrandAuthorityPage} />
       <Route path="/electrical-supplier-:location" component={LocationPage} />
+      <Route path="/resources/:guide" component={ResourceGuidePage} />
       <Route path="/blog" component={BlogPage} />
       <Route path="/contact" component={ContactPage} />
       <Route

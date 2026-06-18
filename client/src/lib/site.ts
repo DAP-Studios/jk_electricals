@@ -2,7 +2,7 @@ export const SITE_NAME = "JK Electricals Vapi";
 export const SITE_DOMAIN = "jkelectricalsvapi.in";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
 export const SITE_DESCRIPTION =
-  "Industrial electrical and automation solutions supplier in Vapi, Gujarat. Switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting, and electrical distribution products.";
+  "JK Electricals is a leading Industrial Electrical & Automation Supplier in Vapi, Gujarat. Authorized supplier of Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI, Legrand and industrial control products serving Vapi, Silvassa, Daman and South Gujarat.";
 export const SITE_TITLE = "JK Electricals Vapi | Industrial Electrical & Automation Supplier Gujarat";
 export const SITE_KEYWORDS = [
   "JK Electricals Vapi",
@@ -47,7 +47,7 @@ export const ROUTES = [
     path: "/",
     title: "Industrial Electrical & Automation Supplier in Vapi | JK Electricals",
     description:
-      "Source switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting, and industrial automation products from JK Electricals Vapi.",
+      "JK Electricals is a leading Industrial Electrical & Automation Supplier in Vapi, Gujarat. Authorized supplier of Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI, Legrand and industrial control products serving Vapi, Silvassa, Daman and South Gujarat.",
     priority: "1.0",
   },
   {

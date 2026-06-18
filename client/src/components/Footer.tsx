@@ -1,4 +1,5 @@
 import { COMPANY_INFO } from "@/const";
+import { SERVICE_LOCATIONS } from "@/lib/seoContent";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import Logo from "../assets/logo.png";
@@ -14,7 +15,7 @@ export default function Footer() {
       <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/20 blur-[120px]" />
 
       <div className="container relative z-10 py-14">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-5">
             <div>
@@ -47,6 +48,19 @@ style={{
             <p className="inline-flex rounded-full border border-[#00a896]/30 bg-[#00a896]/10 px-4 py-2 text-xs font-semibold text-[#00e0c0]">
               GSTIN: {COMPANY_INFO.gstin}
             </p>
+
+            <a
+              href={COMPANY_INFO.profiles.indiamart}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-all hover:text-[#00a896]"
+            >
+              IndiaMART Profile
+              <ArrowUpRight
+                size={13}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -59,6 +73,7 @@ style={{
               {[
                 { label: "Home", href: "/" },
                 { label: "Products", href: "/products" },
+                { label: "Blog", href: "/blog" },
                 { label: "About Us", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
@@ -68,6 +83,30 @@ style={{
                     className="group inline-flex items-center gap-2 text-white/70 transition-all hover:text-[#00a896]"
                   >
                     {item.label}
+                    <ArrowUpRight
+                      size={13}
+                      className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service Areas */}
+          <div>
+            <h4 className="mb-5 text-sm font-black uppercase tracking-[0.2em] text-[#00a896]">
+              Service Areas
+            </h4>
+
+            <ul className="grid grid-cols-2 gap-3 text-sm lg:grid-cols-1">
+              {SERVICE_LOCATIONS.slice(0, 10).map((area) => (
+                <li key={area.slug}>
+                  <Link
+                    href={`/electrical-supplier-${area.slug}`}
+                    className="group inline-flex items-center gap-2 text-white/70 transition-all hover:text-[#00a896]"
+                  >
+                    {area.name}
                     <ArrowUpRight
                       size={13}
                       className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"

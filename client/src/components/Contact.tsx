@@ -57,7 +57,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
               <h3 className="text-sm font-black uppercase tracking-[0.4em] text-slate-900 mb-6">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
+                  <Phone className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">Phone</p>
                     <a href={`tel:${COMPANY_INFO.contact.primary}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
@@ -71,7 +71,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
+                  <Mail className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
                     <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
@@ -81,7 +81,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
+                  <MapPin className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">Address</p>
                     <p className="text-[#475569]">
@@ -97,7 +97,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <MessageCircle className="w-6 h-6 text-[#00a896] flex-shrink-0 mt-1" />
+                  <MessageCircle className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">WhatsApp</p>
                     <a
@@ -181,11 +181,11 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-4">
-                <button type="submit" className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#00a896] to-[#00d4aa] text-white font-extrabold rounded-lg shadow-lg hover:scale-[1.02] transition-transform">
+              <div className="mt-6 flex flex-wrap items-center gap-[clamp(0.65rem,2vw,1rem)]">
+                <button type="submit" className="inline-flex min-h-[clamp(2.65rem,5vw,3.15rem)] items-center gap-3 rounded-lg bg-gradient-to-r from-[#00a896] to-[#00d4aa] px-[clamp(1.1rem,3vw,1.5rem)] py-[clamp(0.7rem,1.5vw,0.85rem)] text-[clamp(0.82rem,1.4vw,1rem)] font-extrabold text-white shadow-lg transition-transform hover:scale-[1.02]">
                   Send Inquiry
                 </button>
-                <a href={`https://wa.me/917383095063`} target="_blank" rel="noreferrer" className="ml-2 inline-flex items-center gap-2 px-4 py-3 border border-slate-200 rounded-lg text-slate-700 font-semibold hover:bg-slate-50">
+                <a href={`https://wa.me/917383095063`} target="_blank" rel="noreferrer" className="inline-flex min-h-[clamp(2.65rem,5vw,3.15rem)] items-center gap-2 rounded-lg border border-slate-200 px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.7rem,1.5vw,0.85rem)] text-[clamp(0.82rem,1.4vw,1rem)] font-semibold text-slate-700 hover:bg-slate-50">
                   Chat on WhatsApp
                 </a>
               </div>
