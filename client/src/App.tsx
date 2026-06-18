@@ -11,6 +11,10 @@ const Home = React.lazy(() => import("./pages/Home"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
+const LocationPage = React.lazy(() => import("./pages/LocationPage"));
+const CategoryAuthorityPage = React.lazy(() => import("./pages/CategoryAuthorityPage"));
+const BrandAuthorityPage = React.lazy(() => import("./pages/BrandAuthorityPage"));
+const BlogPage = React.lazy(() => import("./pages/BlogPage"));
 const HeroButtonExpendableDemo = React.lazy(
   () => import("./components/ui/hero-button-expendable-demo"),
 );
@@ -23,6 +27,10 @@ function Router() {
       <Route path="/products" component={ProductsPage} />
       <Route path="/products/category/:category" component={ProductsPage} />
       <Route path="/products/brand/:brand" component={ProductsPage} />
+      <Route path="/products/:category" component={CategoryAuthorityPage} />
+      <Route path="/brands/:brand" component={BrandAuthorityPage} />
+      <Route path="/electrical-supplier-:location" component={LocationPage} />
+      <Route path="/blog" component={BlogPage} />
       <Route path="/contact" component={ContactPage} />
       <Route
         path="/demo/hero-button-expendable"

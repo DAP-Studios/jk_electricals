@@ -40,7 +40,19 @@ export default function Home() {
       <main id="main-content" className="pt-0 space-y-0">
         {/* Section 1: Hero (Independent Raw Ratio) */}
         <section className="relative w-full py-0 md:py-0 bg-transparent overflow-hidden">
-          <Hero align="left" />
+          <Hero
+            align="left"
+            eyebrow="Industrial Electrical & Automation Solutions"
+            title={
+              <>
+                Industrial Electrical & Automation Supplier in{" "}
+                <span className="hero-gradient-text">Vapi, Gujarat</span>
+              </>
+            }
+            subtitle="Source switchgear, PLC, VFD, industrial sensors, process controllers, cables, motors, lighting, distribution boards, and panel accessories from JK Electricals in Vapi."
+            ctaPrimary={{ label: "Request Quote", href: "/contact" }}
+            ctaSecondary={{ label: "WhatsApp", href: "https://wa.me/917383095063", variant: "secondary" }}
+          />
         </section>
         
         {/* Section 2: About (Dynamic Layout) */}

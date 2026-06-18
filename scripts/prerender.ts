@@ -39,6 +39,41 @@ const PRODUCT_CATEGORIES = [
   { name: "Industrial Heaters", slug: "industrial-heaters", description: "Infrared Heaters, Tubular Heaters, Oil & Water Heaters" }
 ];
 
+const SERVICE_LOCATIONS = [
+  "vapi",
+  "silvassa",
+  "daman",
+  "sarigam",
+  "umbergaon",
+  "valsad",
+  "ankleshwar",
+  "bharuch",
+  "surat",
+  "dahej",
+];
+
+const AUTHORITY_BRANDS = [
+  "siemens",
+  "schneider-electric",
+  "abb",
+  "delta",
+  "mitsubishi",
+  "omron",
+  "polycab",
+  "rr-kabel",
+  "kei",
+  "legrand",
+  "autonics",
+  "philips",
+];
+
+function titleCaseSlug(slug: string) {
+  return slug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 function preRenderPage(template: string, urlPath: string, title: string, description: string) {
   const fullTitle = title.includes(SITE_NAME) || title.includes("JK Electricals")
     ? title
@@ -126,7 +161,51 @@ async function run() {
     }
   }
 
-  // 4. Update SEO for root home page
+  // 4. Pre-render clean category authority pages
+  for (const cat of PRODUCT_CATEGORIES) {
+    const urlPath = `/products/${cat.slug}`;
+    console.log(`Pre-rendering clean category route: ${urlPath}`);
+    const title = `${cat.name} Supplier in Vapi | JK Electricals`;
+    const description = `Source ${cat.name.toLowerCase()} in Vapi for industrial projects, maintenance, automation panels, and factory procurement from JK Electricals.`;
+    const html = preRenderPage(template, urlPath, title, description);
+    writePage(urlPath, html);
+  }
+
+  // 5. Pre-render location landing pages
+  for (const location of SERVICE_LOCATIONS) {
+    const locationName = titleCaseSlug(location);
+    const urlPath = `/electrical-supplier-${location}`;
+    console.log(`Pre-rendering location route: ${urlPath}`);
+    const title = `Industrial Electrical Supplier in ${locationName} | JK Electricals`;
+    const description = `JK Electricals supplies switchgear, PLC, VFD, sensors, process controllers, cables, motors, and industrial automation products for ${locationName} manufacturers.`;
+    const html = preRenderPage(template, urlPath, title, description);
+    writePage(urlPath, html);
+  }
+
+  // 6. Pre-render brand authority pages
+  for (const brand of AUTHORITY_BRANDS) {
+    const brandName = titleCaseSlug(brand).replace("Rr", "RR").replace("Abb", "ABB").replace("Kei", "KEI");
+    const urlPath = `/brands/${brand}`;
+    console.log(`Pre-rendering brand authority route: ${urlPath}`);
+    const title = `${brandName} Dealer & Supplier in Vapi | JK Electricals`;
+    const description = `Request ${brandName} industrial electrical products in Vapi from JK Electricals for factory procurement, maintenance, automation, and project requirements.`;
+    const html = preRenderPage(template, urlPath, title, description);
+    writePage(urlPath, html);
+  }
+
+  // 7. Pre-render blog hub
+  console.log("Pre-rendering blog route: /blog");
+  writePage(
+    "/blog",
+    preRenderPage(
+      template,
+      "/blog",
+      "Industrial Electrical & Automation Blog | JK Electricals",
+      "Read buying guides and topic resources for PLC, VFD, sensors, automation, switchgear, industrial safety, and maintenance procurement."
+    )
+  );
+
+  // 8. Update SEO for root home page
   console.log("Updating SEO for root home page...");
   const homeRoute = ROUTES.find((r) => r.path === "/");
   if (homeRoute) {
@@ -134,26 +213,24 @@ async function run() {
     fs.writeFileSync(TEMPLATE_PATH, html, "utf8");
   }
 
-  // 5. Create a 404.html fallback
+  // 9. Create a 404.html fallback
   console.log("Creating 404.html...");
   fs.copyFileSync(TEMPLATE_PATH, path.join(DIST_PUBLIC, "404.html"));
 
-  // 6. Update sitemap.xml dynamically to use clean paths
+  // 10. Update sitemap.xml dynamically to use clean paths
   const sitemapPath = path.join(DIST_PUBLIC, "sitemap.xml");
-  if (fs.existsSync(sitemapPath)) {
-    console.log("Updating sitemap.xml to use clean SEO URL paths...");
-    let sitemap = fs.readFileSync(sitemapPath, "utf8");
-    
-    // Replace ?category=xxx with /category/xxx
-    sitemap = sitemap.replace(/\?category=/g, "/category/");
-    
-    // Replace ?brand=xxx with /brand/xxx (ensure uppercase matching)
-    sitemap = sitemap.replace(/\?brand=([^<]+)/g, (match, brandName) => {
-      return `/brand/${brandName.toUpperCase()}`;
-    });
-
-    fs.writeFileSync(sitemapPath, sitemap, "utf8");
-  }
+  console.log("Writing expanded sitemap.xml...");
+  const today = new Date().toISOString().slice(0, 10);
+  const sitemapRoutes = [
+    ...ROUTES.map((route) => ({ path: route.path, priority: route.priority })),
+    ...SERVICE_LOCATIONS.map((location) => ({ path: `/electrical-supplier-${location}`, priority: "0.85" })),
+    ...PRODUCT_CATEGORIES.map((category) => ({ path: `/products/${category.slug}`, priority: "0.82" })),
+    ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}`, priority: "0.78" })),
+  ];
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes
+    .map((route) => `  <url>\n    <loc>${SITE_URL}${route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${route.priority}</priority>\n  </url>`)
+    .join("\n")}\n</urlset>\n`;
+  fs.writeFileSync(sitemapPath, sitemap, "utf8");
 
   console.log("Pre-rendering complete successfully!");
 }

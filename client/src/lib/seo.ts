@@ -132,6 +132,63 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>): 
   };
 }
 
+export function faqSchema(items: Array<{ question: string; answer: string }>): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function productSchema(name: string, description: string, path: string, brands: string[] = []): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description,
+    category: "Industrial Electrical Products",
+    url: absoluteUrl(path),
+    image: SITE_OG_IMAGE,
+    brand: brands.map((brand) => ({
+      "@type": "Brand",
+      name: brand,
+    })),
+    offers: {
+      "@type": "AggregateOffer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "INR",
+      seller: {
+        "@id": businessId,
+      },
+    },
+  };
+}
+
+export function localServiceSchema(locationName: string, path: string, description: string): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Industrial electrical and automation supply in ${locationName}`,
+    description,
+    areaServed: {
+      "@type": "Place",
+      name: locationName,
+    },
+    provider: {
+      "@id": businessId,
+    },
+    serviceType: "Industrial Electrical & Automation Solutions Supplier",
+    url: absoluteUrl(path),
+  };
+}
+
 export function productCatalogSchema(): JsonLd {
   return {
     "@context": "https://schema.org",
