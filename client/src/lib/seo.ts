@@ -27,7 +27,7 @@ const postalAddress = {
 export function localBusinessSchema(): JsonLd {
   return {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "Store"],
+    "@type": "ElectricalSupplyStore",
     "@id": businessId,
     name: COMPANY_INFO.name,
     alternateName: SITE_NAME,

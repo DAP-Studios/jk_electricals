@@ -4,6 +4,7 @@ import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Seo from "@/components/Seo";
 import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import { COMPANY_INFO } from "@/const";
 import { useEffect } from "react";
 
 export default function ContactPage() {
@@ -57,8 +58,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-[#000080] mb-2 uppercase tracking-wide text-sm">Warehouse & Office</h3>
                     <p className="text-[#475569]">
-                      Industrial Area, Vapi GIDC,<br />
-                      Vapi, Gujarat 396191
+                      {COMPANY_INFO.address.street},<br />
+                      {COMPANY_INFO.address.area},<br />
+                      {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} {COMPANY_INFO.address.zip}
                     </p>
                   </div>
                   <div>

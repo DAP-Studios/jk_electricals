@@ -3,6 +3,29 @@ Allow: /
 Disallow: /demo/
 Disallow: /__manus__/
 
+# Major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# AI crawlers / assistants
 User-agent: GPTBot
 Allow: /
 
@@ -19,6 +42,9 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://jkelectricalsvapi.in/sitemap.xml

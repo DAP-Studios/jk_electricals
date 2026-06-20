@@ -89,7 +89,9 @@ function HomeAbout() {
           <div className="aspect-[4/5] rounded-[3rem] overflow-hidden bg-slate-100 relative group shadow-2xl shadow-slate-900/5">
             <img
               src={infosImage}
-              alt="JK Electricals industrial supply overview"
+              alt="JK Electricals industrial supply overview and warehouse office in Vapi"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#000613]/75 via-transparent to-transparent" />
@@ -235,7 +237,9 @@ function PageAbout() {
             <div className="aspect-[4/5] relative">
               <img
                 src={jayeshImage}
-                alt={COMPANY_INFO.contactPerson}
+                alt={`${COMPANY_INFO.contactPerson} - Owner and Managing Director of JK Electricals Vapi`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#000613]/80 via-transparent to-transparent" />

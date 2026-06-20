@@ -144,12 +144,14 @@ style={{
                 {COMPANY_INFO.contact.email}
               </a>
 
-              <div className="flex items-center gap-3 text-white/70">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
+              <div className="flex items-start gap-3 text-white/70">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 mt-1 flex-shrink-0">
                   <MapPin size={15} />
                 </span>
-                <span>
-                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state}
+                <span className="leading-relaxed">
+                  {COMPANY_INFO.address.street},<br />
+                  {COMPANY_INFO.address.area},<br />
+                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} {COMPANY_INFO.address.zip}
                 </span>
               </div>
             </div>
