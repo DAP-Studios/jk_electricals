@@ -129,6 +129,19 @@ export function organizationSummarySchema(summary: string, topics: string[]): Js
   };
 }
 
+export function itemListSchema(name: string, items: string[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item,
+    })),
+  };
+}
+
 export function webPageSchema(path: string, title: string, description: string, pageType = "WebPage"): JsonLd {
   const url = absoluteUrl(path);
 

@@ -89,11 +89,11 @@ const normalizeKey = (s: string) =>
     .replace(/^-+|-+$/g, "");
 
 export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
-
   "automation-systems": {
     [normalizeKey("VFD Drives")]: vfdImage,
     [normalizeKey("HMI Interfaces")]: hmiImage,
     [normalizeKey("PLC Systems")]: automationProductImage,
+    [normalizeKey("SCADA Systems")]: automationProductImage,
   },
   "industrial-cables": {
     [normalizeKey("Armoured Alum/Copper")]: armourCablesImage,
@@ -150,6 +150,7 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
   "industrial-fans": {
     [normalizeKey("Axial & Panel Fans")]: axialFanImage,
     [normalizeKey("Heavy Duty Pedestal")]: heavyDutyAdjustFanImage,
+    [normalizeKey("Centrifugal Blowers")]: fansProductImage,
     [normalizeKey("Panel Fans")]: panelFansImage,
     [normalizeKey("Pedestrian")]: pedestrianFanImage,
     [normalizeKey("Wall Fan")]: wallFanImage,
@@ -167,6 +168,7 @@ export function getProductImage(categorySlug: string, componentName: string, fal
   const key = normalizeKey(componentName);
   return cat[key] ?? fallback;
 }
+
 /* JK Electricals - Business Data */
 
 export type ProductCategory = {
@@ -218,42 +220,6 @@ export const PARTNER_BRANDS = [
   "KEI",
 ];
 
-// Added proper 'categories' export for Home carousel
-// export const categories = [
-//   {
-//     id: 1,
-//     slug: "industrial-cables",
-//     title: "Industrial Cables",
-//     description: "Armoured Alum/Copper, HT Cables, Multi-Core Flex, Solar & Thermocouple",
-//     icon: "Zap",
-//     image: wiresImage
-//   },
-//   {
-//     id: 2,
-//     slug: "switchgear-protection",
-//     title: "Switchgear Protection",
-//     description: "MCB, RCCB, MCCB, MPCB, Power Contactors, Thermal Overload Relays",
-//     icon: "Shield",
-//     image: switchgearImage
-//   },
-//   {
-//     id: 3,
-//     slug: "automation-systems",
-//     title: "Automation Systems",
-//     description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
-//     icon: "Activity",
-//     image: automationImage
-//   },
-//   {
-//     id: 4,
-//     slug: "industrial-lighting",
-//     title: "Industrial Lighting",
-//     description: "Highbay Lights, Flood & Street Lights, Poles & High Mast",
-//     icon: "Home",
-//     image: lightsImage
-//   }
-// ];
-
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   {
     id: 1,
@@ -300,14 +266,14 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Process Controllers",
     slug: "process-controllers",
     description: "PID/Temp Controllers, Humidity/Cooling Control, Indicators & Timers",
-    brands: ["Selec", "Multispan", "Autonics", "Omron" ,"Radix"],
+    brands: ["Selec", "Multispan", "Autonics", "Omron", "Radix"],
     image: controllerImage,
   },
   {
     id: 7,
     name: "Industrial Sensors",
     slug: "industrial-sensors",
-    description: "Proximity & Capacitive, Photoelectric, Thermocouple & Water Level",
+    description: "Proximity & Capacitive, Photoelectric, Thermocouple, Water Level",
     brands: ["Omron", "Autonics", "Pepperl+Fuchs"],
     image: sensorImage,
   },
@@ -380,5 +346,5 @@ export const stats = [
   { label: "Products", value: "1200+" },
   { label: "Clients", value: "500+" },
   { label: "Brands", value: "25+" },
-  { label: "Support", value: "24/7" }
+  { label: "Support", value: "24/7" },
 ];

@@ -7,8 +7,18 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BrandLogoCarousel from "@/components/BrandLogoCarousel";
+import HomeSeoContent from "@/components/HomeSeoContent";
 import { COMPANY_INFO } from "@/const";
-import { breadcrumbSchema, localBusinessSchema, organizationSchema, organizationSummarySchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import {
+  breadcrumbSchema,
+  itemListSchema,
+  localBusinessSchema,
+  organizationSchema,
+  organizationSummarySchema,
+  routeByPath,
+  webPageSchema,
+  websiteSchema,
+} from "@/lib/seo";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -30,9 +40,31 @@ export default function Home() {
           websiteSchema(),
           webPageSchema("/", route.title, route.description),
           organizationSummarySchema(
-            "JK Electricals Vapi is an authorized industrial electrical distributor serving factories, contractors, and procurement teams in Vapi and nearby Gujarat industrial hubs.",
-            ["Industrial electrical distribution", "Authorized brand supply", "Vapi GIDC procurement"]
+            "JK Electricals Vapi is an authorized industrial electrical and automation supplier serving factories, contractors, panel builders, OEMs, and procurement teams in Vapi, Vapi GIDC, Silvassa, Daman, Sarigam, Valsad, and South Gujarat.",
+            [
+              "Industrial electrical supplier Vapi",
+              "Industrial automation supplier Vapi",
+              "Switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting, and panel accessories",
+              "Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI, Legrand, Autonics, Mitsubishi, Philips",
+              "Vapi GIDC industrial procurement",
+            ]
           ),
+          itemListSchema("Primary industrial electrical supply keywords", [
+            "JK Electricals Vapi",
+            "electrical supplier Vapi",
+            "industrial electrical supplier Vapi",
+            "industrial automation supplier Vapi",
+            "switchgear supplier Vapi",
+            "PLC supplier Vapi",
+            "VFD supplier Vapi",
+            "industrial sensor supplier Vapi",
+            "process controller supplier Vapi",
+            "Siemens dealer Vapi",
+            "Schneider dealer Vapi",
+            "Polycab cable dealer Vapi",
+            "electrical supplier Silvassa",
+            "electrical supplier Daman",
+          ]),
           breadcrumbSchema([{ name: "Home", path: "/" }]),
         ]}
       />
@@ -140,6 +172,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <HomeSeoContent />
 
         {/* Section 5: Contact (Dynamic Reveal) */}
         <section className="relative w-full py-0 bg-white">
