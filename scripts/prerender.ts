@@ -45,6 +45,7 @@ const SERVICE_LOCATIONS = [
   "daman",
   "sarigam",
   "umbergaon",
+  "pardi",
   "valsad",
   "ankleshwar",
   "bharuch",
@@ -65,6 +66,22 @@ const AUTHORITY_BRANDS = [
   "legrand",
   "autonics",
   "philips",
+  "crompton",
+  "invt",
+  "lauritz-knudsen-lt",
+  "chint",
+  "selec",
+  "multispan",
+  "radix",
+  "pepperl-fuchs",
+  "hindustan",
+  "secure",
+  "elmex",
+  "wipro",
+  "bajaj",
+  "havells",
+  "almonard",
+  "rexnord",
 ];
 
 const RESOURCE_GUIDES = [
@@ -147,8 +164,8 @@ async function run() {
   for (const cat of PRODUCT_CATEGORIES) {
     const urlPath = `/products/category/${cat.slug}`;
     console.log(`Pre-rendering category route: ${urlPath}`);
-    const title = `${cat.name} Supplier in Vapi | JK Electricals`;
-    const description = `Find ${cat.name.toLowerCase()} dealers, suppliers, and sellers in Vapi. JK Electricals supplies ${cat.description.toLowerCase()} from trusted brands.`;
+    const title = `${cat.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+    const description = `Find ${cat.name.toLowerCase()} dealers, distributors, suppliers, stockists, and sellers in Vapi. JK Electricals supplies ${cat.description.toLowerCase()} from trusted brands.`;
     const html = preRenderPage(template, urlPath, title, description);
     writePage(urlPath, html);
   }
@@ -158,8 +175,8 @@ async function run() {
     const encodedBrand = encodeURIComponent(brand.toUpperCase());
     const urlPath = `/products/brand/${encodedBrand}`;
     console.log(`Pre-rendering brand route: ${urlPath}`);
-    const title = `${brand} Authorized Dealer & Supplier in Vapi | JK Electricals`;
-    const description = `Find ${brand} authorized dealer, supplier, seller, and industrial electrical product support from JK Electricals Vapi for genuine procurement in Gujarat.`;
+    const title = `${brand} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+    const description = `Find ${brand} dealer, distributor, supplier, stockist, reseller, and industrial electrical product support from JK Electricals Vapi for genuine procurement in Gujarat.`;
     const html = preRenderPage(template, urlPath, title, description);
     
     // Write to both decoded and encoded paths for server lookup safety
@@ -173,8 +190,8 @@ async function run() {
   for (const cat of PRODUCT_CATEGORIES) {
     const urlPath = `/products/${cat.slug}`;
     console.log(`Pre-rendering clean category route: ${urlPath}`);
-    const title = `${cat.name} Supplier in Vapi | JK Electricals`;
-    const description = `Source ${cat.name.toLowerCase()} in Vapi for industrial projects, maintenance, automation panels, and factory procurement from JK Electricals.`;
+    const title = `${cat.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+    const description = `Source ${cat.name.toLowerCase()} in Vapi, Daman, Silvassa, Valsad, Pardi, and South Gujarat for industrial projects, maintenance, automation panels, and factory procurement from JK Electricals.`;
     const html = preRenderPage(template, urlPath, title, description);
     writePage(urlPath, html);
   }
@@ -184,7 +201,7 @@ async function run() {
     const locationName = titleCaseSlug(location);
     const urlPath = `/electrical-supplier-${location}`;
     console.log(`Pre-rendering location route: ${urlPath}`);
-    const title = `Industrial Electrical Supplier in ${locationName} | JK Electricals`;
+    const title = `Industrial Electrical & Automation Supplier in ${locationName} | JK Electricals`;
     const description = `JK Electricals supplies switchgear, PLC, VFD, sensors, process controllers, cables, motors, and industrial automation products for ${locationName} manufacturers.`;
     const html = preRenderPage(template, urlPath, title, description);
     writePage(urlPath, html);
@@ -195,8 +212,8 @@ async function run() {
     const brandName = titleCaseSlug(brand).replace("Rr", "RR").replace("Abb", "ABB").replace("Kei", "KEI");
     const urlPath = `/brands/${brand}`;
     console.log(`Pre-rendering brand authority route: ${urlPath}`);
-    const title = `${brandName} Dealer & Supplier in Vapi | JK Electricals`;
-    const description = `Request ${brandName} industrial electrical products in Vapi from JK Electricals for factory procurement, maintenance, automation, and project requirements.`;
+    const title = `${brandName} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+    const description = `Request ${brandName} products from JK Electricals Vapi for authorized dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
     const html = preRenderPage(template, urlPath, title, description);
     writePage(urlPath, html);
   }

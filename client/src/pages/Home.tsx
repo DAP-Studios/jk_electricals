@@ -7,10 +7,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BrandLogoCarousel from "@/components/BrandLogoCarousel";
-import HomeSeoContent from "@/components/HomeSeoContent";
 import { COMPANY_INFO } from "@/const";
 import {
   breadcrumbSchema,
+  defaultPageFaqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   itemListSchema,
   localBusinessSchema,
   organizationSchema,
@@ -39,6 +41,8 @@ export default function Home() {
           organizationSchema(),
           websiteSchema(),
           webPageSchema("/", route.title, route.description),
+          imageObjectSchema("JK Electricals Vapi industrial electrical and automation supply"),
+          internalLinkGraphSchema(),
           organizationSummarySchema(
             "JK Electricals Vapi is an authorized industrial electrical and automation supplier serving factories, contractors, panel builders, OEMs, and procurement teams in Vapi, Vapi GIDC, Silvassa, Daman, Sarigam, Valsad, and South Gujarat.",
             [
@@ -49,7 +53,7 @@ export default function Home() {
               "Vapi GIDC industrial procurement",
             ]
           ),
-          itemListSchema("Primary industrial electrical supply keywords", [
+          itemListSchema("Industrial buyer intents supported by JK Electricals", [
             "JK Electricals Vapi",
             "electrical supplier Vapi",
             "industrial electrical supplier Vapi",
@@ -65,6 +69,7 @@ export default function Home() {
             "electrical supplier Silvassa",
             "electrical supplier Daman",
           ]),
+          defaultPageFaqSchema("industrial electrical and automation supply"),
           breadcrumbSchema([{ name: "Home", path: "/" }]),
         ]}
       />
@@ -145,7 +150,7 @@ export default function Home() {
         <section className="relative w-full bg-slate-50 py-16 md:py-20">
           <div className="container">
             <div className="max-w-5xl">
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">AI Search Ready</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">Supply Overview</p>
               <h2 className="mt-3 text-3xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">
                 What JK Electricals Vapi Supplies
               </h2>
@@ -172,8 +177,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <HomeSeoContent />
 
         {/* Section 5: Contact (Dynamic Reveal) */}
         <section className="relative w-full py-0 bg-white">

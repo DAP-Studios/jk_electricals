@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import Seo from "@/components/Seo";
-import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import { breadcrumbSchema, defaultPageFaqSchema, imageObjectSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { COMPANY_INFO } from "@/const";
 import { useEffect } from "react";
 
@@ -24,6 +24,8 @@ export default function ContactPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema("/contact", route.title, route.description, "ContactPage"),
+          imageObjectSchema("JK Electricals Vapi contact details and location"),
+          defaultPageFaqSchema("industrial electrical quotation support"),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Contact", path: "/contact" },

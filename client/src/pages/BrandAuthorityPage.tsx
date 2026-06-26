@@ -7,7 +7,10 @@ import { PRODUCT_CATEGORIES } from "@/const";
 import { getBrandBySlug, SERVICE_LOCATIONS } from "@/lib/seoContent";
 import {
   breadcrumbSchema,
+  brandRelationshipSchema,
   faqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   localBusinessSchema,
   productSchema,
   webPageSchema,
@@ -19,24 +22,28 @@ export default function BrandAuthorityPage() {
   const slug = path.replace("/brands/", "");
   const brand = getBrandBySlug(slug);
   const pagePath = `/brands/${brand.slug}`;
-  const title = `${brand.name} Dealer & Supplier in Vapi | JK Electricals`;
-  const description = `Request ${brand.name} industrial electrical products in Vapi from JK Electricals. Supply support for ${brand.focus.join(", ")} and related factory procurement.`;
+  const title = `${brand.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+  const description = `Request ${brand.name} products from JK Electricals Vapi for authorized dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
   const relatedCategories = PRODUCT_CATEGORIES.filter((category) =>
     category.brands.some((item) => item.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase())) ||
     brand.focus.some((focus) => category.description.toLowerCase().includes(focus.split(" ")[0].toLowerCase())),
   ).slice(0, 4);
   const faqs = [
     {
-      question: `Does JK Electricals supply ${brand.name} products in Vapi?`,
-      answer: `Yes. JK Electricals supports inquiries for ${brand.name} products used in industrial electrical, automation, panel, and maintenance applications.`,
+      question: `Where can I buy ${brand.name} products in Vapi?`,
+      answer: `Industrial buyers can contact JK Electricals Vapi for ${brand.name} product inquiries, including ${brand.focus.join(", ")} for factories, panel builders, OEMs, contractors, and maintenance teams.`,
     },
     {
-      question: `Which ${brand.name} products can I inquire about?`,
-      answer: `Common inquiries include ${brand.focus.join(", ")}. Share model numbers, ratings, quantities, and application details for quotation support.`,
+      question: `Is JK Electricals a ${brand.name} dealer, distributor, supplier, stockist, or reseller?`,
+      answer: `JK Electricals supports commercial procurement inquiries for ${brand.name} products as an industrial electrical and automation supplier. Buyers should confirm model, rating, quantity, application, and availability before ordering.`,
     },
     {
-      question: `Can JK Electricals support ${brand.name} requirements outside Vapi?`,
-      answer: "Yes. JK Electricals serves Vapi and nearby industrial hubs including Silvassa, Daman, Sarigam, Valsad, Ankleshwar, Bharuch, Surat, and Dahej.",
+      question: `Can I request ${brand.name} products for Daman, Silvassa, Valsad, or South Gujarat?`,
+      answer: `Yes. JK Electricals serves Vapi, GIDC Vapi, Daman, Silvassa, Valsad, Umbergaon, Sarigam, Pardi, and nearby South Gujarat industrial regions.`,
+    },
+    {
+      question: `What details help JK Electricals quote ${brand.name} products faster?`,
+      answer: "Share the product name, model number, electrical rating, quantity, panel or machine application, preferred delivery timeline, and photos of existing equipment if this is a replacement.",
     },
   ];
 
@@ -54,7 +61,10 @@ export default function BrandAuthorityPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(pagePath, title, description, "CollectionPage"),
+          imageObjectSchema(`${brand.name} industrial products supplied by JK Electricals Vapi`),
+          brandRelationshipSchema(brand.name, brand.slug, brand.focus),
           productSchema(`${brand.name} industrial electrical products`, description, pagePath, [brand.name]),
+          internalLinkGraphSchema(),
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -67,13 +77,12 @@ export default function BrandAuthorityPage() {
       <main id="main-content">
         <section className="bg-[#000613] px-4 pt-32 pb-16 text-white md:pt-40 md:pb-24">
           <div className="container">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Brand Authority</p>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Industrial Brand Supply</p>
             <h1 className="mt-4 max-w-5xl text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-6xl">
-              {brand.name} Dealer & Supplier in Vapi
+              {brand.name} Dealer, Distributor & Supplier in Vapi
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
-              JK Electricals supports industrial buyers searching for {brand.name} products in Vapi, including {brand.focus.join(", ")}.
-              The page helps procurement teams connect brand intent with category pages, service areas, and inquiry paths.
+              JK Electricals supports industrial buyers searching for {brand.name} products in Vapi, including {brand.focus.join(", ")}. The page connects brand requirements with related categories, nearby service areas, and practical inquiry paths for genuine product sourcing.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://wa.me/917383095063" className="rounded bg-[#00a896] px-6 py-3 text-sm font-black uppercase tracking-widest text-white">
@@ -91,10 +100,10 @@ export default function BrandAuthorityPage() {
             <article className="prose prose-slate max-w-none">
               <h2>{brand.name} products for industrial buyers</h2>
               <p>
-                {brand.name} is commonly requested by maintenance engineers, panel builders, OEM teams, and project buyers who
-                need dependable industrial electrical and automation products. JK Electricals helps customers identify suitable
-                product families, confirm technical requirements, and request quotations based on model, rating, quantity, and
-                application.
+                {brand.name} is commonly requested by maintenance engineers, panel builders, OEM teams, contractors, and project
+                buyers who need dependable industrial electrical and automation products. JK Electricals helps customers identify
+                suitable product families, confirm technical requirements, and request quotations based on model, rating,
+                quantity, brand preference, and application.
               </p>
               <p>
                 Typical requirements include {brand.focus.join(", ")} for control panels, machinery upgrades, utility systems,
@@ -108,6 +117,13 @@ export default function BrandAuthorityPage() {
                 workshops, commercial infrastructure, warehouse utilities, process plants, and machine automation projects. For
                 urgent replacement or planned procurement, customers should share photos, existing model codes, electrical ratings,
                 and load/application information to speed up matching.
+              </p>
+              <h3>Commercial procurement support</h3>
+              <p>
+                Buyers searching for a {brand.name} dealer, distributor, supplier, stockist, reseller, OEM supplier, bulk
+                supplier, or trusted industrial supplier can use this page to reach the right quotation path. JK Electricals
+                focuses on original products, genuine products, industrial spare parts, electrical control components, automation
+                components, and factory-ready electrical equipment for Vapi and nearby industrial regions.
               </p>
             </article>
             <aside className="self-start rounded border border-slate-200 bg-slate-50 p-6">

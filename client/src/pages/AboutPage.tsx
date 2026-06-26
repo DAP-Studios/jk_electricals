@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import About from "@/components/About";
 import Seo from "@/components/Seo";
 import Hero from "@/components/Hero";
-import { breadcrumbSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
+import { breadcrumbSchema, defaultPageFaqSchema, imageObjectSchema, localBusinessSchema, routeByPath, webPageSchema, websiteSchema } from "@/lib/seo";
 import { useEffect } from "react";
 
 export default function AboutPage() {
@@ -23,6 +23,8 @@ export default function AboutPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema("/about", route.title, route.description, "AboutPage"),
+          imageObjectSchema("JK Electricals Vapi company profile and owner information"),
+          defaultPageFaqSchema("JK Electricals company background"),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "About", path: "/about" },

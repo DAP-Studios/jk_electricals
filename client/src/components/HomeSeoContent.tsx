@@ -16,7 +16,7 @@ export default function HomeSeoContent() {
     <section className="bg-white py-16 md:py-24">
       <div className="container">
         <div className="max-w-5xl">
-          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">SEO Resource</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896]">Industrial Supply Guide</p>
           <h2 className="mt-3 text-3xl font-black uppercase tracking-tight text-slate-900 md:text-5xl">
             Industrial Electrical & Automation Supplier in Vapi, Gujarat
           </h2>

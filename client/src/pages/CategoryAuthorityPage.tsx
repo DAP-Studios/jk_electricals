@@ -6,7 +6,10 @@ import Seo from "@/components/Seo";
 import { SERVICE_LOCATIONS, getCategoryBySlug } from "@/lib/seoContent";
 import {
   breadcrumbSchema,
+  categoryProductItemListSchema,
   faqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   localBusinessSchema,
   productSchema,
   webPageSchema,
@@ -28,6 +31,23 @@ const brandLinks: Record<string, string> = {
   legrand: "legrand",
   autonics: "autonics",
   philips: "philips",
+  crompton: "crompton",
+  invt: "invt",
+  "lauritz knudsen": "lauritz-knudsen-lt",
+  "l t": "lauritz-knudsen-lt",
+  chint: "chint",
+  selec: "selec",
+  multispan: "multispan",
+  radix: "radix",
+  "pepperl fuchs": "pepperl-fuchs",
+  hindustan: "hindustan",
+  secure: "secure",
+  elmex: "elmex",
+  wipro: "wipro",
+  bajaj: "bajaj",
+  havells: "havells",
+  almonard: "almonard",
+  rexnord: "rexnord",
 };
 
 function brandHref(brand: string) {
@@ -41,20 +61,25 @@ export default function CategoryAuthorityPage() {
   const slug = path.replace("/products/", "");
   const category = getCategoryBySlug(slug);
   const pagePath = `/products/${category.slug}`;
-  const title = `${category.name} Supplier in Vapi | JK Electricals`;
-  const description = `Source ${category.name.toLowerCase()} in Vapi for industrial projects, maintenance, automation panels, and factory procurement. Brands include ${category.brands.join(", ")}.`;
+  const title = `${category.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+  const description = `Source ${category.name.toLowerCase()} in Vapi, Daman, Silvassa, Valsad, Pardi, and South Gujarat for industrial projects, maintenance, OEM, bulk, panel, and factory procurement.`;
+  const productNames = category.description.split(",").map((item) => item.trim());
   const faqs = [
     {
-      question: `Does JK Electricals supply ${category.name.toLowerCase()} in Vapi?`,
-      answer: `Yes. JK Electricals supplies ${category.name.toLowerCase()} for factories, contractors, panel builders, and maintenance teams in Vapi and South Gujarat.`,
+      question: `Where can I buy ${category.name.toLowerCase()} in Vapi?`,
+      answer: `JK Electricals supplies ${category.name.toLowerCase()} for factories, contractors, panel builders, OEMs, and maintenance teams in Vapi, GIDC Vapi, and nearby South Gujarat industrial areas.`,
     },
     {
       question: `Which brands are available for ${category.name.toLowerCase()}?`,
-      answer: `Commonly requested brands include ${category.brands.join(", ")}. Availability depends on rating, model, and current stock.`,
+      answer: `Commonly requested brands include ${category.brands.join(", ")}. Availability depends on rating, model, quantity, and current stock.`,
+    },
+    {
+      question: `Can I request ${productNames[0]} or ${productNames[1] ?? category.name} for Daman, Silvassa, Valsad, or Pardi?`,
+      answer: `Yes. JK Electricals supports ${category.name.toLowerCase()} inquiries for Vapi, Daman, Silvassa, Valsad, Umbergaon, Sarigam, Pardi, and South Gujarat.`,
     },
     {
       question: `Can I request a technical quote for ${category.name.toLowerCase()}?`,
-      answer: "Yes. Share your BOQ, rating, model number, quantity, panel drawing, or application details for quotation support.",
+      answer: "Yes. Share your BOQ, rating, model number, quantity, panel drawing, machine application, brand preference, and urgency for quotation support.",
     },
   ];
 
@@ -72,7 +97,10 @@ export default function CategoryAuthorityPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(pagePath, title, description, "CollectionPage"),
+          imageObjectSchema(`${category.name} supplied by JK Electricals Vapi`, category.image, description),
           productSchema(category.name, description, pagePath, category.brands),
+          categoryProductItemListSchema(category.slug, pagePath),
+          internalLinkGraphSchema(),
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -86,9 +114,9 @@ export default function CategoryAuthorityPage() {
         <section className="bg-[#000613] px-4 pt-32 pb-16 text-white md:pt-40 md:pb-24">
           <div className="container grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Category Authority</p>
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Industrial Product Category</p>
               <h1 className="mt-4 text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-6xl">
-                {category.name} Supplier in Vapi
+                {category.name} Dealer, Distributor & Supplier in Vapi
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
                 JK Electricals supplies {category.name.toLowerCase()} for industrial buyers who need genuine components,
@@ -131,12 +159,24 @@ export default function CategoryAuthorityPage() {
                 panels or machines. For automation-related products, PLC, HMI, VFD, sensor, and controller compatibility should
                 be reviewed before finalizing make and model.
               </p>
+              <h3>Products covered in this category</h3>
+              <p>
+                This category includes {productNames.join(", ")} for industrial electrical solutions, automation components,
+                electrical control components, industrial control systems, and factory maintenance spares. Buyers can request
+                original products and genuine products based on the required make, model, rating, and application.
+              </p>
               <h2>Why source from JK Electricals</h2>
               <p>
                 JK Electricals focuses on genuine industrial products, practical product selection, local Vapi support, and
                 quotation handling for repeat procurement. Instead of treating every inquiry as a simple product sale, the team
                 supports maintenance engineers, contractors, panel builders, and purchase departments with category-level clarity
                 and brand options.
+              </p>
+              <h3>Dealer and distributor inquiry support</h3>
+              <p>
+                Procurement teams looking for an authorized dealer, authorized distributor, authorized supplier, electrical
+                wholesaler, control panel supplier, OEM supplier, bulk supplier, trusted supplier, or industrial electrical store
+                can share commercial and technical details through WhatsApp, phone, email, or the request form.
               </p>
             </article>
             <aside className="self-start rounded border border-slate-200 bg-slate-50 p-6">

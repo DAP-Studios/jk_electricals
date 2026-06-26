@@ -68,6 +68,8 @@ export const SITE_KEYWORDS = [
   "electrical supplier Daman",
   "industrial electrical supplier Daman",
   "electrical supplier Sarigam",
+  "electrical supplier Umbergaon",
+  "electrical supplier Pardi",
   "electrical supplier Valsad",
 ];
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.svg`;
@@ -80,6 +82,7 @@ export const SERVICE_AREAS = [
   "Daman",
   "Sarigam",
   "Umbergaon",
+  "Pardi",
   "Valsad",
   "Ankleshwar",
   "Bharuch",
@@ -104,9 +107,9 @@ export const ROUTES = [
   },
   {
     path: "/products",
-    title: "Industrial Electrical Products & Automation Systems in Vapi | JK Electricals",
+    title: "Industrial Electrical Products, Dealers & Automation Suppliers in Vapi | JK Electricals",
     description:
-      "Find authorized industrial electrical dealers, suppliers, and sellers for switchgear, cables, automation systems, sensors, motors, lighting, and listed brands in Vapi.",
+      "Find industrial electrical dealers, distributors, suppliers, stockists, and sellers for switchgear, cables, automation systems, sensors, motors, lighting, control panel components, and listed brands in Vapi.",
     priority: "0.9",
   },
   {

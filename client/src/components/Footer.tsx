@@ -1,5 +1,5 @@
 import { COMPANY_INFO } from "@/const";
-import { SERVICE_LOCATIONS } from "@/lib/seoContent";
+import { AUTHORITY_BRANDS, SERVICE_LOCATIONS } from "@/lib/seoContent";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import Logo from "../assets/logo.png";
@@ -73,6 +73,10 @@ style={{
               {[
                 { label: "Home", href: "/" },
                 { label: "Products", href: "/products" },
+                { label: "Switchgear", href: "/products/switchgear" },
+                { label: "Automation", href: "/products/automation-systems" },
+                { label: "Siemens", href: "/brands/siemens" },
+                { label: "Schneider Electric", href: "/brands/schneider-electric" },
                 { label: "Blog", href: "/blog" },
                 { label: "About Us", href: "/about" },
                 { label: "Contact", href: "/contact" },
@@ -115,6 +119,17 @@ style={{
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {AUTHORITY_BRANDS.slice(2, 6).map((brand) => (
+                <Link
+                  key={brand.slug}
+                  href={`/brands/${brand.slug}`}
+                  className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold text-white/55 transition hover:border-[#00a896]/50 hover:text-[#00a896]"
+                >
+                  {brand.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Contact */}

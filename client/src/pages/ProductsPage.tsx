@@ -10,8 +10,12 @@ import { useLocation } from "wouter";
 import { Search, X } from "lucide-react";
 import {
   breadcrumbSchema,
+  defaultPageFaqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   localBusinessSchema,
   organizationSummarySchema,
+  productCollectionSchema,
   productCatalogSchema,
   routeByPath,
   webPageSchema,
@@ -267,6 +271,11 @@ export default function ProductsPage() {
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get("category");
     const brandParam = params.get("brand");
+    const searchParam = params.get("q");
+
+    if (searchParam) {
+      setSearchQuery(searchParam);
+    }
 
     if (categoryParam) {
       setSelectedCategory(categoryParam);
@@ -290,15 +299,15 @@ export default function ProductsPage() {
     : null;
   
   const seoTitle = selectedBrand
-    ? `${selectedBrand} Authorized Dealer & Supplier in Vapi | JK Electricals`
+    ? `${selectedBrand} Dealer, Distributor & Supplier in Vapi | JK Electricals`
     : selectedCategoryEntry
-      ? `${selectedCategoryEntry.name} Supplier in Vapi | JK Electricals`
+      ? `${selectedCategoryEntry.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`
       : route.title;
       
   const seoDescription = selectedBrand
-    ? `Find ${selectedBrand} authorized dealer, supplier, seller, and industrial electrical product support from JK Electricals Vapi for genuine procurement in Gujarat.`
+    ? `Find ${selectedBrand} dealer, distributor, supplier, stockist, reseller, and industrial electrical product support from JK Electricals Vapi for genuine procurement in Gujarat.`
     : selectedCategoryEntry
-      ? `Find ${selectedCategoryEntry.name.toLowerCase()} dealers, suppliers, and sellers in Vapi. JK Electricals supplies ${selectedCategoryEntry.description.toLowerCase()} from trusted brands.`
+      ? `Find ${selectedCategoryEntry.name.toLowerCase()} dealers, distributors, suppliers, stockists, and sellers in Vapi. JK Electricals supplies ${selectedCategoryEntry.description.toLowerCase()} from trusted brands.`
       : route.description;
       
   const seoPath = selectedBrand
@@ -317,11 +326,15 @@ export default function ProductsPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(seoPath, seoTitle, seoDescription, "CollectionPage"),
+          imageObjectSchema("JK Electricals product catalog for industrial buyers"),
+          productCollectionSchema(seoPath, "JK Electricals industrial product collection"),
+          internalLinkGraphSchema(),
           organizationSummarySchema(
             "JK Electricals Vapi lists industrial electrical brands and product categories for buyers searching for authorized dealers, suppliers, and sellers in Vapi, Gujarat.",
             ["Authorized industrial electrical dealers", "Brand suppliers in Vapi", "Industrial product categories"]
           ),
           productCatalogSchema(),
+          defaultPageFaqSchema("industrial product sourcing"),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Products", path: "/products" },

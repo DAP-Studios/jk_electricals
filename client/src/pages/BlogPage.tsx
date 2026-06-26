@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { BLOG_TOPICS } from "@/lib/seoContent";
-import { breadcrumbSchema, localBusinessSchema, webPageSchema, websiteSchema } from "@/lib/seo";
+import { breadcrumbSchema, defaultPageFaqSchema, imageObjectSchema, itemListSchema, localBusinessSchema, webPageSchema, websiteSchema } from "@/lib/seo";
 
 export default function BlogPage() {
   const title = "Industrial Electrical & Automation Blog Topics | JK Electricals";
@@ -25,6 +25,9 @@ export default function BlogPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema("/blog", title, description, "CollectionPage"),
+          imageObjectSchema("JK Electricals industrial electrical resource center"),
+          itemListSchema("Industrial electrical resource topics", BLOG_TOPICS.slice(0, 20)),
+          defaultPageFaqSchema("industrial electrical resources"),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Blog", path: "/blog" },
@@ -35,13 +38,13 @@ export default function BlogPage() {
       <main id="main-content">
         <section className="bg-[#000613] px-4 pt-32 pb-16 text-white md:pt-40 md:pb-24">
           <div className="container">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Blog Authority System</p>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Resource Center</p>
             <h1 className="mt-4 max-w-5xl text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-6xl">
               Industrial Electrical & Automation Content Hub
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
-              The first 50 commercial-intent topics are structured around PLC, VFD, sensors, automation, switchgear, electrical
-              distribution, safety, maintenance, and South Gujarat local procurement searches.
+              Practical notes for industrial buyers comparing PLC, VFD, sensors, automation, switchgear, electrical
+              distribution, safety, maintenance, and procurement decisions.
             </p>
           </div>
         </section>

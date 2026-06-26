@@ -421,7 +421,7 @@ export default function KineticSwirlCarousel({
               <div className="relative h-full overflow-hidden rounded-[24px] border border-white/10 bg-[#09111f]">
                 <img
                   src={card.image}
-                  alt=""
+                  alt={`${card.title} industrial electrical product category`}
                   draggable={false}
                   className="absolute inset-0 h-full w-full object-cover opacity-90"
                 />

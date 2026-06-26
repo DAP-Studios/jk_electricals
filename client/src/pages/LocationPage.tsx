@@ -8,6 +8,8 @@ import { getLocationBySlug, SERVICE_LOCATIONS } from "@/lib/seoContent";
 import {
   breadcrumbSchema,
   faqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   localBusinessSchema,
   localServiceSchema,
   webPageSchema,
@@ -19,8 +21,8 @@ export default function LocationPage() {
   const slug = path.replace("/electrical-supplier-", "");
   const location = getLocationBySlug(slug);
   const pagePath = `/electrical-supplier-${location.slug}`;
-  const title = `Industrial Electrical Supplier in ${location.name} | JK Electricals`;
-  const description = `JK Electricals supplies switchgear, PLC, VFD, sensors, process controllers, cables, motors, and industrial automation products for ${location.name} manufacturers.`;
+  const title = `Industrial Electrical & Automation Supplier in ${location.name} | JK Electricals`;
+  const description = `JK Electricals supplies switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting, control panel components, and automation products for ${location.name} manufacturers.`;
   const faqs = [
     {
       question: `Does JK Electricals supply industrial electrical products in ${location.name}?`,
@@ -33,6 +35,11 @@ export default function LocationPage() {
     {
       question: `Which nearby areas are served from JK Electricals Vapi?`,
       answer: `JK Electricals serves ${location.name} and nearby industrial areas including ${location.nearby.join(", ")}.`,
+    },
+    {
+      question: `Can ${location.name} buyers request authorized brand products from JK Electricals?`,
+      answer:
+        "Yes. Buyers can inquire about Siemens, Schneider Electric, ABB, Delta, Mitsubishi, Omron, Polycab, KEI, Legrand, Autonics, Philips, Crompton, and other industrial brands depending on model and stock availability.",
     },
   ];
 
@@ -50,7 +57,9 @@ export default function LocationPage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(pagePath, title, description, "CollectionPage"),
+          imageObjectSchema(`JK Electricals industrial supply support for ${location.name}`),
           localServiceSchema(location.name, pagePath, description),
+          internalLinkGraphSchema(),
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -105,6 +114,12 @@ export default function LocationPage() {
                 HMI interfaces, VFD drives, process indicators, PID temperature controllers, proximity sensors, photoelectric
                 sensors, thermocouples, armoured cables, multi-core cables, energy meters, current transformers, highbay lights,
                 heavy duty motors, industrial fans, and heaters.
+              </p>
+              <h3>Brand and product procurement paths</h3>
+              <p>
+                {location.name} buyers can use the linked category and brand pages to compare electrical components, automation
+                components, industrial spare parts, control panel products, and factory automation products before requesting a
+                quote. This helps match the right brand, rating, and model for maintenance, OEM, bulk, or project procurement.
               </p>
             </article>
             <aside className="self-start rounded border border-slate-200 bg-slate-50 p-6">

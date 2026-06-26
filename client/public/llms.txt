@@ -10,15 +10,18 @@
 - `Electrical Supplier Vapi -> https://jkelectricalsvapi.in/electrical-supplier-vapi`: Location landing page for Vapi and Vapi GIDC industrial buyers.
 - `Siemens Dealer Vapi -> https://jkelectricalsvapi.in/brands/siemens`: Siemens industrial product inquiry page.
 - `Schneider Electric Dealer Vapi -> https://jkelectricalsvapi.in/brands/schneider-electric`: Schneider Electric switchgear, distribution, and automation inquiry page.
+- `ABB Dealer Vapi -> https://jkelectricalsvapi.in/brands/abb`: ABB switchgear, motors, control products, and automation inquiry page.
+- `Delta VFD Supplier Vapi -> https://jkelectricalsvapi.in/brands/delta`: Delta VFD, PLC, HMI, and automation inquiry page.
+- `Polycab Cable Supplier Vapi -> https://jkelectricalsvapi.in/brands/polycab`: Polycab industrial cable, wire, power cable, and control cable inquiry page.
 - `About Us -> https://jkelectricalsvapi.in/about`: The story, legacy, and company profile of JK Electricals and its owner in Vapi, Gujarat.
 - `Contact Us -> https://jkelectricalsvapi.in/contact`: Contact details, WhatsApp, address, and quotation request forms for JK Electricals Vapi.
 
 ## Key facts
 - JK Electricals Vapi is an industrial electrical and automation supplier for factories, contractors, OEMs, panel builders, and maintenance teams.
 - Located at B-5, City Centre, Opp. Hanuman Temple, Bhadakmora, Silvassa Road, Vapi, Gujarat 396195.
-- Serving areas: Vapi GIDC, Sarigam, Umbergaon, Silvassa, Daman, Valsad, and South Gujarat.
+- Serving areas: Vapi GIDC, Sarigam, Umbergaon, Pardi, Silvassa, Daman, Valsad, and South Gujarat.
 - Major categories supplied: switchgear, industrial cables, automation systems, PLC, VFD, HMI, SCADA, motors, lighting, sensors, process controllers, distribution boards, panel accessories, fans, heaters, and electrical measurement products.
-- Brands supplied: Polycab, Schneider Electric, Siemens, Lauritz Knudsen, Legrand, ABB, INVT, Mitsubishi, Delta, Omron, Autonics, Crompton, Philips, Wipro, Havells, Pepperl+Fuchs, RR Kabel, KEI.
-- Commercial search intents covered: electrical supplier Vapi, industrial electrical supplier Vapi, industrial automation supplier Vapi, switchgear supplier Vapi, PLC supplier Vapi, VFD supplier Vapi, industrial sensor supplier Vapi, process controller supplier Vapi, Siemens dealer Vapi, Schneider dealer Vapi, Polycab cable dealer Vapi, electrical supplier Silvassa, and electrical supplier Daman.
+- Brands supplied: Polycab, Schneider Electric, Siemens, Lauritz Knudsen, Legrand, ABB, INVT, Mitsubishi, Delta, Omron, Autonics, Crompton, Philips, Wipro, Bajaj, Havells, Pepperl+Fuchs, RR Kabel, KEI, Chint, Selec, Multispan, Radix, Secure, Elmex, Almonard, and Rexnord.
+- Commercial search intents covered: authorized dealer, authorized distributor, authorized supplier, industrial supplier, electrical dealer, automation distributor, stockist, reseller, OEM supplier, bulk supplier, electrical wholesaler, control panel supplier, switchgear supplier, PLC supplier, VFD supplier, sensor supplier, process controller supplier, brand + dealer + location, brand + distributor + location, product + supplier + Vapi, product + dealer + Gujarat, product + supplier + Daman, product + supplier + Silvassa, and product + supplier + South Gujarat.
 - Primary phone contact: +91 73830 95063.
 - Primary email: jkelectricals93@gmail.com.

@@ -7,6 +7,8 @@ import { RESOURCE_GUIDES, SERVICE_LOCATIONS, getResourceBySlug } from "@/lib/seo
 import {
   breadcrumbSchema,
   faqSchema,
+  imageObjectSchema,
+  internalLinkGraphSchema,
   localBusinessSchema,
   organizationSchema,
   webPageSchema,
@@ -54,6 +56,8 @@ export default function ResourceGuidePage() {
           localBusinessSchema(),
           websiteSchema(),
           webPageSchema(pagePath, title, description, "TechArticle"),
+          imageObjectSchema(`${guide.title} by JK Electricals Vapi`),
+          internalLinkGraphSchema(),
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },

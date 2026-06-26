@@ -44,6 +44,13 @@ export const SERVICE_LOCATIONS = [
     nearby: ["Vapi", "Pardi", "Atul", "Navsari"],
   },
   {
+    name: "Pardi",
+    slug: "pardi",
+    region: "Gujarat",
+    industries: ["engineering", "packaging", "textile", "food processing", "manufacturing"],
+    nearby: ["Vapi", "Valsad", "Atul", "Udvada"],
+  },
+  {
     name: "Ankleshwar",
     slug: "ankleshwar",
     region: "Gujarat",
@@ -86,6 +93,22 @@ export const AUTHORITY_BRANDS = [
   { name: "Legrand", slug: "legrand", focus: ["distribution boards", "protection", "wiring devices", "enclosures"] },
   { name: "Autonics", slug: "autonics", focus: ["sensors", "controllers", "timers", "automation"] },
   { name: "Philips", slug: "philips", focus: ["industrial lighting", "LED fixtures", "highbay lights", "flood lights"] },
+  { name: "Crompton", slug: "crompton", focus: ["motors", "industrial fans", "heavy duty pedestal fans", "ventilation"] },
+  { name: "INVT", slug: "invt", focus: ["VFD drives", "motor control", "automation", "control panels"] },
+  { name: "Lauritz Knudsen (L&T)", slug: "lauritz-knudsen-lt", focus: ["switchgear", "contactors", "protection", "distribution boards"] },
+  { name: "Chint", slug: "chint", focus: ["switchgear", "MCB", "MCCB", "electrical protection"] },
+  { name: "Selec", slug: "selec", focus: ["meters", "process controllers", "timers", "control panel components"] },
+  { name: "Multispan", slug: "multispan", focus: ["process controllers", "temperature controllers", "timers", "indicators"] },
+  { name: "Radix", slug: "radix", focus: ["temperature controllers", "process indicators", "automation components", "control systems"] },
+  { name: "Pepperl+Fuchs", slug: "pepperl-fuchs", focus: ["industrial sensors", "proximity sensors", "photoelectric sensors", "factory automation"] },
+  { name: "Hindustan", slug: "hindustan", focus: ["motors", "induction motors", "heavy duty motors", "industrial spares"] },
+  { name: "Secure", slug: "secure", focus: ["energy meters", "electrical measurement", "multifunction meters", "panel meters"] },
+  { name: "Elmex", slug: "elmex", focus: ["terminal blocks", "electrical measurement", "panel accessories", "control components"] },
+  { name: "Wipro", slug: "wipro", focus: ["industrial lighting", "LED lights", "highbay lights", "flood lights"] },
+  { name: "Bajaj", slug: "bajaj", focus: ["industrial lighting", "fans", "electrical equipment", "factory utilities"] },
+  { name: "Havells", slug: "havells", focus: ["industrial lighting", "electrical equipment", "switchgear", "factory utilities"] },
+  { name: "Almonard", slug: "almonard", focus: ["industrial fans", "heavy duty fans", "ventilation", "factory cooling"] },
+  { name: "Rexnord", slug: "rexnord", focus: ["industrial fans", "panel fans", "ventilation", "motor cooling"] },
 ] as const;
 
 export const BLOG_TOPICS = [

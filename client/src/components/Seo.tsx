@@ -40,6 +40,15 @@ function setLinkTag(rel: string, href: string) {
   element.setAttribute("href", href);
 }
 
+function setLinkTagWithAttributes(rel: string, href: string, attributes: Record<string, string>) {
+  setLinkTag(rel, href);
+  const element = document.head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+  if (!element) return;
+  Object.entries(attributes).forEach(([key, value]) => {
+    element.setAttribute(key, value);
+  });
+}
+
 function toAbsoluteUrl(value: string) {
   try {
     return new URL(value, SITE_URL).toString();
@@ -63,11 +72,15 @@ export default function Seo({
 
     document.title = fullTitle;
     setLinkTag("canonical", canonicalUrl);
+    setLinkTagWithAttributes("manifest", "/manifest.json", {});
     setMetaTag("description", description);
     setMetaTag("keywords", SITE_KEYWORDS.join(", "));
     setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
     setMetaTag("googlebot", noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
     setMetaTag("theme-color", "#000080");
+    setMetaTag("format-detection", "telephone=yes");
+    setMetaTag("application-name", SITE_NAME);
+    setMetaTag("apple-mobile-web-app-title", SITE_NAME);
 
     setMetaTag("og:type", "website", true);
     setMetaTag("og:locale", "en_IN", true);
@@ -77,6 +90,7 @@ export default function Seo({
     setMetaTag("og:url", canonicalUrl, true);
     setMetaTag("og:image", imageUrl, true);
     setMetaTag("og:image:alt", `${SITE_NAME} industrial electrical products`, true);
+    setMetaTag("og:image:type", imageUrl.endsWith(".svg") ? "image/svg+xml" : "image/png", true);
 
     setMetaTag("twitter:card", "summary_large_image");
     setMetaTag("twitter:title", fullTitle);
