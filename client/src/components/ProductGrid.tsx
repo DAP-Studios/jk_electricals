@@ -12,6 +12,7 @@ import { MessageCircle, Mail } from "lucide-react";
 type ProductGridProps = {
   selectedBrand?: string | null;
   selectedCategory?: string | null;
+  searchQuery?: string;
 };
 
 const PRODUCT_SEO_DETAILS: Record<string, { description: string; features: string[]; application: string }> = {
@@ -126,20 +127,35 @@ const ALL_PRODUCTS = PRODUCT_CATEGORIES.flatMap((category) => {
   });
 });
 
-export default function ProductGrid({ selectedBrand, selectedCategory }: ProductGridProps) {
+export default function ProductGrid({ selectedBrand, selectedCategory, searchQuery = "" }: ProductGridProps) {
   const [activeProduct, setActiveProduct] = useState<any | null>(null);
+  const normalizedSearch = searchQuery.trim().toLowerCase();
 
   const filteredProducts = ALL_PRODUCTS.filter((product) => {
     const matchesBrand = !selectedBrand || product.brands.some((b) => b.toLowerCase() === selectedBrand.toLowerCase());
     const matchesCategory = !selectedCategory || product.parentSlug === selectedCategory;
-    return matchesBrand && matchesCategory;
+    const searchableText = [
+      product.name,
+      product.parentCategory,
+      product.parentSlug,
+      product.description,
+      product.application,
+      ...product.features,
+      ...product.brands,
+    ]
+      .join(" ")
+      .toLowerCase();
+    const matchesSearch = !normalizedSearch || searchableText.includes(normalizedSearch);
+    return matchesBrand && matchesCategory && matchesSearch;
   });
 
   return (
     <div className="relative">
       <div className="mb-8 flex items-center justify-between gap-4">
         <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-900">Products</h2>
-        <span className="text-xs font-black uppercase tracking-widest text-slate-400 bg-slate-200/50 px-3 py-1 rounded-full">{filteredProducts.length} Items</span>
+        <span className="text-xs font-black uppercase tracking-widest text-slate-400 bg-slate-200/50 px-3 py-1 rounded-full">
+          {filteredProducts.length} Items
+        </span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -158,7 +174,7 @@ export default function ProductGrid({ selectedBrand, selectedCategory }: Product
         <div className="text-center text-slate-500 py-24 bg-white rounded-3xl border border-slate-100">
           <div className="text-4xl mb-4">🔍</div>
           <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">No products found</h3>
-          <p className="text-sm">Try adjusting your filters to see available industrial products.</p>
+          <p className="text-sm">Try another product, brand, or filter to see available industrial products.</p>
         </div>
       )}
 

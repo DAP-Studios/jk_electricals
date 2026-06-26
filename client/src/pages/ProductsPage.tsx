@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_CATEGORIES } from "@/const";
 import Seo from "@/components/Seo";
 import { useLocation } from "wouter";
+import { Search, X } from "lucide-react";
 import {
   breadcrumbSchema,
   localBusinessSchema,
@@ -21,6 +22,7 @@ export default function ProductsPage() {
   const route = routeByPath("/products");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const [mobileFilterOpen, setMobileFilterOpen] = useState<"brands" | "category" | null>(null);
   const [, setLocation] = useLocation();
 
@@ -68,6 +70,37 @@ export default function ProductsPage() {
       .filter((category) => category.brands.some((brand) => brand.toLowerCase() === selectedBrand.toLowerCase()))
       .map((category) => ({ name: category.name, slug: category.slug }));
   }, [categories, selectedBrand]);
+
+  function ProductSearchBar() {
+    return (
+      <div className="mb-8 rounded-3xl border border-slate-100 bg-white p-4 shadow-sm md:p-5">
+        <label htmlFor="product-search" className="mb-3 block text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+          Search Products or Brands
+        </label>
+        <div className="relative">
+          <Search className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+          <input
+            id="product-search"
+            type="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search VFD, Siemens, MCCB, sensors, Polycab..."
+            className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-12 pr-14 text-sm font-semibold text-slate-900 outline-none transition focus:border-[#00a896] focus:bg-white focus:ring-4 focus:ring-[#00a896]/10"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              aria-label="Clear product search"
+              className="absolute right-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-200 hover:text-slate-900"
+            >
+              <X className="size-4" aria-hidden="true" />
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   function BrandFilterSidebar({
     selectedBrand,
@@ -331,6 +364,8 @@ export default function ProductsPage() {
         {/* Filters + Grid Layout */}
         <section className="py-12 pb-32 md:pb-24">
           <div className="container max-w-screen-2xl px-4 md:px-8 lg:px-10">
+            <ProductSearchBar />
+
             <div className="hidden md:block">
               <div className="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start">
                 <BrandFilterSidebar
@@ -346,13 +381,21 @@ export default function ProductsPage() {
                     />
                   </div>
 
-                  <ProductGrid selectedBrand={selectedBrand} selectedCategory={selectedCategory} />
+                  <ProductGrid
+                    selectedBrand={selectedBrand}
+                    selectedCategory={selectedCategory}
+                    searchQuery={searchQuery}
+                  />
                 </div>
               </div>
             </div>
             
             <div className="md:hidden">
-              <ProductGrid selectedBrand={selectedBrand} selectedCategory={selectedCategory} />
+              <ProductGrid
+                selectedBrand={selectedBrand}
+                selectedCategory={selectedCategory}
+                searchQuery={searchQuery}
+              />
             </div>
           </div>
         </section>
