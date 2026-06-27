@@ -73,6 +73,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://jkelectricalsvapi.in/electrical-supplier-navsari</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://jkelectricalsvapi.in/electrical-supplier-ankleshwar</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -169,6 +175,36 @@
     <priority>0.82</priority>
   </url>
   <url>
+    <loc>https://jkelectricalsvapi.in/products/contactors-relays</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/products/limit-switches</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/products/flameproof-products</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/products/industrial-plugs-sockets</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/products/cable-trays-hardware</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
     <loc>https://jkelectricalsvapi.in/brands/siemens</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -229,8 +265,20 @@
     <priority>0.78</priority>
   </url>
   <url>
+    <loc>https://jkelectricalsvapi.in/brands/c-and-s-electric</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
     <loc>https://jkelectricalsvapi.in/brands/autonics</loc>
     <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/brands/panasonic</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -283,6 +331,12 @@
     <priority>0.78</priority>
   </url>
   <url>
+    <loc>https://jkelectricalsvapi.in/brands/itherm</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
     <loc>https://jkelectricalsvapi.in/brands/pepperl-fuchs</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -291,6 +345,12 @@
   <url>
     <loc>https://jkelectricalsvapi.in/brands/hindustan</loc>
     <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/brands/bharat-bijlee</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -363,6 +423,36 @@
   <url>
     <loc>https://jkelectricalsvapi.in/resources/temperature-controller-guide</loc>
     <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/resources/contactor-relay-buying-guide</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/resources/limit-switch-selection-guide</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/resources/flameproof-product-guide</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/resources/industrial-plugs-sockets-guide</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://jkelectricalsvapi.in/resources/cable-tray-hardware-guide</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.68</priority>
   </url>

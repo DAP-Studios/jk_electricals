@@ -112,6 +112,7 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
     [normalizeKey("RCCB")]: rccbMccbImage,
     [normalizeKey("MCCB")]: rccbMccbImage,
     [normalizeKey("MPCB")]: powerControllerImage,
+    [normalizeKey("DOL Starters")]: powerControllerImage,
     [normalizeKey("Thermal Overload Relays")]: thermalRelayImage,
   },
   "panel-accessories": {
@@ -131,6 +132,7 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
     [normalizeKey("Photoelectric")]: photoSensorImage,
     [normalizeKey("Thermocouple")]: thermortdSensorImage,
     [normalizeKey("Water Level")]: waterLevelerImage,
+    [normalizeKey("Limit Switches")]: proximitySensorImage,
   },
   "heavy-duty-motors": {
     [normalizeKey("Induction Motors")]: motorsProductImage,
@@ -146,6 +148,8 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
     [normalizeKey("Highbay Lights")]: lightingProductImage,
     [normalizeKey("Flood & Street Lights")]: floodlightImage,
     [normalizeKey("Poles & High Mast")]: highMastImage,
+    [normalizeKey("Industrial LED Fittings")]: lightingProductImage,
+    [normalizeKey("LED Drivers & Accessories")]: floodlightImage,
   },
   "industrial-fans": {
     [normalizeKey("Axial & Panel Fans")]: axialFanImage,
@@ -159,6 +163,36 @@ export const PRODUCT_IMAGES: Record<string, Record<string, string>> = {
     [normalizeKey("Infrared Heaters")]: irHeaterImage,
     [normalizeKey("Oil & Water Heaters")]: oilHeaterImage,
     [normalizeKey("Tubular Heaters")]: heatersProductImage,
+  },
+  "contactors-relays": {
+    [normalizeKey("Contactors")]: relaysAndBaseImage,
+    [normalizeKey("Control Relays")]: relaysAndBaseImage,
+    [normalizeKey("Relay Bases")]: relaysAndBaseImage,
+    [normalizeKey("Coils & Spare Parts")]: thermalRelayImage,
+  },
+  "limit-switches": {
+    [normalizeKey("Lever Limit Switches")]: proximitySensorImage,
+    [normalizeKey("Roller Limit Switches")]: photoSensorImage,
+    [normalizeKey("Heavy Duty Limit Switches")]: proximitySensorImage,
+    [normalizeKey("Position Switches")]: sensorsProductImage,
+  },
+  "flameproof-products": {
+    [normalizeKey("Flameproof Lights")]: floodlightImage,
+    [normalizeKey("Flameproof Push Buttons")]: switchAndPushImage,
+    [normalizeKey("Flameproof Limit Switches")]: proximitySensorImage,
+    [normalizeKey("Junction Boxes & Fittings")]: distributionBoardProductImage,
+  },
+  "industrial-plugs-sockets": {
+    [normalizeKey("Industrial Plugs")]: switchAndPushImage,
+    [normalizeKey("Industrial Sockets")]: switchAndPushImage,
+    [normalizeKey("Power Connectors")]: panelAccessoriesProductImage,
+    [normalizeKey("Weatherproof Plug Socket Sets")]: distributionBoardProductImage,
+  },
+  "cable-trays-hardware": {
+    [normalizeKey("Cable Trays")]: wiresImage,
+    [normalizeKey("Cable Glands")]: panelAccessoriesProductImage,
+    [normalizeKey("Lugs & Ferrules")]: panelAccessoriesProductImage,
+    [normalizeKey("Mounting Hardware")]: panelAccessoriesProductImage,
   },
 };
 
@@ -218,6 +252,16 @@ export const PARTNER_BRANDS = [
   "ABB",
   "LEGRAND",
   "KEI",
+  "DELTA",
+  "RR Kabel",
+  "C&S Electric",
+  "PANASONIC",
+  "ITHERM",
+  "Bharat Bijlee",
+  "SELEC",
+  "MULTISPAN",
+  "SECURE",
+  "ELMEX",
 ];
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
@@ -242,7 +286,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Switchgear",
     slug: "switchgear",
     description: "MCB, RCCB, MCCB, MPCB, Thermal Overload Relays",
-    brands: ["Siemens", "Schneider", "Lauritz Knudsen (L&T)", "Chint", "ABB"],
+    brands: ["Siemens", "Schneider", "Lauritz Knudsen (L&T)", "Chint", "ABB", "C&S Electric"],
     image: switchgearImage,
   },
   {
@@ -258,7 +302,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Automation Systems",
     slug: "automation-systems",
     description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems",
-    brands: ["Siemens", "Delta", "INVT", "Mitsubishi"],
+    brands: ["Siemens", "Delta", "INVT", "Mitsubishi", "Schneider"],
     image: automationImage,
   },
   {
@@ -266,7 +310,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Process Controllers",
     slug: "process-controllers",
     description: "PID/Temp Controllers, Humidity/Cooling Control, Indicators & Timers",
-    brands: ["Selec", "Multispan", "Autonics", "Omron", "Radix"],
+    brands: ["Selec", "Multispan", "Autonics", "Omron", "Radix", "Itherm"],
     image: controllerImage,
   },
   {
@@ -274,7 +318,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Industrial Sensors",
     slug: "industrial-sensors",
     description: "Proximity & Capacitive, Photoelectric, Thermocouple, Water Level",
-    brands: ["Omron", "Autonics", "Pepperl+Fuchs"],
+    brands: ["Omron", "Autonics", "Pepperl+Fuchs", "Panasonic"],
     image: sensorImage,
   },
   {
@@ -282,7 +326,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     name: "Heavy-Duty Motors",
     slug: "heavy-duty-motors",
     description: "Induction Motors, Servo Motors, Gear Motors",
-    brands: ["Crompton", "Hindustan", "Siemens"],
+    brands: ["Crompton", "Hindustan", "Siemens", "Bharat Bijlee"],
     image: motorImage,
   },
   {
@@ -316,6 +360,46 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Infrared Heaters, Tubular Heaters, Oil & Water Heaters",
     brands: ["Custom Heavy Duty"],
     image: heaterImage,
+  },
+  {
+    id: 13,
+    name: "Contactors & Relays",
+    slug: "contactors-relays",
+    description: "Contactors, Control Relays, Relay Bases, Coils & Spare Parts",
+    brands: ["Siemens", "Schneider", "Lauritz Knudsen (L&T)", "ABB", "Omron", "Chint"],
+    image: panelImage,
+  },
+  {
+    id: 14,
+    name: "Limit Switches",
+    slug: "limit-switches",
+    description: "Lever Limit Switches, Roller Limit Switches, Heavy Duty Limit Switches, Position Switches",
+    brands: ["Omron", "Autonics", "Pepperl+Fuchs", "Chint"],
+    image: sensorImage,
+  },
+  {
+    id: 15,
+    name: "Flameproof Products",
+    slug: "flameproof-products",
+    description: "Flameproof Lights, Flameproof Push Buttons, Flameproof Limit Switches, Junction Boxes & Fittings",
+    brands: ["Philips", "Wipro", "Bajaj", "Havells", "Premium Industrial Grade"],
+    image: lightsImage,
+  },
+  {
+    id: 16,
+    name: "Industrial Plugs & Sockets",
+    slug: "industrial-plugs-sockets",
+    description: "Industrial Plugs, Industrial Sockets, Power Connectors, Weatherproof Plug Socket Sets",
+    brands: ["Legrand", "Schneider", "Lauritz Knudsen (L&T)", "Elmex"],
+    image: panelImage,
+  },
+  {
+    id: 17,
+    name: "Cable Trays & Hardware",
+    slug: "cable-trays-hardware",
+    description: "Cable Trays, Cable Glands, Lugs & Ferrules, Mounting Hardware",
+    brands: ["Premium Industrial Grade", "Elmex", "Polycab", "RR"],
+    image: wiresImage,
   },
 ];
 

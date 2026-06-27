@@ -1,6 +1,17 @@
 import { COMPANY_INFO, PARTNER_BRANDS, PRODUCT_CATEGORIES } from "@/const";
 import { AUTHORITY_BRANDS, SERVICE_LOCATIONS } from "@/lib/seoContent";
-import { ROUTES, SERVICE_AREAS, SITE_DESCRIPTION, SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
+import {
+  AI_SEARCH_TOPICS,
+  COMMERCIAL_INTENTS,
+  INDUSTRIES_SERVED,
+  ROUTES,
+  SERVICE_AREAS,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_OG_IMAGE,
+  SITE_URL,
+} from "@/lib/site";
 
 export type JsonLd = Record<string, unknown>;
 
@@ -36,6 +47,8 @@ export function localBusinessSchema(): JsonLd {
     image: SITE_OG_IMAGE,
     logo: SITE_OG_IMAGE,
     description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
+    knowsAbout: AI_SEARCH_TOPICS,
     sameAs: Object.values(COMPANY_INFO.profiles),
     telephone: COMPANY_INFO.contact.primary,
     email: COMPANY_INFO.contact.email,
@@ -52,6 +65,15 @@ export function localBusinessSchema(): JsonLd {
     areaServed: SERVICE_AREAS.map((name) => ({
       "@type": "Place",
       name,
+    })),
+    audience: INDUSTRIES_SERVED.map((industry) => ({
+      "@type": "BusinessAudience",
+      audienceType: industry,
+    })),
+    additionalProperty: COMMERCIAL_INTENTS.map((intent) => ({
+      "@type": "PropertyValue",
+      propertyID: "commercialIntent",
+      value: intent,
     })),
     brand: PARTNER_BRANDS.map((name) => ({
       "@type": "Brand",
@@ -89,6 +111,8 @@ export function organizationSchema(): JsonLd {
     logo: SITE_OG_IMAGE,
     image: SITE_OG_IMAGE,
     description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
+    knowsAbout: AI_SEARCH_TOPICS,
     sameAs: Object.values(COMPANY_INFO.profiles),
     email: COMPANY_INFO.contact.email,
     telephone: COMPANY_INFO.contact.primary,
@@ -117,6 +141,11 @@ export function websiteSchema(): JsonLd {
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
+    about: AI_SEARCH_TOPICS.map((topic) => ({
+      "@type": "Thing",
+      name: topic,
+    })),
     publisher: {
       "@id": businessId,
     },

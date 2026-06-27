@@ -44,6 +44,13 @@ export const SERVICE_LOCATIONS = [
     nearby: ["Vapi", "Pardi", "Atul", "Navsari"],
   },
   {
+    name: "Navsari",
+    slug: "navsari",
+    region: "Gujarat",
+    industries: ["manufacturing", "food processing", "textile", "commercial infrastructure", "engineering"],
+    nearby: ["Valsad", "Surat", "Pardi", "Vapi"],
+  },
+  {
     name: "Pardi",
     slug: "pardi",
     region: "Gujarat",
@@ -91,7 +98,9 @@ export const AUTHORITY_BRANDS = [
   { name: "RR Kabel", slug: "rr-kabel", focus: ["industrial cables", "flexible wires", "control cables", "power cables"] },
   { name: "KEI", slug: "kei", focus: ["HT cables", "LT cables", "control cables", "industrial wiring"] },
   { name: "Legrand", slug: "legrand", focus: ["distribution boards", "protection", "wiring devices", "enclosures"] },
+  { name: "C&S Electric", slug: "c-and-s-electric", focus: ["switchgear", "protection", "contactors", "distribution products"] },
   { name: "Autonics", slug: "autonics", focus: ["sensors", "controllers", "timers", "automation"] },
+  { name: "Panasonic", slug: "panasonic", focus: ["industrial sensors", "photoelectric sensors", "automation components", "factory automation"] },
   { name: "Philips", slug: "philips", focus: ["industrial lighting", "LED fixtures", "highbay lights", "flood lights"] },
   { name: "Crompton", slug: "crompton", focus: ["motors", "industrial fans", "heavy duty pedestal fans", "ventilation"] },
   { name: "INVT", slug: "invt", focus: ["VFD drives", "motor control", "automation", "control panels"] },
@@ -100,8 +109,10 @@ export const AUTHORITY_BRANDS = [
   { name: "Selec", slug: "selec", focus: ["meters", "process controllers", "timers", "control panel components"] },
   { name: "Multispan", slug: "multispan", focus: ["process controllers", "temperature controllers", "timers", "indicators"] },
   { name: "Radix", slug: "radix", focus: ["temperature controllers", "process indicators", "automation components", "control systems"] },
+  { name: "Itherm", slug: "itherm", focus: ["temperature controllers", "process control", "timers", "industrial indicators"] },
   { name: "Pepperl+Fuchs", slug: "pepperl-fuchs", focus: ["industrial sensors", "proximity sensors", "photoelectric sensors", "factory automation"] },
   { name: "Hindustan", slug: "hindustan", focus: ["motors", "induction motors", "heavy duty motors", "industrial spares"] },
+  { name: "Bharat Bijlee", slug: "bharat-bijlee", focus: ["motors", "induction motors", "three phase motors", "industrial drives"] },
   { name: "Secure", slug: "secure", focus: ["energy meters", "electrical measurement", "multifunction meters", "panel meters"] },
   { name: "Elmex", slug: "elmex", focus: ["terminal blocks", "electrical measurement", "panel accessories", "control components"] },
   { name: "Wipro", slug: "wipro", focus: ["industrial lighting", "LED lights", "highbay lights", "flood lights"] },
@@ -233,6 +244,76 @@ export const RESOURCE_GUIDES = [
       "Temperature controller selection depends on input type, control output, panel cutout, setpoint range, alarm needs, relay or SSR output, and process stability.",
       "Chemical, packaging, plastic, textile, heater, and oven applications may need different controller features, sensor compatibility, and enclosure planning.",
       "Buyers should share controller model numbers, sensor type, wiring photos, and process details to match replacement units and avoid commissioning delays.",
+    ],
+  },
+  {
+    title: "Contactor & Relay Buying Guide",
+    slug: "contactor-relay-buying-guide",
+    keyword: "contactor and relay buying guide for industrial panels",
+    categorySlug: "contactors-relays",
+    brandSlug: "lauritz-knudsen-lt",
+    summary:
+      "A procurement guide for contactors, control relays, relay bases, coils, overload relays, and spare parts used in motor starters and control panels.",
+    sections: [
+      "Start with coil voltage, contact rating, pole count, auxiliary contact needs, mounting method, and load type before matching a contactor or relay.",
+      "Panel builders and maintenance teams should verify existing model numbers, wiring photos, and overload relay coordination so replacements fit without rework.",
+      "Local availability matters for Vapi, Daman, Silvassa, and Valsad plants because contactor or relay failure can stop motors, conveyors, pumps, and machine controls.",
+    ],
+  },
+  {
+    title: "Limit Switch Selection Guide",
+    slug: "limit-switch-selection-guide",
+    keyword: "limit switch selection guide for industrial machines",
+    categorySlug: "limit-switches",
+    brandSlug: "omron",
+    summary:
+      "A machine-maintenance guide for selecting lever limit switches, roller limit switches, heavy-duty limit switches, and position switches.",
+    sections: [
+      "Limit switch selection depends on actuator style, travel direction, operating force, enclosure rating, contact configuration, and the mechanical movement being detected.",
+      "Heavy-duty machines should use switches that can handle vibration, dust, oil, coolant, and repeated actuation in production environments.",
+      "Share photos of the installed switch, wiring, and mounting position when requesting a replacement so the supplier can match the body, lever, and contact arrangement.",
+    ],
+  },
+  {
+    title: "Flameproof Product Guide",
+    slug: "flameproof-product-guide",
+    keyword: "flameproof electrical product guide for industrial areas",
+    categorySlug: "flameproof-products",
+    brandSlug: "philips",
+    summary:
+      "A guide for selecting flameproof lights, push buttons, limit switches, junction boxes, and fittings for industrial environments that need rugged electrical products.",
+    sections: [
+      "Flameproof product selection should consider the area condition, enclosure type, cable entry, mounting location, operating temperature, and inspection requirements.",
+      "Chemical, solvent, packaging, and process plants should avoid generic substitutions and confirm suitability before installing electrical products in demanding zones.",
+      "For quotation support, provide the product type, quantity, site application, enclosure preference, and any existing model details so procurement can move faster.",
+    ],
+  },
+  {
+    title: "Industrial Plugs & Sockets Guide",
+    slug: "industrial-plugs-sockets-guide",
+    keyword: "industrial plugs and sockets buying guide",
+    categorySlug: "industrial-plugs-sockets",
+    brandSlug: "legrand",
+    summary:
+      "A practical guide for choosing industrial plugs, sockets, connectors, and weatherproof plug-socket sets for machines, utilities, and maintenance use.",
+    sections: [
+      "Check current rating, voltage, pin configuration, phase requirement, IP rating, mounting style, and cable size before selecting plugs or sockets.",
+      "Factories should match plug and socket hardware to equipment load, movement, washdown exposure, and maintenance practices to reduce unsafe temporary wiring.",
+      "Local sourcing helps maintenance teams replace damaged connectors quickly and standardize plug-socket systems across machines and utility points.",
+    ],
+  },
+  {
+    title: "Cable Tray & Hardware Guide",
+    slug: "cable-tray-hardware-guide",
+    keyword: "cable tray and electrical hardware guide for factories",
+    categorySlug: "cable-trays-hardware",
+    brandSlug: "polycab",
+    summary:
+      "A guide for planning cable trays, cable glands, lugs, ferrules, mounting hardware, and electrical installation accessories for industrial projects.",
+    sections: [
+      "Cable-routing hardware should be planned around cable load, bend radius, support spacing, corrosion exposure, future expansion, and maintenance access.",
+      "Use proper glands, lugs, ferrules, markers, and mounting hardware so panel wiring and field cabling remain serviceable after installation.",
+      "For project inquiries, share cable schedule, tray size preference, site photos, and required accessories so the material list can be prepared accurately.",
     ],
   },
 ] as const;

@@ -22,6 +22,16 @@ const PARTNER_BRANDS = [
   "ABB",
   "LEGRAND",
   "KEI",
+  "DELTA",
+  "RR Kabel",
+  "C&S Electric",
+  "PANASONIC",
+  "ITHERM",
+  "Bharat Bijlee",
+  "SELEC",
+  "MULTISPAN",
+  "SECURE",
+  "ELMEX",
 ];
 
 const PRODUCT_CATEGORIES = [
@@ -36,7 +46,12 @@ const PRODUCT_CATEGORIES = [
   { name: "Electrical Measurement", slug: "electrical-measurement", description: "Multi-Function Meters, Energy Meters, Current Transformers" },
   { name: "Industrial Lighting", slug: "industrial-lighting", description: "Highbay Lights, Flood & Street Lights, Poles & High Mast" },
   { name: "Industrial Fans", slug: "industrial-fans", description: "Heavy Duty Pedestal, Centrifugal Blowers, Axial & Panel Fans" },
-  { name: "Industrial Heaters", slug: "industrial-heaters", description: "Infrared Heaters, Tubular Heaters, Oil & Water Heaters" }
+  { name: "Industrial Heaters", slug: "industrial-heaters", description: "Infrared Heaters, Tubular Heaters, Oil & Water Heaters" },
+  { name: "Contactors & Relays", slug: "contactors-relays", description: "Contactors, Control Relays, Relay Bases, Coils & Spare Parts" },
+  { name: "Limit Switches", slug: "limit-switches", description: "Lever Limit Switches, Roller Limit Switches, Heavy Duty Limit Switches, Position Switches" },
+  { name: "Flameproof Products", slug: "flameproof-products", description: "Flameproof Lights, Flameproof Push Buttons, Flameproof Limit Switches, Junction Boxes & Fittings" },
+  { name: "Industrial Plugs & Sockets", slug: "industrial-plugs-sockets", description: "Industrial Plugs, Industrial Sockets, Power Connectors, Weatherproof Plug Socket Sets" },
+  { name: "Cable Trays & Hardware", slug: "cable-trays-hardware", description: "Cable Trays, Cable Glands, Lugs & Ferrules, Mounting Hardware" }
 ];
 
 const SERVICE_LOCATIONS = [
@@ -47,6 +62,7 @@ const SERVICE_LOCATIONS = [
   "umbergaon",
   "pardi",
   "valsad",
+  "navsari",
   "ankleshwar",
   "bharuch",
   "surat",
@@ -64,7 +80,9 @@ const AUTHORITY_BRANDS = [
   "rr-kabel",
   "kei",
   "legrand",
+  "c-and-s-electric",
   "autonics",
+  "panasonic",
   "philips",
   "crompton",
   "invt",
@@ -73,8 +91,10 @@ const AUTHORITY_BRANDS = [
   "selec",
   "multispan",
   "radix",
+  "itherm",
   "pepperl-fuchs",
   "hindustan",
+  "bharat-bijlee",
   "secure",
   "elmex",
   "wipro",
@@ -90,6 +110,11 @@ const RESOURCE_GUIDES = [
   "mccb-selection-guide",
   "industrial-sensor-guide",
   "temperature-controller-guide",
+  "contactor-relay-buying-guide",
+  "limit-switch-selection-guide",
+  "flameproof-product-guide",
+  "industrial-plugs-sockets-guide",
+  "cable-tray-hardware-guide",
 ];
 
 function titleCaseSlug(slug: string) {
