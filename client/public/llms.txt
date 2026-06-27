@@ -9,6 +9,8 @@
 - `Contact Us -> https://jkelectricalsvapi.in/contact`: Phone, WhatsApp, email, address, and quotation inquiry options.
 
 ## Product category pages
+Each product listed inside a category also has a dedicated product detail page using the pattern `https://jkelectricalsvapi.in/products/{category-slug}/{product-slug}`. These pages include product-specific title, description, Product schema, FAQ schema, breadcrumbs, related product links, related brand links, location links, and inquiry calls to action.
+
 - `Industrial Cables -> https://jkelectricalsvapi.in/products/industrial-cables`: Armoured aluminium cable, armoured copper cable, HT cable, LT cable, control cable, instrumentation cable, flexible cable, multi-core cable, single-core cable, solar cable, thermocouple cable, fiberglass Teflon cable, power cable, house wire, industrial wire, PVC cable, and XLPE cable.
 - `Switchgear -> https://jkelectricalsvapi.in/products/switchgear`: MCB, RCCB, RCBO, MCCB, MPCB, ACB, VCB, isolator, changeover switch, motor starter, star-delta starter, manual motor starter, fuse, HRC fuse, fuse base, DIN rail components, and electrical protection products.
 - `Distribution Boards -> https://jkelectricalsvapi.in/products/distribution-boards`: MCB distribution board, MCCB distribution board, double-door distribution board, metal enclosure, weatherproof enclosure, electrical panel box, DB box, and modular distribution board.

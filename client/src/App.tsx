@@ -10,6 +10,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 const Home = React.lazy(() => import("./pages/Home"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
+const ProductDetailPage = React.lazy(() => import("./pages/ProductDetailPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const LocationPage = React.lazy(() => import("./pages/LocationPage"));
 const CategoryAuthorityPage = React.lazy(() => import("./pages/CategoryAuthorityPage"));
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/products" component={ProductsPage} />
       <Route path="/products/category/:category" component={ProductsPage} />
       <Route path="/products/brand/:brand" component={ProductsPage} />
+      <Route path="/products/:category/:product" component={ProductDetailPage} />
       <Route path="/products/:category" component={CategoryAuthorityPage} />
       <Route path="/brands" component={BrandsPage} />
       <Route path="/brands/:brand" component={BrandAuthorityPage} />

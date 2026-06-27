@@ -1,5 +1,7 @@
 import { PRODUCT_CATEGORIES, getInquiryLinks, getProductImage } from "@/const";
 import { useState } from "react";
+import { Link } from "wouter";
+import { productSlug } from "@/lib/productPages";
 import {
   Dialog,
   DialogContent,
@@ -264,11 +266,9 @@ function ProductCard({
     : product.brands;
 
   return (
-    <div
-      onClick={() => onProductClick(product)}
-      className="group bg-white border border-slate-100 rounded-3xl overflow-hidden transform-gpu transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full shadow-sm cursor-pointer"
-    >
-      <div className="relative h-56 overflow-hidden bg-slate-100">
+    <article className="group bg-white border border-slate-100 rounded-3xl overflow-hidden transform-gpu transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full shadow-sm">
+      <Link href={`/products/${product.parentSlug}/${productSlug(product.name)}`} className="block">
+        <div className="relative h-56 overflow-hidden bg-slate-100">
         <img
           src={product.image}
           alt={`${product.name} industrial supply and authorized dealer in Vapi`}
@@ -282,7 +282,8 @@ function ProductCard({
           </p>
           <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-tight">{product.name}</h3>
         </div>
-      </div>
+        </div>
+      </Link>
 
       <div className="p-6 flex flex-col flex-grow justify-between bg-white">
         <div className="flex flex-col flex-grow">
@@ -302,15 +303,18 @@ function ProductCard({
           </div>
         </div>
 
-        <div className="flex gap-3 mt-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="grid grid-cols-2 gap-3 mt-auto" onClick={(e) => e.stopPropagation()}>
+          <Link
+            href={`/products/${product.parentSlug}/${productSlug(product.name)}`}
+            className="py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-black uppercase tracking-widest rounded-xl text-center transition-colors"
+          >
+            Details
+          </Link>
           <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="flex-1 py-3.5 bg-[#00a896] hover:bg-[#009081] text-white text-[11px] font-black uppercase tracking-widest rounded-xl text-center transition-colors shadow-lg shadow-[#00a896]/20">
             WhatsApp
           </a>
-          <a href={links.email} className="px-5 py-3.5 border border-slate-200 text-slate-700 text-[11px] font-black uppercase tracking-widest rounded-xl hover:bg-slate-50 transition-colors">
-            Email
-          </a>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

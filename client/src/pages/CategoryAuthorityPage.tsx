@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { SERVICE_LOCATIONS, getCategoryBySlug } from "@/lib/seoContent";
+import { productSlug } from "@/lib/productPages";
 import {
   breadcrumbSchema,
   categoryProductItemListSchema,
@@ -165,6 +166,17 @@ export default function CategoryAuthorityPage() {
                 electrical control components, industrial control systems, and factory maintenance spares. Buyers can request
                 original products and genuine products based on the required make, model, rating, and application.
               </p>
+              <div className="not-prose mt-6 grid gap-3 sm:grid-cols-2">
+                {productNames.map((productName) => (
+                  <Link
+                    key={productName}
+                    href={`/products/${category.slug}/${productSlug(productName)}`}
+                    className="rounded border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-800 hover:border-[#00a896] hover:text-[#007f72]"
+                  >
+                    {productName}
+                  </Link>
+                ))}
+              </div>
               <h2>Why source from JK Electricals</h2>
               <p>
                 JK Electricals focuses on genuine industrial products, practical product selection, local Vapi support, and

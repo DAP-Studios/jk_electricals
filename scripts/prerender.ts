@@ -124,6 +124,14 @@ function titleCaseSlug(slug: string) {
     .join(" ");
 }
 
+function productSlug(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function preRenderPage(template: string, urlPath: string, title: string, description: string) {
   const fullTitle = title.includes(SITE_NAME) || title.includes("JK Electricals")
     ? title
@@ -222,6 +230,18 @@ async function run() {
   }
 
   // 5. Pre-render location landing pages
+  for (const cat of PRODUCT_CATEGORIES) {
+    for (const productName of cat.description.split(",").map((item) => item.trim()).filter(Boolean)) {
+      const productPath = `/products/${cat.slug}/${productSlug(productName)}`;
+      console.log(`Pre-rendering product route: ${productPath}`);
+      const title = `${productName} Supplier, Dealer & Distributor in Vapi | JK Electricals`;
+      const description = `Source ${productName} in Vapi, Daman, Silvassa, Valsad, Navsari, and South Gujarat from JK Electricals for industrial projects, maintenance, panel, OEM, and bulk procurement.`;
+      const html = preRenderPage(template, productPath, title, description);
+      writePage(productPath, html);
+    }
+  }
+
+  // 5. Pre-render location landing pages
   for (const location of SERVICE_LOCATIONS) {
     const locationName = titleCaseSlug(location);
     const urlPath = `/electrical-supplier-${location}`;
@@ -286,6 +306,13 @@ async function run() {
     ...ROUTES.map((route) => ({ path: route.path, priority: route.priority })),
     ...SERVICE_LOCATIONS.map((location) => ({ path: `/electrical-supplier-${location}`, priority: "0.85" })),
     ...PRODUCT_CATEGORIES.map((category) => ({ path: `/products/${category.slug}`, priority: "0.82" })),
+    ...PRODUCT_CATEGORIES.flatMap((category) =>
+      category.description
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .map((productName) => ({ path: `/products/${category.slug}/${productSlug(productName)}`, priority: "0.74" }))
+    ),
     ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}`, priority: "0.78" })),
     ...RESOURCE_GUIDES.map((guide) => ({ path: `/resources/${guide}`, priority: "0.68" })),
   ];
