@@ -229,8 +229,16 @@ export default defineConfig({
             return "vendor-react";
           }
 
-          if (id.includes("framer-motion") || id.includes("gsap")) {
+          if (id.includes("gsap")) {
+            return "vendor-gsap";
+          }
+
+          if (id.includes("framer-motion")) {
             return "vendor-motion";
+          }
+
+          if (id.includes("@react-three")) {
+            return "vendor-three-react";
           }
 
           if (id.includes("recharts")) {

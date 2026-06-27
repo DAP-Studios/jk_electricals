@@ -1,18 +1,18 @@
 export const COOKIE_NAME = "app_session_id";
 export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
 
-import automationImage from "./assets/catagory/automation.png";
-import boxImage from "./assets/catagory/box.png";
-import controllerImage from "./assets/catagory/controller.png";
-import fanImage from "./assets/catagory/fan.png";
-import heaterImage from "./assets/catagory/heater.png";
-import lightsImage from "./assets/catagory/lights.png";
-import meterImage from "./assets/catagory/meter.png";
-import motorImage from "./assets/catagory/motor.png";
-import panelImage from "./assets/catagory/panel.png";
-import sensorImage from "./assets/catagory/sensor.png";
-import switchgearImage from "./assets/catagory/switchgear.png";
-import wiresImage from "./assets/catagory/wires.png";
+import automationImage from "./assets/catagory/automation.jpg";
+import boxImage from "./assets/catagory/box.jpg";
+import controllerImage from "./assets/catagory/controller.jpg";
+import fanImage from "./assets/catagory/fan.jpg";
+import heaterImage from "./assets/catagory/heater.jpg";
+import lightsImage from "./assets/catagory/lights.jpg";
+import meterImage from "./assets/catagory/meter.jpg";
+import motorImage from "./assets/catagory/motor.jpg";
+import panelImage from "./assets/catagory/panel.jpg";
+import sensorImage from "./assets/catagory/sensor.jpg";
+import switchgearImage from "./assets/catagory/switchgear.jpg";
+import wiresImage from "./assets/catagory/wires.jpg";
 
 // product-specific images (from assets/products)
 import distributionBoardProductImage from "./assets/products/distribution-boards/mcbbox.png";

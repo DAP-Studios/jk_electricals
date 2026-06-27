@@ -68,7 +68,7 @@ export default function BrandAuthorityPage() {
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Brands", path: "/products" },
+            { name: "Brands", path: "/brands" },
             { name: brand.name, path: pagePath },
           ]),
         ]}

@@ -262,6 +262,13 @@ export const ROUTES = [
     priority: "0.9",
   },
   {
+    path: "/brands",
+    title: "Industrial Electrical Brands, Dealers & Suppliers in Vapi | JK Electricals",
+    description:
+      "Browse industrial electrical and automation brands supplied by JK Electricals Vapi, including Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI, Legrand, Autonics, and related category pages.",
+    priority: "0.86",
+  },
+  {
     path: "/contact",
     title: "Contact JK Electricals Vapi | Industrial Supply Support",
     description:

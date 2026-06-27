@@ -4,6 +4,7 @@
 ## Main sections
 - `Home -> https://jkelectricalsvapi.in/`: Company overview for JK Electricals Vapi, an industrial electrical and automation supplier serving Vapi and nearby industrial regions.
 - `Products -> https://jkelectricalsvapi.in/products`: Searchable catalog of industrial electrical products, automation components, switchgear, cables, panel accessories, sensors, motors, lighting, fans, heaters, and measurement products.
+- `Brands -> https://jkelectricalsvapi.in/brands`: Brand hub linking industrial electrical and automation brands to product categories, individual brand pages, and Vapi-area procurement intent.
 - `About Us -> https://jkelectricalsvapi.in/about`: Company profile, experience, owner information, address, and trust details for JK Electricals.
 - `Contact Us -> https://jkelectricalsvapi.in/contact`: Phone, WhatsApp, email, address, and quotation inquiry options.
 

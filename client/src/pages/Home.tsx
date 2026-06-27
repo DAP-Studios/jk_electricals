@@ -1,12 +1,8 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Products from "../components/Products";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
-import BrandLogoCarousel from "@/components/BrandLogoCarousel";
 import { COMPANY_INFO } from "@/const";
 import {
   breadcrumbSchema,
@@ -22,6 +18,15 @@ import {
   websiteSchema,
 } from "@/lib/seo";
 import { motion } from "framer-motion";
+
+const About = lazy(() => import("@/components/About"));
+const Products = lazy(() => import("../components/Products"));
+const Contact = lazy(() => import("@/components/Contact"));
+const BrandLogoCarousel = lazy(() => import("@/components/BrandLogoCarousel"));
+
+function SectionFallback({ className = "min-h-48 bg-white" }: { className?: string }) {
+  return <div className={className} aria-hidden="true" />;
+}
 
 export default function Home() {
   const route = routeByPath("/");
@@ -95,13 +100,16 @@ export default function Home() {
         
         {/* Section 2: About (Dynamic Layout) */}
         <section className="relative z-30 bg-white pt-0">
-          <About variant="home" />
+          <Suspense fallback={<SectionFallback className="min-h-[420px] bg-white" />}>
+            <About variant="home" />
+          </Suspense>
         </section>
 
         {/* Section 3: Product Carousel (Odd/Even Dynamic) */}
         <section className="relative w-full py-0 bg-[#050816]">
-          
-          <Products />
+          <Suspense fallback={<SectionFallback className="min-h-[520px] bg-slate-50" />}>
+            <Products />
+          </Suspense>
         </section>
 
         {/* Section 4: Secondary Content (Raw Grid Ratio) */}
@@ -124,10 +132,12 @@ export default function Home() {
                     <h3 className="text-3xl md:text-5xl font-black text-[#000613] uppercase tracking-tighter leading-none">Brands we serve</h3>
                   </div>
 
-                  <BrandLogoCarousel
-                    className="absolute inset-x-0 top-32 md:top-40"
-                    cardClassName="bg-white/90"
-                  />
+                  <Suspense fallback={<SectionFallback className="absolute inset-x-0 top-32 min-h-[280px] bg-white/70 md:top-40" />}>
+                    <BrandLogoCarousel
+                      className="absolute inset-x-0 top-32 md:top-40"
+                      cardClassName="bg-white/90"
+                    />
+                  </Suspense>
                 </motion.div>
 
                 <motion.div 
@@ -181,7 +191,9 @@ export default function Home() {
         {/* Section 5: Contact (Dynamic Reveal) */}
         <section className="relative w-full py-0 bg-white">
           
-          <Contact />
+          <Suspense fallback={<SectionFallback className="min-h-[420px] bg-white" />}>
+            <Contact />
+          </Suspense>
         </section>
       </main>
 

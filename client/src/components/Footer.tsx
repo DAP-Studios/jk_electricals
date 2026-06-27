@@ -73,6 +73,7 @@ style={{
               {[
                 { label: "Home", href: "/" },
                 { label: "Products", href: "/products" },
+                { label: "Brands", href: "/brands" },
                 { label: "Switchgear", href: "/products/switchgear" },
                 { label: "Automation", href: "/products/automation-systems" },
                 { label: "Siemens", href: "/brands/siemens" },

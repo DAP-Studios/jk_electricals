@@ -13,6 +13,7 @@ const ProductsPage = React.lazy(() => import("./pages/ProductsPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const LocationPage = React.lazy(() => import("./pages/LocationPage"));
 const CategoryAuthorityPage = React.lazy(() => import("./pages/CategoryAuthorityPage"));
+const BrandsPage = React.lazy(() => import("./pages/BrandsPage"));
 const BrandAuthorityPage = React.lazy(() => import("./pages/BrandAuthorityPage"));
 const BlogPage = React.lazy(() => import("./pages/BlogPage"));
 const ResourceGuidePage = React.lazy(() => import("./pages/ResourceGuidePage"));
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/products/category/:category" component={ProductsPage} />
       <Route path="/products/brand/:brand" component={ProductsPage} />
       <Route path="/products/:category" component={CategoryAuthorityPage} />
+      <Route path="/brands" component={BrandsPage} />
       <Route path="/brands/:brand" component={BrandAuthorityPage} />
       <Route path="/electrical-supplier-:location" component={LocationPage} />
       <Route path="/resources/:guide" component={ResourceGuidePage} />

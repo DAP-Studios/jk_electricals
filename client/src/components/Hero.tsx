@@ -96,6 +96,9 @@ export default function Hero({
             src={posterImage}
             alt="JK Electricals industrial electrical and automation supply background"
             aria-hidden="true"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
             className={`absolute inset-0 h-full w-full ${
               bgFit === "contain" ? "object-contain" : "object-cover"
             } object-center`}
@@ -109,7 +112,7 @@ export default function Hero({
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={posterImage}
             disablePictureInPicture
             aria-hidden="true"
