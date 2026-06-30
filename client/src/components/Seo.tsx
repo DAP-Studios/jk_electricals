@@ -75,8 +75,9 @@ export default function Seo({
     setLinkTagWithAttributes("manifest", "/manifest.json", {});
     setMetaTag("description", description);
     setMetaTag("keywords", SITE_KEYWORDS.join(", "));
-    setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+    setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
     setMetaTag("googlebot", noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
+    setMetaTag("bingbot", noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
     setMetaTag("theme-color", "#000080");
     setMetaTag("format-detection", "telephone=yes");
     setMetaTag("application-name", SITE_NAME);

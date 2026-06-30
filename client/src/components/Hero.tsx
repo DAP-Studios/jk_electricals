@@ -1,7 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { useLocation } from "wouter";
 import heroImage from "../assets/hero.png";
-import bgVideo from "../assets/hero-bg.mp4";
 
 type CTA = {
   label: string;
@@ -44,7 +42,6 @@ export default function Hero({
   height?: "full" | "half";
 }) {
   const [, navigate] = useLocation();
-  const prefersReducedMotion = useReducedMotion();
   const isHalf = height === "half";
   const posterImage = bgImage ?? heroImage;
 
@@ -87,9 +84,8 @@ export default function Hero({
 
   return (
     <section
-      className={`relative w-full flex items-center overflow-hidden ${isHalf ? "min-h-[52vh] md:min-h-[56vh]" : "min-h-[80vh] md:h-screen"} ${bgClass}`}
+      className={`relative w-full flex items-center overflow-hidden ${isHalf ? "min-h-[48vh] md:min-h-[52vh]" : "min-h-[76vh] md:min-h-[82vh]"} ${bgClass}`}
     >
-      {/* Background — z-0 */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#000613]">
         {posterImage ? (
           <img
@@ -101,74 +97,31 @@ export default function Hero({
             decoding="async"
             className={`absolute inset-0 h-full w-full ${
               bgFit === "contain" ? "object-contain" : "object-cover"
-            } object-center`}
+            } object-center opacity-55`}
           />
         ) : null}
 
-        {bgVideo && !prefersReducedMotion ? (
-          <video
-            src={bgVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster={posterImage}
-            disablePictureInPicture
-            aria-hidden="true"
-            className={`absolute inset-0 h-full w-full transform-gpu ${
-              bgFit === "contain" ? "object-contain" : "object-cover"
-            } object-center will-change-transform [backface-visibility:hidden] [contain:paint]`}
-          />
-        ) : null}
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/75 via-black/40 to-black/20" />
+        <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(0,6,19,0.94),rgba(0,6,19,0.76)_46%,rgba(0,6,19,0.48))]" />
       </div>
 
-      {/* Orange Diffusion Glow — z-10, pointer-events-none */}
-      <div className="absolute bottom-[-140px] left-1/2 -translate-x-1/2 w-[1600px] h-[400px] bg-orange-400/40 blur-[180px] rounded-full z-10 pointer-events-none" />
-
-      {/* Additional Warm Glow — z-10, pointer-events-none */}
-      <div className="absolute bottom-0 left-0 w-full h-[250px] bg-gradient-to-b from-transparent via-orange-500/10 to-orange-200/30 z-10 pointer-events-none" />
-
-      {/* Wave Transition — z-10, pointer-events-none */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg
-          viewBox="0 0 1440 220"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[70px] md:h-[150px]"
-        >
-          <path
-            fill="#ffffff"
-            d="M0,96L80,112C160,128,320,160,480,165.3C640,171,800,149,960,122.7C1120,96,1280,64,1360,48L1440,32L1440,320L0,320Z"
-          />
-        </svg>
-      </div>
-
-      {/* Content — z-20, above all decorative layers */}
-      <div className={`container relative z-20 flex items-center px-6 sm:px-8 lg:px-12 ${isHalf ? "min-h-[52vh] md:min-h-[56vh] pt-20 pb-16" : "min-h-screen"}`}>
+      <div className={`container relative z-20 flex items-center px-6 sm:px-8 lg:px-12 ${isHalf ? "min-h-[48vh] md:min-h-[52vh] pt-20 pb-14" : "min-h-[76vh] md:min-h-[82vh] pt-24 pb-16"}`}>
         <div
-          className={`max-w-4xl ${
+          className={`max-w-3xl ${
             align === "left" ? "text-left" : "text-center md:text-left"
           }`}
         >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+          <div>
             {eyebrow && (
-              <span className="inline-block text-[#00a896] text-xs sm:text-sm font-black tracking-[0.28em] uppercase mb-4">
+              <span className="inline-block text-[#5eead4] text-xs sm:text-sm font-black tracking-[0.22em] uppercase mb-4">
                 {eyebrow}
               </span>
             )}
 
-            <h1 className={`${isHalf ? "text-[clamp(2.25rem,5vw,4.75rem)]" : "text-[clamp(2.5rem,5.4vw,5.75rem)]"} font-extrabold text-white uppercase tracking-tight leading-[1.02] mb-6`}>
+            <h1 className={`${isHalf ? "text-[clamp(2.25rem,5vw,4.75rem)]" : "text-[clamp(2.5rem,5.4vw,5.5rem)]"} font-black text-white uppercase tracking-tight leading-[1.02] mb-6`}>
               {title}
             </h1>
 
-            <p className="text-[clamp(1rem,2vw,1.25rem)] text-slate-300 max-w-3xl font-light leading-relaxed mb-8 border-l-4 border-[#00a896] pl-6">
+            <p className="text-[clamp(1rem,2vw,1.2rem)] text-slate-200 max-w-2xl leading-8 mb-8 border-l-2 border-[#5eead4] pl-5">
               {subtitle}
             </p>
 
@@ -176,22 +129,18 @@ export default function Hero({
               <div className="flex flex-col sm:flex-row gap-4">
                 {renderCta(
                   ctaPrimary,
-                  "inline-flex min-h-[clamp(2.75rem,5vw,3.5rem)] items-center justify-center rounded-full bg-[#00a896] px-[clamp(1.35rem,4vw,2.5rem)] py-[clamp(0.75rem,1.5vw,1rem)] text-[clamp(0.72rem,1.1vw,0.9rem)] font-black uppercase tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-[#000613]"
+                  "inline-flex min-h-12 items-center justify-center rounded bg-[#00a896] px-6 py-3 text-sm font-black uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-[#000613]"
                 )}
                 {renderCta(
                   ctaSecondary,
-                  "inline-flex min-h-[clamp(2.75rem,5vw,3.5rem)] items-center justify-center rounded-full border-2 border-white/20 px-[clamp(1.35rem,4vw,2.5rem)] py-[clamp(0.75rem,1.5vw,1rem)] text-[clamp(0.72rem,1.1vw,0.9rem)] font-black uppercase tracking-wider text-white transition-all duration-300 hover:border-white"
+                  "inline-flex min-h-12 items-center justify-center rounded border border-white/25 px-6 py-3 text-sm font-black uppercase tracking-wider text-white transition-colors hover:border-white hover:bg-white/10"
                 )}
               </div>
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Right Accent Line */}
-      <div className="hidden md:flex absolute right-10 z-10 flex-col items-center gap-4 opacity-30 pointer-events-none">
-        <div className="w-px h-24 bg-gradient-to-b from-[#00a896] to-transparent" />
-      </div>
     </section>
   );
 }

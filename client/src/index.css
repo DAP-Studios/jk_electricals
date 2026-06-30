@@ -182,6 +182,13 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Helvetica Neue, sans-serif;
+    letter-spacing: 0;
+  }
+
+  *,
+  ::before,
+  ::after {
+    letter-spacing: 0 !important;
   }
   
   /* Skip link for keyboard users */
@@ -224,13 +231,13 @@
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight;
     color: var(--primary-navy);
-    letter-spacing: -2px;
+    letter-spacing: 0;
   }
 
   h2 {
     @apply text-3xl md:text-4xl font-bold uppercase tracking-tight;
     color: var(--primary-navy);
-    letter-spacing: -1px;
+    letter-spacing: 0;
   }
 
   h3 {
@@ -328,6 +335,17 @@
     100% {
       stroke-dashoffset: 0;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
   }
 }
 

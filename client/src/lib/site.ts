@@ -2,7 +2,7 @@ export const SITE_NAME = "JK Electricals Vapi";
 export const SITE_DOMAIN = "jkelectricalsvapi.in";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
 export const SITE_DESCRIPTION =
-  "JK Electricals is a leading industrial electrical, electronics and automation supplier in Vapi, Gujarat for switchgear, PLC, VFD, sensors, process controllers, contactors, relays, limit switches, flameproof products, industrial plugs and sockets, cable trays, cables, motors, lighting, panel accessories and distribution products from Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI and Legrand. Serving Vapi GIDC, Silvassa, Daman, Sarigam, Valsad and South Gujarat.";
+  "JK Electricals is a Vapi-based industrial electrical, electronics and automation supplier for switchgear, PLC, VFD, HMI, SCADA, sensors, process controllers, contactors, relays, limit switches, flameproof products, industrial plugs and sockets, cable trays, cables, motors, lighting, panel accessories and distribution products from Siemens, Schneider Electric, ABB, Delta, Omron, Polycab, KEI and Legrand. Serving Vapi GIDC, Silvassa, Daman, Sarigam, Valsad and South Gujarat.";
 export const SITE_TITLE = "JK Electricals Vapi | Industrial Electrical & Automation Supplier in Gujarat";
 export const SITE_KEYWORDS = [
   "JK Electricals Vapi",
@@ -244,7 +244,7 @@ export const ROUTES = [
     path: "/",
     title: "Industrial Electrical & Automation Supplier in Vapi | JK Electricals",
     description:
-      "JK Electricals is a leading industrial electrical and automation supplier in Vapi, Gujarat for switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting and panel accessories from trusted brands.",
+      "JK Electricals is a Vapi-based industrial electrical, electronics and automation supplier for switchgear, PLC, VFD, sensors, process controllers, cables, motors, lighting, panel accessories, flameproof products, plugs, sockets and cable trays across South Gujarat.",
     priority: "1.0",
   },
   {

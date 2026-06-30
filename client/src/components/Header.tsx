@@ -1,30 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import namelogo from "../assets/namelogo.png";
 import namelogob from "../assets/namelogob.png";
+import { trackConversion } from "@/lib/analytics";
 
 const CATALOG_PATH = "/JK_Electricals_Catalog.pdf"; // Place the PDF at: public/catalog.pdf
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroScrollThreshold = 3;
-      setIsScrolled(window.scrollY >= heroScrollThreshold);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [location]);
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -35,10 +19,9 @@ export default function Header() {
     { label: "Contact", href: "/contact" },
   ];
 
-  const isTransparent = !isScrolled;
-
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    trackConversion("catalog_download", "header_catalog");
     const link = document.createElement("a");
     link.href = CATALOG_PATH;
     link.download = "JK_Electricals_Catalog.pdf";
@@ -50,35 +33,27 @@ export default function Header() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <nav className={`font-inter tracking-tight uppercase font-semibold text-sm fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isTransparent
-          ? 'bg-transparent border-transparent shadow-none'
-          : 'bg-white/95 backdrop-blur-md dark:bg-slate-950/90'
-      } ${isScrolled ? "border-b border-slate-200/70 dark:border-slate-800 shadow-sm shadow-black/5 dark:shadow-none" : ""}`}>
-        <div className="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 text-sm font-semibold uppercase tracking-tight shadow-sm shadow-black/5 backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
 
           <Link href="/" className="inline-flex items-center cursor-pointer">
             <img
-              src={isTransparent ? namelogo : namelogob}
+              src={namelogob}
               alt="JK ELECTRICALS"
-              className="h-8 w-auto mr-2"
+              className="h-8 w-auto"
             />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-gutter">
+          <div className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`${
+                className={`rounded px-3 py-2 transition-colors ${
                   location === item.href
-                    ? isTransparent
-                      ? "text-white border-b-2 border-white pb-1"
-                      : "text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1"
-                    : isTransparent
-                      ? "text-white/80 hover:text-white hover:bg-white/10"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
-                } active:opacity-80 active:scale-95 transition-all duration-200 px-2`}
+                    ? "bg-slate-100 text-slate-950"
+                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
+                }`}
               >
                 {item.label}
               </Link>
@@ -90,14 +65,15 @@ export default function Header() {
             <a
               href={CATALOG_PATH}
               onClick={handleDownload}
-              className="hidden md:inline-flex items-center gap-2 bg-secondary text-on-secondary font-button text-button px-6 py-3 rounded hover:bg-on-secondary-fixed-variant transition-colors shadow-sm"
+              className="hidden items-center gap-2 rounded bg-[#005eb2] px-5 py-2.5 text-sm font-black text-white shadow-sm transition-colors hover:bg-[#004788] md:inline-flex"
             >
               <Download size={16} />
-              Download Catalog
+              Catalog
             </a>
             <button
-              className={`md:hidden p-2 ${isTransparent ? "text-white" : "text-on-background"}`}
+              className="rounded p-2 text-slate-900 md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle navigation menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -106,7 +82,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+          <div className="border-t border-slate-200 bg-white md:hidden">
             <div className="px-8 py-4 flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link
@@ -126,7 +102,7 @@ export default function Header() {
               <a
                 href={CATALOG_PATH}
                 onClick={(e) => { handleDownload(e); setIsMenuOpen(false); }}
-                className="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-button text-button px-6 py-3 rounded hover:bg-on-secondary-fixed-variant transition-colors shadow-sm w-full mt-4"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded bg-[#005eb2] px-6 py-3 text-sm font-black text-white shadow-sm transition-colors hover:bg-[#004788]"
               >
                 <Download size={16} />
                 Download Catalog

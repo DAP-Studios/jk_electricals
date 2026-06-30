@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { COMPANY_INFO } from "@/const";
 import mailIcon from "../assets/mail.png";
 import whatsappIcon from "../assets/whatsaap.png";
@@ -9,11 +8,9 @@ export default function WhatsappBubble() {
 
   return (
     <div className="fixed bottom-[clamp(1rem,4vw,1.5rem)] right-[clamp(1rem,4vw,1.5rem)] z-50 flex flex-col gap-[clamp(0.65rem,2vw,1rem)]">
-      <motion.a
-        whileHover={{ scale: 1.15 }}
-        whileTap={{ scale: 0.9 }}
+      <a
         href={`mailto:${COMPANY_INFO.contact.email}`}
-        className="rounded-full shadow-lg flex items-center justify-center group relative"
+        className="group relative flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95"
         aria-label="Send Email"
       >
         <img
@@ -24,21 +21,15 @@ export default function WhatsappBubble() {
         <span className="absolute right-[115%] rounded-xl border border-slate-700 bg-slate-900/90 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.45rem,1.2vw,0.5rem)] text-[clamp(0.72rem,1vw,0.875rem)] font-semibold text-white opacity-0 shadow-2xl backdrop-blur-md transition-opacity duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100">
           Email Us
         </span>
-      </motion.a>
+      </a>
 
-      <motion.a
-        initial={{ y: 0 }}
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={{ scale: 1.15, y: 0 }}
-        whileTap={{ scale: 0.9 }}
+      <a
         href={`https://wa.me/${waNumber}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full shadow-xl flex items-center justify-center group relative"
+        className="group relative flex items-center justify-center rounded-full shadow-xl transition-transform hover:scale-105 active:scale-95"
         aria-label="Chat on WhatsApp"
       >
-        <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-25" />
         <img
           src={whatsappIcon}
           alt="WhatsApp"
@@ -47,7 +38,7 @@ export default function WhatsappBubble() {
         <span className="absolute right-[115%] rounded-xl border border-slate-700 bg-slate-900/90 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.45rem,1.2vw,0.5rem)] text-[clamp(0.72rem,1vw,0.875rem)] font-semibold text-white opacity-0 shadow-2xl backdrop-blur-md transition-opacity duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100">
           Chat on WhatsApp
         </span>
-      </motion.a>
+      </a>
     </div>
   );
 }

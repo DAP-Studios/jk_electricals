@@ -10,9 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-[#020617] text-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#298799] via-[#011431] to-[#000310]" />
-      <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-[#00a896]/20 blur-[120px]" />
-      <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/20 blur-[120px]" />
+      <div className="absolute inset-0 bg-[#020617]" />
 
       <div className="container relative z-10 py-14">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
@@ -24,11 +22,7 @@ export default function Footer() {
                  <img
                       src={Logo}
                       alt="JK ELECTRICALS"
-                      className="h-10 w-auto animate-pulse"
-style={{
-  filter:
-    "drop-shadow(0 0 4px #00e5ff) drop-shadow(0 0 12px #00e5ff) drop-shadow(0 0 24px #0099ff)",
-}}
+                      className="h-10 w-auto"
                     />
                                       
                 </span>

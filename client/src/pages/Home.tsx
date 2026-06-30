@@ -17,12 +17,12 @@ import {
   webPageSchema,
   websiteSchema,
 } from "@/lib/seo";
-import { motion } from "framer-motion";
 
 const About = lazy(() => import("@/components/About"));
 const Products = lazy(() => import("../components/Products"));
 const Contact = lazy(() => import("@/components/Contact"));
 const BrandLogoCarousel = lazy(() => import("@/components/BrandLogoCarousel"));
+const HomeSeoContent = lazy(() => import("@/components/HomeSeoContent"));
 
 function SectionFallback({ className = "min-h-48 bg-white" }: { className?: string }) {
   return <div className={className} aria-hidden="true" />;
@@ -116,12 +116,7 @@ export default function Home() {
         <section className="relative w-full py-0 md:py-0 bg-white overflow-hidden">
           <div className="container">
              <div className="flex flex-col md:flex-row items-center gap-12">
-                <motion.div 
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="w-full md:w-[65%] min-h-[360px] md:min-h-[520px] overflow-hidden rounded-[3rem] shadow-xl relative bg-white border border-slate-100"
-                >
+                <div className="relative min-h-[360px] w-full overflow-hidden rounded border border-slate-200 bg-white md:min-h-[520px] md:w-[65%]">
                   <div className="absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-white via-white/95 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-white via-white/95 to-transparent" />
                   <div className="absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-white to-transparent" />
@@ -138,21 +133,16 @@ export default function Home() {
                       cardClassName="bg-white/90"
                     />
                   </Suspense>
-                </motion.div>
+                </div>
 
-                <motion.div 
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="w-full md:w-[35%] aspect-[4/5] overflow-hidden rounded-[3rem] bg-[#000613] p-12 flex flex-col justify-between"
-                >
+                <div className="flex aspect-[4/5] w-full flex-col justify-between overflow-hidden rounded bg-[#000613] p-8 md:w-[35%] md:p-10">
                    <div>
-                      <div className="w-16 h-16 bg-[#00a896] rounded-2xl mb-8 flex items-center justify-center text-3xl">🏗️</div>
+                      <div className="mb-8 h-12 w-12 rounded bg-[#00a896]" />
                       <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-4 leading-none">Vapi <br/> <span className="text-[#00a896]">Industrial</span> Hub.</h3>
                       <p className="text-slate-400 text-sm font-light leading-relaxed">Centrally located in Vapi GIDC to serve the chemical, textile, and paper industries with lightning fast logistics.</p>
                    </div>
                    <div className="text-white/20 font-black text-6xl tracking-tighter">4.0</div>
-                </motion.div>
+                </div>
              </div>
           </div>
         </section>
@@ -187,6 +177,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Suspense fallback={<SectionFallback className="min-h-[640px] bg-white" />}>
+          <HomeSeoContent />
+        </Suspense>
 
         {/* Section 5: Contact (Dynamic Reveal) */}
         <section className="relative w-full py-0 bg-white">

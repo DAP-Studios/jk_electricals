@@ -3,6 +3,13 @@ Allow: /
 Disallow: /demo/
 Disallow: /__manus__/
 
+# Discovery files for search engines, AI assistants, and browser agents
+Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /manifest.json
+Allow: /catalog.txt
+Allow: /JK_Electricals_Catalog.pdf
+
 # Major search engines
 User-agent: Googlebot
 Allow: /
@@ -38,10 +45,25 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
 Allow: /
 
 User-agent: Google-Extended
@@ -60,3 +82,4 @@ User-agent: YouBot
 Allow: /
 
 Sitemap: https://jkelectricalsvapi.in/sitemap.xml
+Host: https://jkelectricalsvapi.in

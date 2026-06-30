@@ -41,7 +41,7 @@ const PRODUCT_CATEGORIES = [
   { name: "Panel Accessories", slug: "panel-accessories", description: "Control Panels, Relays & Bases, Switches & Push Buttons, SMPS & Fuses & Capacitors" },
   { name: "Automation Systems", slug: "automation-systems", description: "VFD Drives, HMI Interfaces, SCADA Systems, PLC Systems" },
   { name: "Process Controllers", slug: "process-controllers", description: "PID/Temp Controllers, Humidity/Cooling Control, Indicators & Timers" },
-  { name: "Industrial Sensors", slug: "industrial-sensors", description: "Proximity & Capacitive, Photoelectric, Thermocouple & Water Level" },
+  { name: "Industrial Sensors", slug: "industrial-sensors", description: "Proximity & Capacitive, Photoelectric, Thermocouple, Water Level" },
   { name: "Heavy-Duty Motors", slug: "heavy-duty-motors", description: "Induction Motors, Servo Motors, Gear Motors" },
   { name: "Electrical Measurement", slug: "electrical-measurement", description: "Multi-Function Meters, Energy Meters, Current Transformers" },
   { name: "Industrial Lighting", slug: "industrial-lighting", description: "Highbay Lights, Flood & Street Lights, Poles & High Mast" },
@@ -147,6 +147,18 @@ function preRenderPage(template: string, urlPath: string, title: string, descrip
   html = html.replace(
     /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i,
     `<meta name="description" content="${description}" />`
+  );
+  html = html.replace(
+    /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />`
+  );
+  html = html.replace(
+    /<meta\s+name="googlebot"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />`
+  );
+  html = html.replace(
+    /<meta\s+name="bingbot"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />`
   );
 
   // Replace canonical link
@@ -303,21 +315,21 @@ async function run() {
   console.log("Writing expanded sitemap.xml...");
   const today = new Date().toISOString().slice(0, 10);
   const sitemapRoutes = [
-    ...ROUTES.map((route) => ({ path: route.path, priority: route.priority })),
-    ...SERVICE_LOCATIONS.map((location) => ({ path: `/electrical-supplier-${location}`, priority: "0.85" })),
-    ...PRODUCT_CATEGORIES.map((category) => ({ path: `/products/${category.slug}`, priority: "0.82" })),
+    ...ROUTES.map((route) => ({ path: route.path })),
+    ...SERVICE_LOCATIONS.map((location) => ({ path: `/electrical-supplier-${location}` })),
+    ...PRODUCT_CATEGORIES.map((category) => ({ path: `/products/${category.slug}` })),
     ...PRODUCT_CATEGORIES.flatMap((category) =>
       category.description
         .split(",")
         .map((item) => item.trim())
         .filter(Boolean)
-        .map((productName) => ({ path: `/products/${category.slug}/${productSlug(productName)}`, priority: "0.74" }))
+        .map((productName) => ({ path: `/products/${category.slug}/${productSlug(productName)}` }))
     ),
-    ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}`, priority: "0.78" })),
-    ...RESOURCE_GUIDES.map((guide) => ({ path: `/resources/${guide}`, priority: "0.68" })),
+    ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}` })),
+    ...RESOURCE_GUIDES.map((guide) => ({ path: `/resources/${guide}` })),
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes
-    .map((route) => `  <url>\n    <loc>${SITE_URL}${route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${route.priority}</priority>\n  </url>`)
+    .map((route) => `  <url>\n    <loc>${SITE_URL}${route.path}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`)
     .join("\n")}\n</urlset>\n`;
   fs.writeFileSync(sitemapPath, sitemap, "utf8");
 
