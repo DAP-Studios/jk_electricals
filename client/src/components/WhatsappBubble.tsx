@@ -1,4 +1,5 @@
 import { COMPANY_INFO } from "@/const";
+import { trackConversion } from "@/lib/analytics";
 import mailIcon from "../assets/mail.png";
 import whatsappIcon from "../assets/whatsaap.png";
 
@@ -10,6 +11,7 @@ export default function WhatsappBubble() {
     <div className="fixed bottom-[clamp(1rem,4vw,1.5rem)] right-[clamp(1rem,4vw,1.5rem)] z-50 flex flex-col gap-[clamp(0.65rem,2vw,1rem)]">
       <a
         href={`mailto:${COMPANY_INFO.contact.email}`}
+        onClick={() => trackConversion("email_click", "floating_email")}
         className="group relative flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95"
         aria-label="Send Email"
       >
@@ -27,6 +29,7 @@ export default function WhatsappBubble() {
         href={`https://wa.me/${waNumber}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackConversion("whatsapp_click", "floating_whatsapp")}
         className="group relative flex items-center justify-center rounded-full shadow-xl transition-transform hover:scale-105 active:scale-95"
         aria-label="Chat on WhatsApp"
       >

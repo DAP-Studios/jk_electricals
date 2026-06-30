@@ -1,4 +1,5 @@
 import { COMPANY_INFO } from "@/const";
+import { trackConversion } from "@/lib/analytics";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
@@ -17,6 +18,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackConversion("contact_form_submit", "contact_form");
     const mailtoLink = `mailto:${COMPANY_INFO.contact.email}?subject=Inquiry from ${formData.name}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
     )}`;
@@ -60,11 +62,11 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                   <Phone className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">Phone</p>
-                    <a href={`tel:${COMPANY_INFO.contact.primary}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
+                    <a href={`tel:${COMPANY_INFO.contact.primary}`} onClick={() => trackConversion("phone_click", "primary_phone")} className="text-[#475569] hover:text-[#00a896] transition-colors">
                       {COMPANY_INFO.contact.primary}
                     </a>
                     <br />
-                    <a href={`tel:${COMPANY_INFO.contact.secondary}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
+                    <a href={`tel:${COMPANY_INFO.contact.secondary}`} onClick={() => trackConversion("phone_click", "secondary_phone")} className="text-[#475569] hover:text-[#00a896] transition-colors">
                       {COMPANY_INFO.contact.secondary}
                     </a>
                   </div>
@@ -74,7 +76,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                   <Mail className="mt-1 h-[clamp(1.25rem,3vw,1.5rem)] w-[clamp(1.25rem,3vw,1.5rem)] flex-shrink-0 text-[#00a896]" />
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
-                    <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-[#475569] hover:text-[#00a896] transition-colors">
+                    <a href={`mailto:${COMPANY_INFO.contact.email}`} onClick={() => trackConversion("email_click", "contact_email")} className="text-[#475569] hover:text-[#00a896] transition-colors">
                       {COMPANY_INFO.contact.email}
                     </a>
                   </div>
@@ -104,6 +106,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                       href={`https://wa.me/917383095063`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackConversion("whatsapp_click", "contact_info_whatsapp")}
                       className="text-[#475569] hover:text-[#00a896] transition-colors"
                     >
                       Chat with us
@@ -185,7 +188,7 @@ export default function Contact({ hideHeader = false }: { hideHeader?: boolean }
                 <button type="submit" className="inline-flex min-h-[clamp(2.65rem,5vw,3.15rem)] items-center gap-3 rounded-lg bg-gradient-to-r from-[#00a896] to-[#00d4aa] px-[clamp(1.1rem,3vw,1.5rem)] py-[clamp(0.7rem,1.5vw,0.85rem)] text-[clamp(0.82rem,1.4vw,1rem)] font-extrabold text-white shadow-lg transition-transform hover:scale-[1.02]">
                   Send Inquiry
                 </button>
-                <a href={`https://wa.me/917383095063`} target="_blank" rel="noreferrer" className="inline-flex min-h-[clamp(2.65rem,5vw,3.15rem)] items-center gap-2 rounded-lg border border-slate-200 px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.7rem,1.5vw,0.85rem)] text-[clamp(0.82rem,1.4vw,1rem)] font-semibold text-slate-700 hover:bg-slate-50">
+                <a href={`https://wa.me/917383095063`} target="_blank" rel="noreferrer" onClick={() => trackConversion("whatsapp_click", "contact_form_whatsapp")} className="inline-flex min-h-[clamp(2.65rem,5vw,3.15rem)] items-center gap-2 rounded-lg border border-slate-200 px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.7rem,1.5vw,0.85rem)] text-[clamp(0.82rem,1.4vw,1rem)] font-semibold text-slate-700 hover:bg-slate-50">
                   Chat on WhatsApp
                 </a>
               </div>

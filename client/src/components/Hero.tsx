@@ -1,5 +1,6 @@
 import { useLocation } from "wouter";
 import heroImage from "../assets/hero.png";
+import { trackConversion } from "@/lib/analytics";
 
 type CTA = {
   label: string;
@@ -56,9 +57,19 @@ export default function Hero({
       return;
     }
     if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+      if (href.includes("wa.me")) {
+        trackConversion("whatsapp_click", cta.label);
+      } else if (href.startsWith("mailto:")) {
+        trackConversion("email_click", cta.label);
+      } else if (href.startsWith("tel:")) {
+        trackConversion("phone_click", cta.label);
+      }
       return;
     }
     event.preventDefault();
+    if (href === "/contact") {
+      trackConversion("quote_cta_click", cta.label);
+    }
     navigate(href);
   };
 

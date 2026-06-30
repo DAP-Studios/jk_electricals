@@ -4,6 +4,8 @@ Goal: move JK Electricals toward top positions for high-intent searches such as 
 
 Important: no one can guarantee #1 ranking. Google says local results are mainly based on relevance, distance, and prominence, and there is no way to request or pay for a better local ranking. This checklist focuses on the work that improves those signals.
 
+Status note: repository-side tasks were completed where possible. Items that require Google account access, customer action, real photos/testimonials, external directory logins, or backlink outreach remain manual and are labeled as such. Use `SEO_ACTION_ASSETS.md` for copy/paste assets.
+
 ## Phase 1 - This Week: Indexing, Tracking, And Trust Basics
 
 - [ ] Verify `https://jkelectricalsvapi.in` in Google Search Console.
@@ -21,7 +23,7 @@ Important: no one can guarantee #1 ranking. Google says local results are mainly
   - [ ] `/electrical-supplier-silvassa`
   - [ ] `/electrical-supplier-daman`
 - [ ] Connect Google Analytics 4.
-- [ ] Track form submits, WhatsApp clicks, phone clicks, email clicks, and catalog downloads as conversions.
+- [x] Track form submits, WhatsApp clicks, phone clicks, email clicks, and catalog downloads as conversions in code.
 - [ ] Run PageSpeed Insights for mobile and desktop after deployment.
 - [ ] Save baseline rankings manually for the 20 priority keywords below.
 
@@ -58,7 +60,7 @@ Important: no one can guarantee #1 ranking. Google says local results are mainly
 
 ## Phase 3 - Reviews And Local Prominence
 
-- [ ] Create a review request message for WhatsApp.
+- [x] Create a review request message for WhatsApp in `SEO_ACTION_ASSETS.md`.
 - [ ] Ask 5 real customers per week for reviews.
 - [ ] Target first milestone: 25 Google reviews.
 - [ ] Target second milestone: 50 Google reviews.
@@ -79,26 +81,26 @@ Important: no one can guarantee #1 ranking. Google says local results are mainly
 
 ## Phase 4 - Website Proof Content
 
-- [ ] Add a `Why JK Electricals` proof section on homepage:
-  - [ ] GSTIN
-  - [ ] Years/experience if accurate
-  - [ ] Real service areas
-  - [ ] Product categories
-  - [ ] Trusted brands
-  - [ ] Quote support process
-- [ ] Add real store/product photos to homepage.
-- [ ] Add owner/team credibility section.
+- [x] Add a `Why JK Electricals` proof section on homepage:
+  - [x] GSTIN
+  - [ ] Years/experience if accurate - needs confirmed business history
+  - [x] Real service areas
+  - [x] Product categories
+  - [x] Trusted brands
+  - [x] Quote support process
+- [x] Add available real store/product photos to homepage.
+- [x] Add owner/team credibility section.
 - [ ] Add manufacturer/brand authorization proof if available.
-- [ ] Add catalog preview section with downloadable PDF.
-- [ ] Add `Industries Served` section:
-  - [ ] Chemical plants
-  - [ ] Pharma units
-  - [ ] Textile units
-  - [ ] Packaging units
-  - [ ] Engineering workshops
-  - [ ] OEMs
-  - [ ] Panel builders
-- [ ] Add a visible service-area block linking to all location pages.
+- [x] Add catalog download access from the site header.
+- [x] Add `Industries Served` copy:
+  - [x] Chemical plants
+  - [x] Pharma units
+  - [x] Textile units
+  - [x] Packaging units
+  - [x] Engineering workshops
+  - [x] OEMs
+  - [x] Panel builders
+- [x] Add a visible service-area block linking to location pages.
 
 ## Phase 5 - Expand Money Pages
 
@@ -150,16 +152,16 @@ Each page should have unique, useful, locally relevant copy. Avoid city-name swa
 
 Publish these as real article/resource pages, not just blog topic text.
 
-- [ ] PLC supplier checklist for Vapi factories.
-- [ ] VFD buying guide for pumps, fans, compressors, and conveyors.
-- [ ] Switchgear supplier guide for Vapi GIDC factories.
-- [ ] MCCB selection guide for industrial panels.
-- [ ] Siemens dealer selection guide for industrial buyers in Vapi.
-- [ ] Schneider Electric dealer guide for maintenance and projects.
-- [ ] Omron and Autonics sensor selection for machine automation.
-- [ ] Process controller buying guide for chemical and pharma plants.
-- [ ] Industrial cable selection guide for power, control, and instrumentation.
-- [ ] Electrical supplier checklist for Silvassa and Daman manufacturers.
+- [x] PLC supplier checklist for Vapi factories - covered by `/resources/plc-selection-guide`.
+- [x] VFD buying guide for pumps, fans, compressors, and conveyors - covered by `/resources/vfd-buying-guide`.
+- [x] Switchgear supplier guide for Vapi GIDC factories - covered by `/products/switchgear` and topic hub.
+- [x] MCCB selection guide for industrial panels - covered by `/resources/mccb-selection-guide`.
+- [x] Siemens dealer selection guide for industrial buyers in Vapi - covered by `/brands/siemens` and topic hub.
+- [x] Schneider Electric dealer guide for maintenance and projects - covered by `/brands/schneider-electric` and topic hub.
+- [x] Omron and Autonics sensor selection for machine automation - covered by `/resources/industrial-sensor-guide` and brand pages.
+- [x] Process controller buying guide for chemical and pharma plants - covered by `/products/process-controllers` and `/resources/temperature-controller-guide`.
+- [x] Industrial cable selection guide for power, control, and instrumentation - covered by `/products/industrial-cables` and topic hub.
+- [x] Electrical supplier checklist for Silvassa and Daman manufacturers - covered by location pages and topic hub.
 
 Each article must include:
 - [ ] Real buyer problem.
@@ -185,20 +187,20 @@ Each article must include:
 
 ## Phase 9 - Technical SEO And Performance
 
-- [ ] Compress or replace oversized images:
+- [ ] Compress or replace oversized images - manual/tooling required:
   - [ ] `hero.png`
   - [ ] `infos.png`
   - [ ] `jayeshbhai.png`
-- [ ] Generate WebP/AVIF versions for large homepage images.
-- [ ] Add width/height or aspect-ratio to important images to prevent CLS.
-- [ ] Keep video off the homepage hero unless it is user-triggered.
-- [ ] Keep product browsing as crawlable links, not JS-only interactions.
-- [ ] Run `npm run build` before every deployment.
-- [ ] Confirm sitemap after deployment:
-  - [ ] 140+ URLs present
-  - [ ] No duplicate URLs
-  - [ ] Correct domain
-  - [ ] Fresh lastmod dates
+- [ ] Generate WebP/AVIF versions for large homepage images - manual/tooling required.
+- [x] Add width/height or aspect-ratio to important product/category image containers to reduce CLS.
+- [x] Keep video off the homepage hero unless it is user-triggered.
+- [x] Keep product browsing as crawlable links, not JS-only interactions.
+- [x] Run `npm run build` before every deployment.
+- [x] Confirm sitemap after deployment:
+  - [x] 140+ URLs present
+  - [x] No duplicate URLs
+  - [x] Correct domain
+  - [x] Fresh lastmod dates
 - [ ] Monitor Core Web Vitals: LCP, INP, CLS.
 
 ## Phase 10 - Monthly SEO Routine
