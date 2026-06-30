@@ -88,8 +88,8 @@ export default function Home() {
             eyebrow="Industrial Electrical & Automation Solutions"
             title={
               <>
-                Industrial Electrical Automation{" "}
-                <span className="hero-gradient-text">Supplier Vapi</span>
+                JK Electricals Vapi{" "}
+                <span className="hero-gradient-text">Industrial Electrical Supplier in Vapi GIDC</span>
               </>
             }
             subtitle="Source switchgear, PLC, VFD, industrial sensors, process controllers, cables, motors, lighting, distribution boards, and panel accessories from JK Electricals in Vapi."

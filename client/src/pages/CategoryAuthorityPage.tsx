@@ -61,8 +61,15 @@ export default function CategoryAuthorityPage() {
   const [path] = useLocation();
   const slug = path.replace("/products/", "");
   const category = getCategoryBySlug(slug);
-  const pagePath = `/products/${category.slug}`;
-  const title = `${category.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+  const pagePath = path;
+  const landingLabel = slug.includes("supplier-vapi")
+    ? slug.replace(/-/g, " ").replace(/\bvapi\b/i, "Vapi")
+    : `${category.name} Dealer, Distributor & Supplier`;
+  const landingTitle = landingLabel.replace(/\b\w/g, (char) => char.toUpperCase());
+  const pageHeading = slug.includes("supplier-vapi")
+    ? landingTitle
+    : `${category.name} Dealer, Distributor & Supplier in Vapi`;
+  const title = `${pageHeading} | JK Electricals`;
   const description = `Source ${category.name.toLowerCase()} in Vapi, Daman, Silvassa, Valsad, Pardi, and South Gujarat for industrial projects, maintenance, OEM, bulk, panel, and factory procurement.`;
   const productNames = category.description.split(",").map((item) => item.trim());
   const faqs = [
@@ -117,7 +124,7 @@ export default function CategoryAuthorityPage() {
             <div>
               <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Industrial Product Category</p>
               <h1 className="mt-4 text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-6xl">
-                {category.name} Dealer, Distributor & Supplier in Vapi
+                {pageHeading}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
                 JK Electricals supplies {category.name.toLowerCase()} for industrial buyers who need genuine components,

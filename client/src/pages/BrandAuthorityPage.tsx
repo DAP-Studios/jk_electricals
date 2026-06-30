@@ -21,8 +21,11 @@ export default function BrandAuthorityPage() {
   const [path] = useLocation();
   const slug = path.replace("/brands/", "");
   const brand = getBrandBySlug(slug);
-  const pagePath = `/brands/${brand.slug}`;
-  const title = `${brand.name} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
+  const pagePath = path;
+  const pageHeading = slug.includes("vapi")
+    ? slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
+    : `${brand.name} Dealer, Distributor & Supplier in Vapi`;
+  const title = `${pageHeading} | JK Electricals`;
   const description = `Request ${brand.name} products from JK Electricals Vapi for authorized dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
   const relatedCategories = PRODUCT_CATEGORIES.filter((category) =>
     category.brands.some((item) => item.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase())) ||
@@ -79,7 +82,7 @@ export default function BrandAuthorityPage() {
           <div className="container">
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#00a896]">Industrial Brand Supply</p>
             <h1 className="mt-4 max-w-5xl text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-6xl">
-              {brand.name} Dealer, Distributor & Supplier in Vapi
+              {pageHeading}
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
               JK Electricals supports industrial buyers searching for {brand.name} products in Vapi, including {brand.focus.join(", ")}. The page connects brand requirements with related categories, nearby service areas, and practical inquiry paths for genuine product sourcing.

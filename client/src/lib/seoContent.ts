@@ -98,6 +98,7 @@ export const AUTHORITY_BRANDS = [
   { name: "RR Kabel", slug: "rr-kabel", focus: ["industrial cables", "flexible wires", "control cables", "power cables"] },
   { name: "KEI", slug: "kei", focus: ["HT cables", "LT cables", "control cables", "industrial wiring"] },
   { name: "Legrand", slug: "legrand", focus: ["distribution boards", "protection", "wiring devices", "enclosures"] },
+  { name: "Hager", slug: "hager", focus: ["distribution boards", "protection products", "switchgear", "enclosures"] },
   { name: "C&S Electric", slug: "c-and-s-electric", focus: ["switchgear", "protection", "contactors", "distribution products"] },
   { name: "Autonics", slug: "autonics", focus: ["sensors", "controllers", "timers", "automation"] },
   { name: "Panasonic", slug: "panasonic", focus: ["industrial sensors", "photoelectric sensors", "automation components", "factory automation"] },
@@ -330,16 +331,48 @@ export const PRODUCT_AUTHORITY_CATEGORIES = PRODUCT_CATEGORIES.map((category) =>
   industries: ["chemical", "pharmaceutical", "textile", "packaging", "engineering"],
 }));
 
+export const PRODUCT_LANDING_ALIASES: Record<string, string> = {
+  "switchgear-supplier-vapi": "switchgear",
+  "plc-supplier-vapi": "automation-systems",
+  "vfd-supplier-vapi": "automation-systems",
+  "industrial-sensors-supplier-vapi": "industrial-sensors",
+  "process-controller-supplier-vapi": "process-controllers",
+  "industrial-cables-supplier-vapi": "industrial-cables",
+  "flameproof-products-supplier-vapi": "flameproof-products",
+  "panel-accessories-supplier-vapi": "panel-accessories",
+  "cable-tray-supplier-vapi": "cable-trays-hardware",
+  "contactors-relays-supplier-vapi": "contactors-relays",
+  "limit-switches-supplier-vapi": "limit-switches",
+  "industrial-plugs-sockets-supplier-vapi": "industrial-plugs-sockets",
+  "distribution-board-supplier-vapi": "distribution-boards",
+};
+
+export const BRAND_LANDING_ALIASES: Record<string, string> = {
+  "siemens-dealer-vapi": "siemens",
+  "schneider-dealer-vapi": "schneider-electric",
+  "polycab-cable-supplier-vapi": "polycab",
+  "rr-kabel-supplier-vapi": "rr-kabel",
+  "omron-sensor-supplier-vapi": "omron",
+  "selec-controller-supplier-vapi": "selec",
+  "multispan-controller-supplier-vapi": "multispan",
+  "legrand-dealer-vapi": "legrand",
+  "hager-dealer-vapi": "hager",
+  "chint-dealer-vapi": "chint",
+  "lauritz-knudsen-dealer-vapi": "lauritz-knudsen-lt",
+};
+
 export function getLocationBySlug(slug?: string) {
   return SERVICE_LOCATIONS.find((location) => location.slug === slug) ?? SERVICE_LOCATIONS[0];
 }
 
 export function getCategoryBySlug(slug?: string) {
-  return PRODUCT_AUTHORITY_CATEGORIES.find((category) => category.slug === slug) ?? PRODUCT_AUTHORITY_CATEGORIES[0];
+  const resolvedSlug = slug ? PRODUCT_LANDING_ALIASES[slug] ?? slug : slug;
+  return PRODUCT_AUTHORITY_CATEGORIES.find((category) => category.slug === resolvedSlug) ?? PRODUCT_AUTHORITY_CATEGORIES[0];
 }
 
 export function getBrandBySlug(slug?: string) {
-  return AUTHORITY_BRANDS.find((brand) => brand.slug === slug) ?? AUTHORITY_BRANDS[0];
+  const resolvedSlug = slug ? BRAND_LANDING_ALIASES[slug] ?? slug : slug;
+  return AUTHORITY_BRANDS.find((brand) => brand.slug === resolvedSlug) ?? AUTHORITY_BRANDS[0];
 }
 
 export function getResourceBySlug(slug?: string) {

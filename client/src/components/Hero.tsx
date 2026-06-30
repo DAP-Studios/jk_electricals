@@ -48,7 +48,8 @@ export default function Hero({
 
   const handleCtaClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
+    label: string
   ) => {
     if (href.startsWith("#")) {
       event.preventDefault();
@@ -58,17 +59,17 @@ export default function Hero({
     }
     if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
       if (href.includes("wa.me")) {
-        trackConversion("whatsapp_click", cta.label);
+        trackConversion("whatsapp_click", label);
       } else if (href.startsWith("mailto:")) {
-        trackConversion("email_click", cta.label);
+        trackConversion("email_click", label);
       } else if (href.startsWith("tel:")) {
-        trackConversion("phone_click", cta.label);
+        trackConversion("phone_click", label);
       }
       return;
     }
     event.preventDefault();
     if (href === "/contact") {
-      trackConversion("quote_cta_click", cta.label);
+      trackConversion("quote_cta_click", label);
     }
     navigate(href);
   };
@@ -82,7 +83,7 @@ export default function Hero({
     return (
       <a
         href={cta.href}
-        onClick={(e) => handleCtaClick(e, cta.href)}
+        onClick={(e) => handleCtaClick(e, cta.href, cta.label)}
         className={className}
         {...(isExternal
           ? { target: "_blank", rel: "noopener noreferrer" }
