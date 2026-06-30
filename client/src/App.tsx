@@ -6,6 +6,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import WhatsappBubble from "./components/WhatsappBubble";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import logo from "./assets/logo.png";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
@@ -65,8 +66,12 @@ function App() {
           <Toaster />
           <React.Suspense
             fallback={
-              <div className="min-h-screen flex items-center justify-center bg-white text-sm font-medium text-slate-500">
-                Loading site...
+              <div className="site-loader min-h-screen bg-[#000613]">
+                <div className="site-loader-mark" aria-label="Loading JK Electricals">
+                  <img src={logo} alt="JK Electricals logo" />
+                  <span className="site-loader-fill" aria-hidden="true" />
+                  <span className="site-loader-spark" aria-hidden="true" />
+                </div>
               </div>
             }
           >

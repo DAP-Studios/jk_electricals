@@ -317,7 +317,7 @@ export default function ProductsPage() {
       : "/products";
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#eef3f8]">
       <Seo
         title={seoTitle}
         description={seoDescription}

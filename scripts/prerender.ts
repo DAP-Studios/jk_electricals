@@ -213,6 +213,7 @@ function getAssetImages() {
     .readdirSync(assetsDir)
     .filter((file) => /\.(png|jpe?g|webp|avif|svg)$/i.test(file))
     .filter((file) => !file.toLowerCase().includes("dap"))
+    .sort((a, b) => a.localeCompare(b))
     .slice(0, 24)
     .map((file) => `/assets/${file}`);
 }
@@ -288,7 +289,13 @@ function staticPageShell(content: string) {
 }
 
 function imageHtml(images: string[], index: number, alt: string) {
-  const src = images[index % images.length] ?? "/og-image.svg";
+  const terms = alt
+    .toLowerCase()
+    .replace(/&/g, " ")
+    .split(/[^a-z0-9]+/)
+    .filter((term) => term.length > 2 && !["supplier", "vapi", "products", "product", "industrial", "dealer"].includes(term));
+  const matched = images.find((image) => terms.some((term) => image.toLowerCase().includes(term)));
+  const src = matched ?? images[index % images.length] ?? "/og-image.svg";
   return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" />`;
 }
 

@@ -160,7 +160,7 @@ export default function ProductGrid({ selectedBrand, selectedCategory, searchQue
         </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
         {filteredProducts.map((product, index) => (
           <ProductCard
             key={`${product.parentSlug}-${product.name}`}
@@ -173,7 +173,7 @@ export default function ProductGrid({ selectedBrand, selectedCategory, searchQue
       </div>
 
       {filteredProducts.length === 0 && (
-        <div className="text-center text-slate-500 py-24 bg-white rounded-3xl border border-slate-100">
+        <div className="text-center text-slate-500 py-24 bg-[#eef3f8] rounded-[2rem] shadow-[10px_10px_24px_rgba(15,23,42,0.12),-10px_-10px_24px_rgba(255,255,255,0.9)]">
           <div className="text-4xl mb-4">🔍</div>
           <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">No products found</h3>
           <p className="text-sm">Try another product, brand, or filter to see available industrial products.</p>
@@ -266,9 +266,9 @@ function ProductCard({
     : product.brands;
 
   return (
-    <article className="group bg-white border border-slate-100 rounded-3xl overflow-hidden transform-gpu transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full shadow-sm">
+    <article className="group flex h-full transform-gpu flex-col overflow-hidden rounded-[2rem] bg-[#eef3f8] p-3 shadow-[12px_12px_28px_rgba(15,23,42,0.14),-12px_-12px_28px_rgba(255,255,255,0.92)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[16px_16px_34px_rgba(15,23,42,0.16),-14px_-14px_32px_rgba(255,255,255,0.95)]">
       <Link href={`/products/${product.parentSlug}/${productSlug(product.name)}`} className="block">
-        <div className="relative h-56 overflow-hidden bg-slate-100">
+        <div className="relative h-56 overflow-hidden rounded-[1.45rem] bg-slate-100 shadow-[inset_6px_6px_14px_rgba(15,23,42,0.12),inset_-6px_-6px_14px_rgba(255,255,255,0.85)]">
         <img
           src={product.image}
           alt={`${product.name} industrial supply and authorized dealer in Vapi`}
@@ -285,9 +285,9 @@ function ProductCard({
         </div>
       </Link>
 
-      <div className="p-6 flex flex-col flex-grow justify-between bg-white">
+      <div className="p-5 flex flex-col flex-grow justify-between">
         <div className="flex flex-col flex-grow">
-          <p className="text-xs text-slate-500 mb-5 leading-relaxed line-clamp-3">
+          <p className="text-xs text-slate-600 mb-5 leading-relaxed line-clamp-3">
             {product.description}
           </p>
 
@@ -295,7 +295,7 @@ function ProductCard({
             {visibleBrands.map((brand: string) => (
               <span
                 key={brand}
-                className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${selectedBrand ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-500 border-slate-200'}`}
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${selectedBrand ? 'bg-slate-900 text-white shadow-[inset_2px_2px_5px_rgba(255,255,255,0.12),inset_-2px_-2px_5px_rgba(0,0,0,0.28)]' : 'bg-[#eef3f8] text-slate-600 shadow-[inset_3px_3px_7px_rgba(15,23,42,0.1),inset_-3px_-3px_7px_rgba(255,255,255,0.9)]'}`}
               >
                 {brand}
               </span>
@@ -306,11 +306,11 @@ function ProductCard({
         <div className="grid grid-cols-2 gap-3 mt-auto" onClick={(e) => e.stopPropagation()}>
           <Link
             href={`/products/${product.parentSlug}/${productSlug(product.name)}`}
-            className="py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-black uppercase tracking-widest rounded-xl text-center transition-colors"
+            className="py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-black uppercase tracking-widest rounded-2xl text-center transition-colors shadow-[6px_6px_14px_rgba(15,23,42,0.18),-6px_-6px_14px_rgba(255,255,255,0.85)]"
           >
             Details
           </Link>
-          <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="flex-1 py-3.5 bg-[#00a896] hover:bg-[#009081] text-white text-[11px] font-black uppercase tracking-widest rounded-xl text-center transition-colors shadow-lg shadow-[#00a896]/20">
+          <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="flex-1 py-3.5 bg-[#00a896] hover:bg-[#009081] text-white text-[11px] font-black uppercase tracking-widest rounded-2xl text-center transition-colors shadow-[6px_6px_14px_rgba(0,168,150,0.2),-6px_-6px_14px_rgba(255,255,255,0.85)]">
             WhatsApp
           </a>
         </div>
