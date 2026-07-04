@@ -474,7 +474,7 @@ export function productCatalogSchema(): JsonLd {
         name: `${component.trim()} in Vapi`,
         category: category.name,
         image: absoluteAssetUrl(category.image),
-        description: `${component.trim()} supplied by JK Electricals Vapi for industrial buyers looking for authorized dealers, suppliers, and sellers.`,
+        description: `${component.trim()} supplied by JK Electricals Vapi for industrial buyers looking for dealers, suppliers, sellers, stockists, and resellers.`,
         brand: category.brands.map((name) => ({
           "@type": "Brand",
           name,

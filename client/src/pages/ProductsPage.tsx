@@ -330,8 +330,8 @@ export default function ProductsPage() {
           productCollectionSchema(seoPath, "JK Electricals industrial product collection"),
           internalLinkGraphSchema(),
           organizationSummarySchema(
-            "JK Electricals Vapi lists industrial electrical brands and product categories for buyers searching for authorized dealers, suppliers, and sellers in Vapi, Gujarat.",
-            ["Authorized industrial electrical dealers", "Brand suppliers in Vapi", "Industrial product categories"]
+            "JK Electricals Vapi lists industrial electrical brands and product categories for buyers searching for dealers, suppliers, sellers, stockists, and resellers in Vapi, Gujarat.",
+            ["Industrial electrical brand suppliers", "Brand suppliers in Vapi", "Industrial product categories"]
           ),
           productCatalogSchema(),
           defaultPageFaqSchema("industrial product sourcing"),
@@ -346,7 +346,7 @@ export default function ProductsPage() {
       <main id="main-content" className="pt-0">
         <Hero
           title={<>Industrial <br/> <span className="text-[#00a896]">Ecosystem.</span></>}
-          subtitle="A comprehensive catalog of high-quality components, authorized switchgear, and automation solutions for modern industries."
+          subtitle="A comprehensive catalog of high-quality components, switchgear, and automation solutions for modern industries."
           bgClass="bg-[#000613]"
           bgImage={null}
           align="left"
@@ -359,7 +359,7 @@ export default function ProductsPage() {
             <div className="mb-8 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#00a896] mb-2">
-                  Authorized Brands
+                  Industrial Brands
                 </p>
                 <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-slate-900">
                   Brands We Serve

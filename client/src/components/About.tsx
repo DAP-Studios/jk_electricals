@@ -117,7 +117,7 @@ function HomeAbout() {
               Industrial electrical supply, <span className="text-[#00a896]">simplified</span>
             </h2>
             <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl">
-              JK Electricals is an authorized distributor of industrial electrical goods based in Vapi, Gujarat. We help businesses source genuine components quickly, with practical support for day-to-day operations and project requirements.
+              JK Electricals is an industrial electrical goods supplier based in Vapi, Gujarat. We help businesses source genuine components quickly, with practical support for day-to-day operations and project requirements.
             </p>
           </div>
 

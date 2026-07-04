@@ -175,9 +175,9 @@ export const INDUSTRIES_SERVED = [
 ] as const;
 
 export const COMMERCIAL_INTENTS = [
-  "authorized dealer",
-  "authorized distributor",
-  "authorized supplier",
+  "brand dealer",
+  "brand distributor",
+  "brand supplier",
   "industrial supplier",
   "industrial electrical supplier",
   "electrical wholesaler",

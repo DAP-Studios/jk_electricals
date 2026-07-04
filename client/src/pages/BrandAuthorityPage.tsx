@@ -22,11 +22,9 @@ export default function BrandAuthorityPage() {
   const slug = path.replace("/brands/", "");
   const brand = getBrandBySlug(slug);
   const pagePath = path;
-  const pageHeading = slug.includes("vapi")
-    ? slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
-    : `${brand.name} Dealer, Distributor & Supplier in Vapi`;
-  const title = `${pageHeading} | JK Electricals`;
-  const description = `Request ${brand.name} products from JK Electricals Vapi for authorized dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
+  const pageHeading = `${brand.name} Supplier, Dealer, Distributor & Seller in Vapi`;
+  const title = `${brand.name} Supplier, Dealer, Distributor & Seller in Vapi | JK Electricals`;
+  const description = `Request ${brand.name} products from JK Electricals Vapi for supplier, dealer, distributor, seller, authorized dealer search, authorised dealer search, stockist, bulk, maintenance, and project procurement needs.`;
   const relatedCategories = PRODUCT_CATEGORIES.filter((category) =>
     category.brands.some((item) => item.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase())) ||
     brand.focus.some((focus) => category.description.toLowerCase().includes(focus.split(" ")[0].toLowerCase())),
@@ -37,8 +35,8 @@ export default function BrandAuthorityPage() {
       answer: `Industrial buyers can contact JK Electricals Vapi for ${brand.name} product inquiries, including ${brand.focus.join(", ")} for factories, panel builders, OEMs, contractors, and maintenance teams.`,
     },
     {
-      question: `Is JK Electricals a ${brand.name} dealer, distributor, supplier, stockist, or reseller?`,
-      answer: `JK Electricals supports commercial procurement inquiries for ${brand.name} products as an industrial electrical and automation supplier. Buyers should confirm model, rating, quantity, application, and availability before ordering.`,
+      question: `Is JK Electricals an authorized or authorised ${brand.name} dealer?`,
+      answer: `JK Electricals Vapi supplies ${brand.name} industrial products based on availability and helps buyers source genuine industrial electrical components. Authorization status can vary by product family and time, so please contact the team for current authorization status, availability, and quotation.`,
     },
     {
       question: `Can I request ${brand.name} products for Daman, Silvassa, Valsad, or South Gujarat?`,
@@ -123,10 +121,18 @@ export default function BrandAuthorityPage() {
               </p>
               <h3>Commercial procurement support</h3>
               <p>
-                Buyers searching for a {brand.name} dealer, distributor, supplier, stockist, reseller, OEM supplier, bulk
-                supplier, or trusted industrial supplier can use this page to reach the right quotation path. JK Electricals
+                Buyers searching for a {brand.name} dealer, distributor, supplier, seller, stockist, reseller, OEM supplier,
+                bulk supplier, or trusted industrial supplier can use this page to reach the right quotation path. JK Electricals
                 focuses on original products, genuine products, industrial spare parts, electrical control components, automation
                 components, and factory-ready electrical equipment for Vapi and nearby industrial regions.
+              </p>
+              <h2>Authorized and authorised dealer searches</h2>
+              <p>
+                Many buyers search for an authorized {brand.name} dealer in Vapi, authorised {brand.name} distributor in Vapi,
+                or {brand.name} seller in Valsad Gujarat when they need genuine products and reliable sourcing. JK Electricals
+                keeps this wording visible and honest: authorization should be confirmed for the required product family before
+                purchase, and the team can share current availability, sourcing path, quotation support, and suitable alternatives
+                where a requested model is unavailable.
               </p>
             </article>
             <aside className="self-start rounded border border-slate-200 bg-slate-50 p-6">

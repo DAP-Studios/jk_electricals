@@ -193,7 +193,7 @@ export default function CategoryAuthorityPage() {
               </p>
               <h3>Dealer and distributor inquiry support</h3>
               <p>
-                Procurement teams looking for an authorized dealer, authorized distributor, authorized supplier, electrical
+                Procurement teams looking for a dealer, distributor, supplier, stockist, reseller, electrical
                 wholesaler, control panel supplier, OEM supplier, bulk supplier, trusted supplier, or industrial electrical store
                 can share commercial and technical details through WhatsApp, phone, email, or the request form.
               </p>

@@ -347,18 +347,63 @@ export const PRODUCT_LANDING_ALIASES: Record<string, string> = {
   "distribution-board-supplier-vapi": "distribution-boards",
 };
 
+const GENERATED_BRAND_INTENT_ALIASES = Object.fromEntries(
+  AUTHORITY_BRANDS.flatMap((brand) =>
+    [
+      "dealer",
+      "distributor",
+      "seller",
+      "supplier",
+      "authorized-dealer",
+      "authorised-dealer",
+      "authorized-distributor",
+      "authorised-distributor",
+    ].map((intent) => [`${brand.slug}-${intent}-vapi`, brand.slug]),
+  ),
+);
+
 export const BRAND_LANDING_ALIASES: Record<string, string> = {
+  ...GENERATED_BRAND_INTENT_ALIASES,
   "siemens-dealer-vapi": "siemens",
   "schneider-dealer-vapi": "schneider-electric",
+  "schneider-electric-dealer-vapi": "schneider-electric",
+  "abb-dealer-vapi": "abb",
+  "delta-dealer-vapi": "delta",
+  "mitsubishi-dealer-vapi": "mitsubishi",
+  "omron-dealer-vapi": "omron",
   "polycab-cable-supplier-vapi": "polycab",
   "rr-kabel-supplier-vapi": "rr-kabel",
+  "kei-cable-supplier-vapi": "kei",
   "omron-sensor-supplier-vapi": "omron",
+  "cs-electric-dealer-vapi": "c-and-s-electric",
+  "autonics-dealer-vapi": "autonics",
+  "panasonic-industrial-sensor-supplier-vapi": "panasonic",
+  "philips-industrial-lighting-supplier-vapi": "philips",
+  "crompton-motor-fan-supplier-vapi": "crompton",
+  "invt-vfd-supplier-vapi": "invt",
+  "lauritz-knudsen-lt-dealer-vapi": "lauritz-knudsen-lt",
   "selec-controller-supplier-vapi": "selec",
   "multispan-controller-supplier-vapi": "multispan",
+  "radix-controller-supplier-vapi": "radix",
+  "itherm-controller-supplier-vapi": "itherm",
+  "pepperl-fuchs-sensor-supplier-vapi": "pepperl-fuchs",
+  "hindustan-motor-supplier-vapi": "hindustan",
+  "bharat-bijlee-motor-supplier-vapi": "bharat-bijlee",
+  "secure-meter-supplier-vapi": "secure",
+  "elmex-terminal-block-supplier-vapi": "elmex",
+  "wipro-industrial-lighting-supplier-vapi": "wipro",
+  "bajaj-industrial-lighting-fan-supplier-vapi": "bajaj",
+  "havells-industrial-electrical-supplier-vapi": "havells",
+  "almonard-industrial-fan-supplier-vapi": "almonard",
+  "rexnord-industrial-fan-supplier-vapi": "rexnord",
   "legrand-dealer-vapi": "legrand",
   "hager-dealer-vapi": "hager",
   "chint-dealer-vapi": "chint",
   "lauritz-knudsen-dealer-vapi": "lauritz-knudsen-lt",
+  "cs-electric-authorized-dealer-vapi": "c-and-s-electric",
+  "cs-electric-authorised-dealer-vapi": "c-and-s-electric",
+  "cs-electric-distributor-vapi": "c-and-s-electric",
+  "cs-electric-seller-vapi": "c-and-s-electric",
 };
 
 export function getLocationBySlug(slug?: string) {

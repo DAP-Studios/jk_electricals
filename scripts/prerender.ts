@@ -135,18 +135,56 @@ const SEO_PRODUCT_LANDING_PAGES = [
 ];
 
 const SEO_BRAND_LANDING_PAGES = [
-  { path: "/brands/siemens-dealer-vapi", name: "Siemens", keyword: "Siemens dealer in Vapi", focus: ["switchgear", "PLC systems", "drives", "motors"] },
-  { path: "/brands/schneider-dealer-vapi", name: "Schneider Electric", keyword: "Schneider dealer in Vapi", focus: ["switchgear", "distribution boards", "automation", "protection"] },
-  { path: "/brands/polycab-cable-supplier-vapi", name: "Polycab", keyword: "Polycab cable supplier in Vapi", focus: ["industrial cables", "power cables", "control cables", "wires"] },
-  { path: "/brands/rr-kabel-supplier-vapi", name: "RR Kabel", keyword: "RR Kabel supplier in Vapi", focus: ["industrial cables", "flexible wires", "control cables", "power cables"] },
-  { path: "/brands/omron-sensor-supplier-vapi", name: "Omron", keyword: "Omron sensor supplier in Vapi", focus: ["sensors", "controllers", "relays", "automation"] },
-  { path: "/brands/selec-controller-supplier-vapi", name: "Selec", keyword: "Selec controller supplier in Vapi", focus: ["meters", "process controllers", "timers", "control panel components"] },
-  { path: "/brands/multispan-controller-supplier-vapi", name: "Multispan", keyword: "Multispan controller supplier in Vapi", focus: ["process controllers", "temperature controllers", "timers", "indicators"] },
-  { path: "/brands/legrand-dealer-vapi", name: "Legrand", keyword: "Legrand dealer in Vapi", focus: ["distribution boards", "protection", "wiring devices", "enclosures"] },
-  { path: "/brands/hager-dealer-vapi", name: "Hager", keyword: "Hager dealer in Vapi", focus: ["distribution boards", "protection products", "switchgear", "enclosures"] },
-  { path: "/brands/chint-dealer-vapi", name: "Chint", keyword: "Chint dealer in Vapi", focus: ["switchgear", "MCB", "MCCB", "electrical protection"] },
-  { path: "/brands/lauritz-knudsen-dealer-vapi", name: "Lauritz Knudsen", keyword: "Lauritz Knudsen dealer in Vapi", focus: ["switchgear", "contactors", "protection", "distribution boards"] },
+  { path: "/brands/siemens-dealer-vapi", name: "Siemens", keyword: "Siemens dealer in Vapi", focus: ["switchgear", "PLC systems", "drives", "motors"], categories: ["distribution-boards", "switchgear", "automation-systems"] },
+  { path: "/brands/schneider-electric-dealer-vapi", name: "Schneider Electric", keyword: "Schneider Electric dealer in Vapi", focus: ["switchgear", "distribution boards", "automation", "protection"], categories: ["distribution-boards", "switchgear", "automation-systems"] },
+  { path: "/brands/abb-dealer-vapi", name: "ABB", keyword: "ABB dealer in Vapi", focus: ["switchgear", "motors", "control products", "automation"], categories: ["switchgear", "panel-accessories", "process-controllers"] },
+  { path: "/brands/delta-dealer-vapi", name: "Delta", keyword: "Delta dealer in Vapi", focus: ["VFD drives", "PLC", "HMI", "automation"], categories: ["automation-systems"] },
+  { path: "/brands/mitsubishi-dealer-vapi", name: "Mitsubishi", keyword: "Mitsubishi dealer in Vapi", focus: ["PLC", "HMI", "servo systems", "factory automation"], categories: ["automation-systems", "heavy-duty-motors"] },
+  { path: "/brands/omron-dealer-vapi", name: "Omron", keyword: "Omron dealer in Vapi", focus: ["sensors", "controllers", "relays", "automation"], categories: ["switchgear", "panel-accessories", "process-controllers"] },
+  { path: "/brands/polycab-cable-supplier-vapi", name: "Polycab", keyword: "Polycab cable supplier in Vapi", focus: ["industrial cables", "wires", "power cables", "control cables"], categories: ["industrial-cables", "panel-accessories", "process-controllers"] },
+  { path: "/brands/rr-kabel-supplier-vapi", name: "RR Kabel", keyword: "RR Kabel supplier in Vapi", focus: ["industrial cables", "flexible wires", "control cables", "power cables"], categories: ["industrial-cables", "panel-accessories", "process-controllers"] },
+  { path: "/brands/kei-cable-supplier-vapi", name: "KEI", keyword: "KEI cable supplier in Vapi", focus: ["HT cables", "LT cables", "control cables", "industrial wiring"], categories: ["industrial-cables", "panel-accessories", "process-controllers"] },
+  { path: "/brands/legrand-dealer-vapi", name: "Legrand", keyword: "Legrand dealer in Vapi", focus: ["distribution boards", "protection", "wiring devices", "enclosures"], categories: ["distribution-boards", "industrial-plugs-sockets"] },
+  { path: "/brands/hager-dealer-vapi", name: "Hager", keyword: "Hager dealer in Vapi", focus: ["distribution boards", "protection products", "switchgear", "enclosures"], categories: ["distribution-boards"] },
+  { path: "/brands/cs-electric-dealer-vapi", name: "C&S Electric", keyword: "C&S Electric dealer in Vapi", focus: ["switchgear", "protection", "contactors", "distribution products"], categories: ["switchgear", "contactors-relays"] },
+  { path: "/brands/autonics-dealer-vapi", name: "Autonics", keyword: "Autonics dealer in Vapi", focus: ["sensors", "controllers", "timers", "automation"], categories: ["process-controllers", "industrial-sensors", "limit-switches"] },
+  { path: "/brands/panasonic-industrial-sensor-supplier-vapi", name: "Panasonic", keyword: "Panasonic sensor supplier in Vapi", focus: ["industrial sensors", "photoelectric sensors", "automation components", "factory automation"], categories: ["industrial-sensors", "industrial-plugs-sockets"] },
+  { path: "/brands/philips-industrial-lighting-supplier-vapi", name: "Philips", keyword: "Philips lighting supplier in Vapi", focus: ["industrial lighting", "LED fixtures", "highbay lights", "flood lights"], categories: ["industrial-lighting", "flameproof-products", "industrial-plugs-sockets"] },
+  { path: "/brands/crompton-motor-fan-supplier-vapi", name: "Crompton", keyword: "Crompton motor supplier in Vapi", focus: ["motors", "industrial fans", "heavy duty pedestal fans", "ventilation"], categories: ["heavy-duty-motors", "industrial-fans", "limit-switches"] },
+  { path: "/brands/invt-vfd-supplier-vapi", name: "INVT", keyword: "INVT VFD supplier in Vapi", focus: ["VFD drives", "motor control", "automation", "control panels"], categories: ["panel-accessories", "automation-systems", "process-controllers"] },
+  { path: "/brands/lauritz-knudsen-lt-dealer-vapi", name: "Lauritz Knudsen L&T", keyword: "Lauritz Knudsen dealer in Vapi", focus: ["switchgear", "contactors", "protection", "distribution boards"], categories: ["distribution-boards", "switchgear", "contactors-relays"] },
+  { path: "/brands/chint-dealer-vapi", name: "Chint", keyword: "Chint dealer in Vapi", focus: ["switchgear", "MCB", "MCCB", "electrical protection"], categories: ["distribution-boards", "switchgear", "contactors-relays"] },
+  { path: "/brands/selec-controller-supplier-vapi", name: "Selec", keyword: "Selec controller supplier in Vapi", focus: ["meters", "process controllers", "timers", "control panel components"], categories: ["panel-accessories", "process-controllers", "electrical-measurement"] },
+  { path: "/brands/multispan-controller-supplier-vapi", name: "Multispan", keyword: "Multispan controller supplier in Vapi", focus: ["process controllers", "temperature controllers", "timers", "indicators"], categories: ["process-controllers", "electrical-measurement"] },
+  { path: "/brands/radix-controller-supplier-vapi", name: "Radix", keyword: "Radix controller supplier in Vapi", focus: ["temperature controllers", "process indicators", "automation components", "control systems"], categories: ["panel-accessories", "process-controllers", "contactors-relays"] },
+  { path: "/brands/itherm-controller-supplier-vapi", name: "Itherm", keyword: "Itherm controller supplier in Vapi", focus: ["temperature controllers", "process control", "timers", "industrial indicators"], categories: ["process-controllers", "industrial-plugs-sockets"] },
+  { path: "/brands/pepperl-fuchs-sensor-supplier-vapi", name: "Pepperl Fuchs", keyword: "Pepperl Fuchs sensor supplier in Vapi", focus: ["industrial sensors", "proximity sensors", "photoelectric sensors", "factory automation"], categories: ["industrial-sensors", "limit-switches", "industrial-plugs-sockets"] },
+  { path: "/brands/hindustan-motor-supplier-vapi", name: "Hindustan", keyword: "Hindustan motor supplier in Vapi", focus: ["motors", "induction motors", "heavy duty motors", "industrial spares"], categories: ["heavy-duty-motors", "industrial-fans", "limit-switches"] },
+  { path: "/brands/bharat-bijlee-motor-supplier-vapi", name: "Bharat Bijlee", keyword: "Bharat Bijlee motor supplier in Vapi", focus: ["motors", "induction motors", "three phase motors", "industrial drives"], categories: ["heavy-duty-motors", "industrial-plugs-sockets"] },
+  { path: "/brands/secure-meter-supplier-vapi", name: "Secure", keyword: "Secure meter supplier in Vapi", focus: ["energy meters", "electrical measurement", "multifunction meters", "panel meters"], categories: ["panel-accessories", "electrical-measurement", "industrial-fans"] },
+  { path: "/brands/elmex-terminal-block-supplier-vapi", name: "Elmex", keyword: "Elmex terminal block supplier in Vapi", focus: ["terminal blocks", "electrical measurement", "panel accessories", "control components"], categories: ["panel-accessories", "process-controllers", "electrical-measurement"] },
+  { path: "/brands/wipro-industrial-lighting-supplier-vapi", name: "Wipro", keyword: "Wipro lighting supplier in Vapi", focus: ["industrial lighting", "LED lights", "highbay lights", "flood lights"], categories: ["industrial-lighting", "flameproof-products", "industrial-plugs-sockets"] },
+  { path: "/brands/bajaj-industrial-lighting-fan-supplier-vapi", name: "Bajaj", keyword: "Bajaj industrial lighting supplier in Vapi", focus: ["industrial lighting", "fans", "electrical equipment", "factory utilities"], categories: ["industrial-lighting", "industrial-fans", "flameproof-products"] },
+  { path: "/brands/havells-industrial-electrical-supplier-vapi", name: "Havells", keyword: "Havells industrial electrical supplier in Vapi", focus: ["industrial lighting", "electrical equipment", "switchgear", "factory utilities"], categories: ["industrial-lighting", "flameproof-products", "industrial-plugs-sockets"] },
+  { path: "/brands/almonard-industrial-fan-supplier-vapi", name: "Almonard", keyword: "Almonard fan supplier in Vapi", focus: ["industrial fans", "heavy duty fans", "ventilation", "factory cooling"], categories: ["industrial-fans", "limit-switches", "industrial-plugs-sockets"] },
+  { path: "/brands/rexnord-industrial-fan-supplier-vapi", name: "Rexnord", keyword: "Rexnord fan supplier in Vapi", focus: ["industrial fans", "panel fans", "ventilation", "motor cooling"], categories: ["panel-accessories", "heavy-duty-motors", "industrial-fans"] },
 ];
+
+const BRAND_SEARCH_INTENTS = [
+  { slug: "authorized-dealer", label: "Authorized Dealer" },
+  { slug: "authorised-dealer", label: "Authorised Dealer" },
+  { slug: "distributor", label: "Distributor" },
+  { slug: "seller", label: "Seller" },
+] as const;
+
+const SEO_BRAND_INTENT_PAGES = SEO_BRAND_LANDING_PAGES.flatMap((page) =>
+  BRAND_SEARCH_INTENTS.map((intent) => ({
+    ...page,
+    path: `/brands/${page.path.replace("/brands/", "").replace(/-(dealer|supplier|cable-supplier|industrial-sensor-supplier|industrial-lighting-supplier|motor-fan-supplier|vfd-supplier|controller-supplier|sensor-supplier|motor-supplier|meter-supplier|terminal-block-supplier|industrial-electrical-supplier|industrial-lighting-fan-supplier|industrial-fan-supplier)-vapi$/, "")}-${intent.slug}-vapi`,
+    intent: intent.label,
+    keyword: `${page.name} ${intent.label.toLowerCase()} in Vapi`,
+  })),
+);
 
 const HOME_FAQS = [
   {
@@ -252,7 +290,7 @@ function localBusinessJsonLd() {
   };
 }
 
-function faqJsonLd(items: typeof HOME_FAQS) {
+function faqJsonLd(items: Array<{ question: string; answer: string }>) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -371,19 +409,64 @@ function productLandingHtml(page: (typeof SEO_PRODUCT_LANDING_PAGES)[number], im
   `;
 }
 
-function brandLandingHtml(page: (typeof SEO_BRAND_LANDING_PAGES)[number], images: string[]) {
-  const faqItems = [
-    { question: `Where can I buy ${page.name} products in Vapi?`, answer: `Industrial buyers can contact JK Electricals Vapi for ${page.name} product inquiries and quotation support.` },
-    { question: `Which ${page.name} product families are supported?`, answer: `Common inquiry areas include ${page.focus.join(", ")} depending on model and availability.` },
-    { question: `Does JK Electricals support ${page.name} inquiries for South Gujarat?`, answer: "Yes. JK Electricals serves Vapi GIDC, Daman, Silvassa, Valsad, Sarigam, Umbergaon and nearby South Gujarat industrial areas." },
+function brandFaqItems(page: (typeof SEO_BRAND_LANDING_PAGES)[number]) {
+  return [
+    { question: `Does JK Electricals supply ${page.name} products in Vapi?`, answer: `Yes. JK Electricals Vapi supports ${page.name} product inquiries for factories, contractors, panel builders, OEMs and procurement teams in Vapi GIDC and nearby industrial areas, based on current product availability.` },
+    { question: `Which ${page.name} products are available from JK Electricals Vapi?`, answer: `${page.name} inquiries commonly include ${page.focus.join(", ")}. Buyers should share model number, rating, quantity, panel or machine application and urgency for accurate quotation support.` },
+    { question: `Can I request a quotation for ${page.name} products?`, answer: `Yes. You can request a ${page.name} quotation through phone, WhatsApp, email or the contact page. Sharing photos, datasheets, BOQs and replacement model details helps the team respond faster.` },
+    { question: `Does JK Electricals serve factories in Vapi GIDC?`, answer: "Yes. JK Electricals serves Vapi GIDC along with Daman, Silvassa, Valsad, Sarigam, Umbergaon and nearby South Gujarat manufacturing areas." },
+    { question: `Does JK Electricals supply ${page.name} products for panel builders and contractors?`, answer: `Yes. Panel builders, electrical contractors, maintenance teams and OEM buyers can inquire about ${page.name} products for control panels, electrical distribution, machine automation and project procurement.` },
+    { question: `Is JK Electricals an authorized or authorised ${page.name} dealer?`, answer: `JK Electricals Vapi supplies ${page.name} industrial products based on availability and helps buyers source genuine industrial electrical components. Authorization status can vary by product family and time, so please contact the team for current authorization status, availability and quotation.` },
   ];
+}
+
+function brandHubStaticHtml(images: string[]) {
+  const brandCards = SEO_BRAND_LANDING_PAGES.map((brand, index) => `
+    <article>
+      <h3><a href="${brand.path}">${escapeHtml(brand.name)} products supplier in Vapi</a></h3>
+      ${imageHtml(images, index, `${brand.name} ${brand.focus[0]} supplier in Vapi`)}
+      <p>JK Electricals Vapi supports ${escapeHtml(brand.name)} inquiries for ${escapeHtml(brand.focus.join(", "))}. Buyers can use this brand page to understand product categories, service areas and quotation details before contacting the team.</p>
+      <p><strong>Related categories:</strong> ${brand.categories.map((category) => `<a href="/products/${category}">${titleCaseSlug(category)}</a>`).join(", ")}</p>
+      <a href="${brand.path}">View ${escapeHtml(brand.name)} brand page</a>
+    </article>
+  `).join("");
+
   return `
     <main>
-      <section><h1>${escapeHtml(page.keyword.replace(/\b\w/g, (char) => char.toUpperCase()))}</h1><p>JK Electricals Vapi supports buyers searching for ${escapeHtml(page.keyword)} with brand-led quotation support for factories, panel builders, OEMs, contractors and maintenance teams.</p></section>
-      <section><h2>${escapeHtml(page.name)} Product Support</h2>${imageHtml(images, 2, `${page.keyword} industrial products supplier in Vapi`)}<p>${escapeHtml(page.name)} is commonly requested for ${escapeHtml(page.focus.join(", "))}. Buyers can share product models, ratings, quantities, panel photos and application details so the quotation can be matched to real industrial use.</p></section>
-      <section><h2>Applications In Factories And Panels</h2><p>${escapeHtml(page.name)} products are used in control panels, machine automation, electrical distribution, maintenance replacement, utility systems and project procurement across Vapi GIDC and South Gujarat.</p></section>
-      <section><h2>Related Product Categories</h2><a href="/products/switchgear-supplier-vapi">Switchgear supplier Vapi</a><a href="/products/plc-supplier-vapi">PLC supplier Vapi</a><a href="/products/vfd-supplier-vapi">VFD supplier Vapi</a><a href="/products/industrial-sensors-supplier-vapi">Industrial sensors supplier Vapi</a><a href="/contact">Request quotation</a></section>
-      <section><h2>Service Areas</h2><p>JK Electricals supports buyers in Vapi, GIDC Vapi, Daman, Silvassa, Valsad, Sarigam, Umbergaon, Navsari and nearby South Gujarat industrial areas.</p></section>
+      <section>
+        <h1>Industrial Electrical Brands Supplied by JK Electricals Vapi</h1>
+        <p>JK Electricals Vapi helps factories, contractors, panel builders, OEMs, maintenance teams and procurement departments source industrial electrical, automation, switchgear, cable, sensor, motor, lighting and panel accessory products across Vapi GIDC and South Gujarat. This brand hub connects brand-based search demand with useful pages that explain products, categories, service areas, quotation requirements and safe procurement support.</p>
+        <p>Industrial buyers often search for phrases such as brand authorized dealer in Vapi, brand authorised dealer in Vapi, brand distributor in Vapi, brand seller in Vapi, brand supplier in Vapi, brand reseller in Vapi, brand stockist in Vapi and brand product supplier in Vapi. JK Electricals uses careful wording on these pages: the site does not claim authorized dealer status unless authorization proof is available. Where authorization is unknown, the pages use safer language such as supplier, dealer, seller, stockist, reseller, trader, industrial product supplier and genuine product sourcing support.</p>
+      </section>
+      <section><h2>Electrical, Automation and Switchgear Brands in Vapi</h2><p>Switchgear and automation brand searches are common for Vapi factories because maintenance and project teams need reliable replacements, compatible models and quick quotation support. Siemens, Schneider Electric, ABB, Delta, Mitsubishi, Omron, Chint, INVT, Autonics and Lauritz Knudsen L&T are often requested for products such as MCB, MCCB, RCCB, MPCB, contactors, relays, PLC systems, HMI interfaces, VFD drives, sensors, process controllers and panel accessories. Each brand page links into related product categories so buyers can move from brand intent to the correct product family.</p></section>
+      <section><h2>Cable, Wire and Power Distribution Brands</h2><p>Cable and distribution requirements usually involve conductor size, voltage grade, armouring, core count, cable route, enclosure rating, panel design and site conditions. Polycab, RR Kabel, KEI, Legrand, Hager, C&S Electric and related brands are represented through brand pages that connect buyers with industrial cables, wires, power cables, control cables, distribution boards, protection products, enclosures and wiring devices. The goal is to help factories and contractors ask for the right product instead of sending incomplete item names.</p></section>
+      <section><h2>Sensor, Controller and Panel Accessory Brands</h2><p>Automation reliability depends on correct selection of sensors, controllers, meters, relays, timers, indicators and control panel components. Omron, Autonics, Panasonic, Selec, Multispan, Radix, Itherm, Pepperl Fuchs, Elmex and Secure pages support buyers looking for proximity sensors, photoelectric sensors, temperature controllers, process indicators, panel meters, energy meters, terminal blocks and control components. These pages include service areas, FAQs, related categories and quotation guidance for real industrial use.</p></section>
+      <section><h2>Motor, Fan and Industrial Lighting Brands</h2><p>Motors, fans and industrial lighting are important for plant utilities, warehouses, production areas, cooling, ventilation and maintenance projects. Crompton, Hindustan, Bharat Bijlee, Almonard, Rexnord, Philips, Wipro, Bajaj and Havells pages support searches for motor supplier in Vapi, industrial fan supplier in Vapi, lighting supplier in Vapi, highbay light supplier in Vapi and factory utility products across South Gujarat. Buyers can share HP, kW, RPM, frame size, mounting, airflow, lighting height, wattage, quantity and application details for faster support.</p></section>
+      <section><h2>Brand Product Support for Factories and Panel Builders</h2><p>Brand pages are useful because industrial procurement is rarely generic. A panel builder may need a specific relay base, a contractor may need distribution hardware from a preferred brand, a maintenance engineer may need a matching sensor, and a purchase team may need alternative options if one model is unavailable. The pages below are built as visible, useful, crawlable landing pages, not hidden doorway pages. They link to product categories, service areas and contact paths so buyers and search engines can understand the relationship between brands, products and locations.</p></section>
+      <section><h2>Request Brand Product Quotation from JK Electricals Vapi</h2><p>For faster quotations, buyers should share brand name, product type, model number, rating, quantity, application, panel photos, machine photos, BOQ, delivery urgency and preferred communication method. JK Electricals supports inquiries across Vapi, GIDC Vapi, Daman, Silvassa, Valsad, Sarigam, Umbergaon and South Gujarat. Use the individual brand pages below or go directly to the <a href="/contact">contact page</a>.</p></section>
+      <section><h2>All Brand Pages</h2><div>${brandCards}</div></section>
+    </main>
+  `;
+}
+
+function brandLandingHtml(page: (typeof SEO_BRAND_LANDING_PAGES)[number], images: string[]) {
+  const faqItems = brandFaqItems(page);
+  const categoryLinks = page.categories.map((category) => `<a href="/products/${category}">${titleCaseSlug(category)}</a>`).join("");
+  const relatedBrands = SEO_BRAND_LANDING_PAGES
+    .filter((brand) => brand.name !== page.name)
+    .filter((brand) => brand.categories.some((category) => page.categories.includes(category)))
+    .slice(0, 5)
+    .map((brand) => `<a href="${brand.path}">${escapeHtml(brand.name)} supplier in Vapi</a>`)
+    .join("");
+
+  return `
+    <main>
+      <section><h1>${escapeHtml(page.name)} Supplier, Dealer, Distributor and Seller in Vapi GIDC</h1><p>JK Electricals Vapi supports industrial buyers looking for ${escapeHtml(page.keyword)}, ${escapeHtml(page.name)} supplier in Vapi, ${escapeHtml(page.name)} dealer in Vapi, ${escapeHtml(page.name)} distributor in Vapi, ${escapeHtml(page.name)} seller in Vapi, ${escapeHtml(page.name)} reseller in Vapi, ${escapeHtml(page.name)} stockist in Vapi and ${escapeHtml(page.name)} industrial product supplier in Vapi. The page is written for factories, contractors, panel builders, OEMs, procurement teams and maintenance engineers who need practical sourcing support rather than vague brand claims.</p><p>Authorization status can vary by brand, product family and time. JK Electricals does not claim authorized dealer status unless proof is available. Buyers searching for authorized ${escapeHtml(page.name)} dealer in Vapi, authorised ${escapeHtml(page.name)} distributor in Vapi, ${escapeHtml(page.name)} seller in Valsad Gujarat or ${escapeHtml(page.name)} supplier in South Gujarat can use this page to request genuine product sourcing support, model matching and current availability from the team.</p></section>
+      <section><h2>${escapeHtml(page.name)} Electrical and Automation Products Supplied by JK Electricals</h2>${imageHtml(images, 2, `${page.name} ${page.focus[0]} supplier in Vapi`)}<p>${escapeHtml(page.name)} product inquiries commonly include ${escapeHtml(page.focus.join(", "))}. These products are used in control panels, power distribution, machine automation, utilities, production lines, plant maintenance, project procurement and replacement work. JK Electricals helps buyers translate a short brand search into a proper inquiry by asking for product type, model number, electrical rating, quantity, application and delivery urgency.</p><p>For industrial procurement, brand compatibility matters. Existing panels may already use a particular make, a machine builder may require a preferred product family, or a factory may standardize across one brand to reduce maintenance complexity. JK Electricals Vapi supports these brand-led requirements while keeping the conversation focused on availability, application fit and genuine product sourcing.</p></section>
+      <section><h2>${escapeHtml(page.name)} Product Categories Available</h2><p>Related product categories for ${escapeHtml(page.name)} include ${escapeHtml(page.focus.join(", "))}. Buyers can also review these category pages for technical context, product families and related internal links: ${categoryLinks}. Category pages help buyers compare brand intent with product intent, such as switchgear supplier in Vapi, automation supplier in Vapi, cable supplier in Vapi, sensor supplier in Vapi, motor supplier in Vapi and lighting supplier in Vapi.</p><p>A complete inquiry should include product photos, existing model labels, ratings, panel drawings, machine application, required quantity and preferred delivery timeline. This reduces mismatch risk and helps the team prepare a more useful quote for maintenance, project or bulk purchase requirements.</p></section>
+      <section><h2>${escapeHtml(page.name)} Supplier for Factories, Contractors and Panel Builders</h2><p>Factories and panel builders in Vapi GIDC often need brand-specific products for breakdown replacement, new control panels, machine upgrades, utility panels, warehouse lighting, motor control, electrical measurement and process automation. Contractors and OEMs may need repeatable supply for BOQs, panel schedules, site installation work and commissioning deadlines. JK Electricals Vapi supports these workflows with practical commercial communication and product sourcing guidance.</p><p>Maintenance teams can use this page when a failed component has stopped a machine or utility. Procurement teams can use it when they need a supplier, dealer, seller, stockist, reseller or trader for ${escapeHtml(page.name)} products. Panel builders can use the related product links to combine ${escapeHtml(page.name)} inquiries with switchgear, panel accessories, automation systems, process controllers, sensors, industrial cables and distribution products.</p></section>
+      <section><h2>Serving Vapi GIDC, Daman, Silvassa and South Gujarat</h2><p>JK Electricals serves Vapi, GIDC Vapi, Daman, Silvassa, Valsad, Sarigam, Umbergaon, Pardi, Navsari and nearby South Gujarat industrial areas. Local sourcing is useful because industrial buyers often work under downtime pressure, contractor deadlines or project schedules. When a plant needs ${escapeHtml(page.name)} products urgently, clear model and application details help the supplier respond faster.</p><p>The service area includes chemical, pharmaceutical, textile, packaging, engineering, plastic, fabrication, infrastructure, warehouse and process manufacturing units. Buyers from these locations can start with the brand page, move into related product category pages, and then contact JK Electricals for quotation support.</p></section>
+      <section><h2>Request ${escapeHtml(page.name)} Product Quotation from JK Electricals Vapi</h2><p>To request a quotation, share the ${escapeHtml(page.name)} product name, model number, rating, quantity, application, existing photos and urgency. For switchgear and distribution products, include current rating, pole configuration, breaking capacity and panel context. For automation products, include PLC, HMI, VFD, sensor, controller or communication details. For cables, motors, fans or lighting, include sizing, voltage, load, mounting and site details.</p><p><a href="/contact">Contact JK Electricals Vapi</a> for brand product support, or use related internal links such as <a href="/brands">all industrial brands</a>, <a href="/products">all products</a>, ${relatedBrands || `<a href="/products">product categories</a>`}.</p></section>
       <section><h2>Frequently Asked Questions</h2>${faqItems.map((faq) => `<article><h3>${escapeHtml(faq.question)}</h3><p>${escapeHtml(faq.answer)}</p></article>`).join("")}</section>
     </main>
   `;
@@ -467,7 +550,22 @@ async function run() {
   for (const route of ROUTES) {
     if (route.path === "/") continue;
     console.log(`Pre-rendering core route: ${route.path}`);
-    const html = preRenderPage(template, route.path, route.title, route.description);
+    const html = route.path === "/brands"
+      ? preRenderPage(
+          template,
+          "/brands",
+          "Industrial Electrical Brands Supplied by JK Electricals Vapi",
+          "Explore industrial electrical, automation, switchgear, cable, sensor, motor, lighting and panel accessory brands supplied by JK Electricals Vapi across South Gujarat.",
+          brandHubStaticHtml(images),
+          [
+            localBusinessJsonLd(),
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Brands", path: "/brands" },
+            ]),
+          ],
+        )
+      : preRenderPage(template, route.path, route.title, route.description);
     writePage(route.path, html);
   }
 
@@ -536,7 +634,7 @@ async function run() {
     const urlPath = `/brands/${brand}`;
     console.log(`Pre-rendering brand authority route: ${urlPath}`);
     const title = `${brandName} Dealer, Distributor & Supplier in Vapi | JK Electricals`;
-    const description = `Request ${brandName} products from JK Electricals Vapi for authorized dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
+    const description = `Request ${brandName} products from JK Electricals Vapi for dealer, distributor, supplier, stockist, reseller, OEM, bulk, maintenance, and project procurement needs.`;
     const html = preRenderPage(template, urlPath, title, description);
     writePage(urlPath, html);
   }
@@ -567,8 +665,9 @@ async function run() {
   // 8. Pre-render search-focused brand landing pages requested for SEO.
   for (const page of SEO_BRAND_LANDING_PAGES) {
     console.log(`Pre-rendering SEO brand landing route: ${page.path}`);
-    const title = `${page.name} Dealer in Vapi | JK Electricals Vapi`;
-    const description = `JK Electricals Vapi supports ${page.name} product inquiries for industrial buyers, panel builders, contractors and maintenance teams across Vapi GIDC and South Gujarat.`;
+    const title = `${page.name} Supplier, Dealer, Distributor & Seller in Vapi | JK Electricals`;
+    const description = `JK Electricals Vapi supports ${page.name} supplier, dealer, distributor, seller, authorized dealer search and authorised dealer search inquiries for Vapi, Valsad and South Gujarat.`;
+    const faqs = brandFaqItems(page);
     const html = preRenderPage(
       template,
       page.path,
@@ -577,6 +676,21 @@ async function run() {
       brandLandingHtml(page, images),
       [
         localBusinessJsonLd(),
+        faqJsonLd(faqs),
+        {
+          "@context": "https://schema.org",
+          "@type": "Brand",
+          name: page.name,
+          url: `${SITE_URL}${page.path}`,
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: `${page.name} industrial electrical products`,
+          brand: { "@type": "Brand", name: page.name },
+          category: page.focus.join(", "),
+          url: `${SITE_URL}${page.path}`,
+        },
         breadcrumbJsonLd([
           { name: "Home", path: "/" },
           { name: "Brands", path: "/brands" },
@@ -587,7 +701,31 @@ async function run() {
     writePage(page.path, html);
   }
 
-  // 9. Pre-render blog hub
+  // 9. Pre-render exact brand intent pages for authorized/authorised, distributor and seller searches.
+  for (const page of SEO_BRAND_INTENT_PAGES) {
+    console.log(`Pre-rendering SEO brand intent route: ${page.path}`);
+    const title = `${page.name} ${page.intent} in Vapi | JK Electricals`;
+    const description = `JK Electricals Vapi supports ${page.name} ${page.intent.toLowerCase()} searches, supplier, dealer, distributor and seller inquiries for factories across Vapi, Valsad and South Gujarat.`;
+    const html = preRenderPage(
+      template,
+      page.path,
+      title,
+      description,
+      brandLandingHtml(page, images),
+      [
+        localBusinessJsonLd(),
+        faqJsonLd(brandFaqItems(page)),
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Brands", path: "/brands" },
+          { name: `${page.name} ${page.intent}`, path: page.path },
+        ]),
+      ],
+    );
+    writePage(page.path, html);
+  }
+
+  // 10. Pre-render blog hub
   console.log("Pre-rendering blog route: /blog");
   writePage(
     "/blog",
@@ -656,6 +794,7 @@ async function run() {
     ...AUTHORITY_BRANDS.map((brand) => ({ path: `/brands/${brand}` })),
     ...SEO_PRODUCT_LANDING_PAGES.map((page) => ({ path: page.path })),
     ...SEO_BRAND_LANDING_PAGES.map((page) => ({ path: page.path })),
+    ...SEO_BRAND_INTENT_PAGES.map((page) => ({ path: page.path })),
     ...RESOURCE_GUIDES.map((guide) => ({ path: `/resources/${guide}` })),
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes

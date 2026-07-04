@@ -100,9 +100,9 @@ function getProductSeoDetails(name: string, categoryName: string) {
   }
   // Generic fallback generator
   return {
-    description: `${normalized} supplied by JK Electricals Vapi are high-quality components designed for industrial reliability in factories and machinery. We provide authorized distribution and supply for leading brands across Vapi GIDC, Silvassa, Daman, and South Gujarat.`,
+    description: `${normalized} supplied by JK Electricals Vapi are high-quality components designed for industrial reliability in factories and machinery. We provide brand-based industrial product sourcing for leading manufacturers across Vapi GIDC, Silvassa, Daman, and South Gujarat.`,
     features: [
-      "Genuine components sourced directly from authorized manufacturers",
+      "Genuine components sourced through brand-focused procurement channels",
       "Robust build quality designed to minimize plant downtime",
       "Compliant with international and national safety standards",
       "Full technical support and manufacturer warranty coverage"
@@ -271,7 +271,7 @@ function ProductCard({
         <div className="relative h-56 overflow-hidden rounded-[1.45rem] bg-slate-100 shadow-[inset_6px_6px_14px_rgba(15,23,42,0.12),inset_-6px_-6px_14px_rgba(255,255,255,0.85)]">
         <img
           src={product.image}
-          alt={`${product.name} industrial supply and authorized dealer in Vapi`}
+          alt={`${product.name} industrial product supplier in Vapi`}
           loading={index < 4 ? "eager" : "lazy"}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
