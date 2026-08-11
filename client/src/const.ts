@@ -262,6 +262,16 @@ export const PARTNER_BRANDS = [
   "MULTISPAN",
   "SECURE",
   "ELMEX",
+  "ALMONARD",
+  "REXNORD",
+  "AUTONICS",
+  "CHINT",
+  "RADIX",
+  "PEPPERL+FUCHS",
+  "HINDUSTAN",
+  "BAJAJ",
+  "WIPRO",
+  "HAGER",
 ];
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
